@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement Player;
     public int health = 3;
+    public int maxhealth;
     public float regularSpeed = 4f; // Default speed
     public float sprintSpeed = 8f; // Speed while sprinting
     public float sprintDuration = 2f; // Duration of sprint in seconds
