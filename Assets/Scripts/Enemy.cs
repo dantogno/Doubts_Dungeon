@@ -7,78 +7,102 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    //public int maxHealth = 100;
+    //public int currentHealth;
 
-    public float range;
+    public NavMeshAgent Agent;
+    public float EnemyPathingDelay = 0.2f;
+    private float PathUpdateDeadline = 1f;
+
+    //public float range;
     public Transform target;
-    public float minDistance = 5f;
-    public float maxDistance = 10f;
-    private bool targetCollision = false;
-    private float speed = 2f;
+    //public float minDistance = 5f;
+    //public float maxDistance = 10f;
+    //private bool targetCollision = false;
+    //private float speed = 2f;
 
-    public SimpleAnimationsScript animationsScript;
+    //public SimpleAnimationsScript animationsScript;
 
     // Start is called before the first frame update
     void Start() {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
     }
 
     void Update()
     {
-        FollowTarget();
-    }
+        //FollowTarget();
 
-    public void TakeDamage(int damage) {
-
-        currentHealth -= damage;
-
-        //Hurt animation
-
-        if(currentHealth <= 0) 
+        if (target != null)
         {
-            Die();
+            UpdatePath();
         }
     }
 
-    void Die()
+    private void Awake()
     {
-        Debug.Log("Enemy died");
-        //die animation
-
-        SimpleAnimationsScript.FadeSprite(GetComponent<SpriteRenderer>(),4000.0f);
-
-        //diable enemy
+        Agent = GetComponent<NavMeshAgent>();
     }
 
-    public int GetHealth() { return currentHealth; }
-
-    public void FollowTarget()
+    private void UpdatePath()
     {
-        range = Vector2.Distance(transform.position, target.position);
-
-        if (range < maxDistance)
+        if (Time.time >= PathUpdateDeadline)
         {
-            if (range < minDistance)
-            {
-                if (!targetCollision)
-                {
-                    // Calculate the direction vector from the enemy to the target
-                    Vector3 moveDirection = (target.position - transform.position).normalized;
-
-                    // Calculate speed based on the distance to the target
-                    //float adjustedSpeed = Mathf.Lerp(0, speed, range / maxDistance);
-
-                    // Move the enemy in the calculated direction with adjusted speed
-                    //transform.Translate(moveDirection * adjustedSpeed * Time.deltaTime, Space.World);
-                    transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-                }
-            }
+            Debug.Log("Updating Path");
+            PathUpdateDeadline = Time.time + EnemyPathingDelay;
+            Agent.SetDestination(target.position);
         }
     }
 
-    public int damageAmount = 20; // Amount of damage to deal to the target
-    public float backwardForce = 5f; // Force to apply to the enemy when colliding with the target
+    //public void TakeDamage(int damage) {
+
+    //    currentHealth -= damage;
+
+    //    //Hurt animation
+
+    //    if(currentHealth <= 0) 
+    //    {
+    //        Die();
+    //    }
+    //}
+
+    //void Die()
+    //{
+    //    Debug.Log("Enemy died");
+    //    //die animation
+
+    //    SimpleAnimationsScript.FadeSprite(GetComponent<SpriteRenderer>(),4000.0f);
+
+    //    //diable enemy
+    //}
+
+    //public int GetHealth() { return currentHealth; }
+
+    //public void FollowTarget()
+    //{
+    //    range = Vector2.Distance(transform.position, target.position);
+
+    //    if (range < maxDistance)
+    //    {
+    //        if (range < minDistance)
+    //        {
+    //            if (!targetCollision)
+    //            {
+    //                // Calculate the direction vector from the enemy to the target
+    //                Vector3 moveDirection = (target.position - transform.position).normalized;
+
+    //                // Calculate speed based on the distance to the target
+    //                //float adjustedSpeed = Mathf.Lerp(0, speed, range / maxDistance);
+
+    //                // Move the enemy in the calculated direction with adjusted speed
+    //                //transform.Translate(moveDirection * adjustedSpeed * Time.deltaTime, Space.World);
+    //                transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //public int damageAmount = 20; // Amount of damage to deal to the target
+    //public float backwardForce = 5f; // Force to apply to the enemy when colliding with the target
 
 
     //Not detecting collision fix later
