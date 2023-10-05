@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static event Action OnPlayerDeath;
     private Rigidbody rb;
+    private PlayerMovement Player;
+    public int health = 3;
     public float regularSpeed = 4f; // Default speed
     public float sprintSpeed = 8f; // Speed while sprinting
     public float sprintDuration = 2f; // Duration of sprint in seconds
@@ -15,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Player = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Sprint") && !isSprinting)
         {
             StartSprint();
+        }
+
+        if (health == 0)
+        {
+            OnGameOver();
         }
 
         // Check if the sprint duration has passed
@@ -42,6 +52,26 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = move * currentSpeed;
 
         LookAtMouse();
+    }
+
+    public void OnGameOver()
+    {
+        OnPlayerDeath?.Invoke();
+    }
+
+    private void OnEnable()
+    {
+        PlayerMovement.OnPlayerDeath += DisablePlayer;
+    }
+
+    private void OnDisable()
+    {
+        PlayerMovement.OnPlayerDeath -= DisablePlayer;
+    }
+
+    public void DisablePlayer()
+    {
+        Player.enabled = false;
     }
 
     private void LookAtMouse()

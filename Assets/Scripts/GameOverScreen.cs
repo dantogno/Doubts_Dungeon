@@ -10,22 +10,22 @@ public class GameOverScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        PlayerMovement.OnPlayerDeath += SetUp;
     }
 
     private void OnDisable()
     {
-        
+        PlayerMovement.OnPlayerDeath -= SetUp;
     }
 
-    void Start()
+    public void SetUp()
     {
-        
+        GameOverObject.SetActive(true);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RestartButton()
     {
-        
+        SceneManager.LoadScene("3D",LoadSceneMode.Single);
     }
 }
