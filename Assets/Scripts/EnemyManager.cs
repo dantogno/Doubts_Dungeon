@@ -57,6 +57,41 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    //private Vector3 GetRandomValidPosition()
+    //{
+    //    NavMeshHit hit;
+    //    Vector3 randomPosition = Vector3.zero;
+
+    //    while (true)
+    //    {
+    //        float x = Random.Range(-50f, 50f);
+    //        float z = Random.Range(-50f, 50f);
+
+    //        randomPosition = new Vector3(x, 0f, z);
+
+
+    //        if (!IsPositionWithinRestrictedArea(randomPosition, winFloor))
+    //        {
+    //            if (NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas))
+    //            {
+    //                bool validPosition = true;
+    //                foreach (var enemy in enemies)
+    //                {
+    //                    float distance = Vector3.Distance(enemy.transform.position, randomPosition);
+    //                    if (distance < minDistanceBetweenEnemies)
+    //                    {
+    //                        validPosition = false;
+    //                        break;
+    //                    }
+    //                }
+
+    //                if (validPosition)
+    //                    return hit.position;
+    //            }
+    //        }
+    //    }
+    //}
+
     private Vector3 GetRandomValidPosition()
     {
         NavMeshHit hit;
@@ -69,30 +104,35 @@ public class EnemyManager : MonoBehaviour
 
             randomPosition = new Vector3(x, 0f, z);
 
-
-            if (!IsPositionWithinRestrictedArea(randomPosition, winFloor))
+            // Check if the position is within the NavMesh
+            if (!IsPositionWithinRestrictedArea(randomPosition, winFloor) &&
+                NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas) &&
+                !IsPositionOnWall(hit.position))
             {
-                if (NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas))
+                bool validPosition = true;
+                foreach (var enemy in enemies)
                 {
-                    bool validPosition = true;
-                    foreach (var enemy in enemies)
+                    float distance = Vector3.Distance(enemy.transform.position, randomPosition);
+                    if (distance < minDistanceBetweenEnemies)
                     {
-                        float distance = Vector3.Distance(enemy.transform.position, randomPosition);
-                        if (distance < minDistanceBetweenEnemies)
-                        {
-                            validPosition = false;
-                            break;
-                        }
+                        validPosition = false;
+                        break;
                     }
-
-                    if (validPosition)
-                        return hit.position;
                 }
+
+                if (validPosition)
+                    return hit.position;
             }
         }
     }
-        
-    
+
+    private bool IsPositionOnWall(Vector3 position)
+    {
+        NavMeshHit wallHit;
+        return NavMesh.Raycast(position + Vector3.up * 10f, Vector3.down, out wallHit, NavMesh.AllAreas);
+    }
+
+
     private bool IsPositionWithinRestrictedArea(Vector3 position, GameObject restrictedAreaObject)
     {
         if (restrictedAreaObject == null)
