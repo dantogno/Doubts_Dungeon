@@ -7,25 +7,25 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    //public int maxHealth = 100;
-    //public int currentHealth;
 
     public NavMeshAgent Agent;
     public float EnemyPathingDelay = 0.2f;
+
+    public float knockbackDistance = 4f;
+    public float knockbackDuration = 4f;
+
     private float PathUpdateDeadline = 1f;
+    private Transform target;
 
-    //public float range;
-    public Transform target;
-    //public float minDistance = 5f;
-    //public float maxDistance = 10f;
-    //private bool targetCollision = false;
-    //private float speed = 2f;
+    private void Awake()
+    {
+        Agent = GetComponent<NavMeshAgent>();
+    }
 
-    //public SimpleAnimationsScript animationsScript;
-
-    // Start is called before the first frame update
-    void Start() {
-        //currentHealth = maxHealth;
+    void Start()
+    {
+        // Initialize target to the player
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        Agent = GetComponent<NavMeshAgent>();
-    }
-
     private void UpdatePath()
     {
         if (Time.time >= PathUpdateDeadline)
@@ -53,87 +48,35 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //public void TakeDamage(int damage) {
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Calculate direction from the enemy to the player
+            Vector3 direction = transform.position - collision.transform.position;
+            direction.Normalize();
 
-    //    currentHealth -= damage;
+            // Calculate the knockback position
+            Vector3 knockbackPosition = transform.position + direction * knockbackDistance;
 
-    //    //Hurt animation
+            // Move the enemy to the knockback position over the knockback duration
+            StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
+        }
+    }
 
-    //    if(currentHealth <= 0) 
-    //    {
-    //        Die();
-    //    }
-    //}
+    private IEnumerator Knockback(Vector3 targetPosition, float duration)
+    {
+        float elapsedTime = 0f;
+        Vector3 initialPosition = transform.position;
 
-    //void Die()
-    //{
-    //    Debug.Log("Enemy died");
-    //    //die animation
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
 
-    //    SimpleAnimationsScript.FadeSprite(GetComponent<SpriteRenderer>(),4000.0f);
-
-    //    //diable enemy
-    //}
-
-    //public int GetHealth() { return currentHealth; }
-
-    //public void FollowTarget()
-    //{
-    //    range = Vector2.Distance(transform.position, target.position);
-
-    //    if (range < maxDistance)
-    //    {
-    //        if (range < minDistance)
-    //        {
-    //            if (!targetCollision)
-    //            {
-    //                // Calculate the direction vector from the enemy to the target
-    //                Vector3 moveDirection = (target.position - transform.position).normalized;
-
-    //                // Calculate speed based on the distance to the target
-    //                //float adjustedSpeed = Mathf.Lerp(0, speed, range / maxDistance);
-
-    //                // Move the enemy in the calculated direction with adjusted speed
-    //                //transform.Translate(moveDirection * adjustedSpeed * Time.deltaTime, Space.World);
-    //                transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-    //            }
-    //        }
-    //    }
-    //}
-
-    //public int damageAmount = 20; // Amount of damage to deal to the target
-    //public float backwardForce = 5f; // Force to apply to the enemy when colliding with the target
-
-
-    //Not detecting collision fix later
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    // Check if the collision is with the target
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        // Get the CharacterScript component from the target GameObject
-    //        CharacterScript targetScript = collision.gameObject.GetComponent<CharacterScript>();
-
-    //        // Check if the targetScript is not null
-    //        if (targetScript != null)
-    //        {
-    //            // Deal damage to the target using the CharacterScript
-    //            DealDamage(targetScript);
-
-    //            // Calculate the backward force direction (away from the target)
-    //            Vector2 backwardDirection = (transform.position - collision.transform.position).normalized;
-
-    //            // Apply the backward force to the enemy
-    //            GetComponent<Rigidbody2D>().AddForce(backwardDirection * backwardForce, ForceMode2D.Impulse);
-    //        }
-    //    }
-    //}
-
-    //private void DealDamage(CharacterScript target)
-    //{
-    //    // Deal damage to the target using the CharacterScript
-    //    target.TakeDamage(damageAmount);
-    //}
-
+        transform.position = targetPosition;
+    }
 
 }

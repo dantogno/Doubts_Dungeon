@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting = false;
     public float rotationSpeed = 360.0f;
 
+    private bool canTakeDamage = true;
+    public float damageCooldownDuration = 1f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,6 +56,39 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = move * currentSpeed;
 
         LookAtMouse();
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        {
+            if (canTakeDamage)
+            {
+                canTakeDamage = false;
+                StartCoroutine(DamageCooldown());
+                // Reduce player's health when colliding with an enemy
+                TakeDamage(1);
+            }
+            
+        }
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(damageCooldownDuration);
+        canTakeDamage = true; // Allow taking damage again after cooldown
+    }
+
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+        canTakeDamage = true;
+
+        // Check for player death
+        if (health <= 0)
+        {
+            OnGameOver();
+        }
     }
 
     public void OnGameOver()
