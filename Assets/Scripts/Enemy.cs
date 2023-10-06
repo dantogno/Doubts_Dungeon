@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.AI;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent Agent;
     public float EnemyPathingDelay = 0.2f;
 
-    public float knockbackDistance = 4f;
-    public float knockbackDuration = 4f;
+    public float knockbackDistance = 2f;
+    public float knockbackDuration = .5f;
 
     private float PathUpdateDeadline = 1f;
     private Transform target;
+
+    public int health = 5;
+    public int maxhealth;
 
     private void Awake()
     {
@@ -62,21 +66,48 @@ public class Enemy : MonoBehaviour
             // Move the enemy to the knockback position over the knockback duration
             StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
         }
+
+        if (collision.gameObject.CompareTag("Weapon")){
+            TakeDamage(1);
+
+        }
     }
 
     private IEnumerator Knockback(Vector3 targetPosition, float duration)
     {
         float elapsedTime = 0f;
         Vector3 initialPosition = transform.position;
+        float initialY = transform.position.y;
 
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / duration);
+            float newY = initialY;  // Maintain the initial y position
+            transform.position = new Vector3(
+                Mathf.Lerp(initialPosition.x, targetPosition.x, elapsedTime / duration),
+                newY,
+                Mathf.Lerp(initialPosition.z, targetPosition.z, elapsedTime / duration)
+            );
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = targetPosition;
+        transform.position = new Vector3(targetPosition.x, initialY, targetPosition.z);  // Set final position with correct y
     }
+    void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        // Check for player death
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+
+    }
+
 
 }
