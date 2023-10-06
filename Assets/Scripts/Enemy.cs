@@ -8,10 +8,8 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
-
     public NavMeshAgent Agent;
     public float EnemyPathingDelay = 0.2f;
-
     public float knockbackDistance = 2f;
     public float knockbackDuration = .5f;
 
@@ -20,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     public int health = 5;
     public int maxhealth;
+
+    public event Action<Enemy> OnEnemyDestroyed;
 
     private void Awake()
     {
@@ -67,9 +67,9 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
         }
 
-        if (collision.gameObject.CompareTag("Weapon")){
+        if (collision.gameObject.CompareTag("Weapon"))
+        {
             TakeDamage(1);
-
         }
     }
 
@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour
 
         transform.position = new Vector3(targetPosition.x, initialY, targetPosition.z);  // Set final position with correct y
     }
+
     void TakeDamage(int damage)
     {
         health -= damage;
@@ -104,10 +105,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
+    private void NotifyEnemyDestroyed()
     {
-
+        OnEnemyDestroyed?.Invoke(this);
     }
 
-
+    void Die()
+    {
+        NotifyEnemyDestroyed();
+        Destroy(gameObject);
+    }
 }

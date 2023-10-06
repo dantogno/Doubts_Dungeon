@@ -20,7 +20,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void SetUp()
     {
-        GameOverObject.SetActive(true);
+       GameOverObject.SetActive(true);
 
     }
 
