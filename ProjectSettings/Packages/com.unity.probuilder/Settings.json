@@ -38,6 +38,7 @@
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< Updated upstream
                 "key": "editor.backFaceSelectEnabled",
                 "value": "{\"m_Value\":false}"
             },
@@ -48,6 +49,8 @@
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+=======
+>>>>>>> Stashed changes
                 "key": "ShapeComponent.ResetSettings",
                 "value": "{\"m_Value\":false}"
             },
@@ -58,6 +61,24 @@
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< Updated upstream
+=======
+                "key": "UnityEngine.ProBuilder.ProBuilderEditor-isUtilityWindow",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "editor.backFaceSelectEnabled",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "editor.showSceneInfo",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+>>>>>>> Stashed changes
                 "key": "editor.showEditorNotifications",
                 "value": "{\"m_Value\":false}"
             },
@@ -82,11 +103,14 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+<<<<<<< Updated upstream
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "editor.stripProBuilderScriptsOnBuild",
                 "value": "{\"m_Value\":true}"
             },
             {
+=======
+>>>>>>> Stashed changes
                 "type": "UnityEngine.ProBuilder.RectSelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.dragSelectRectMode",
                 "value": "{\"m_Value\":0}"
@@ -102,11 +126,14 @@
                 "value": "{\"m_Value\":1}"
             },
             {
+<<<<<<< Updated upstream
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.lastMeshSelectMode",
                 "value": "{\"m_Value\":2}"
             },
             {
+=======
+>>>>>>> Stashed changes
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
                 "value": "{\"m_Value\":6}"
@@ -124,12 +151,20 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastPivotPosition",
+<<<<<<< Updated upstream
                 "value": "{\"m_Value\":{\"x\":-1.564622067462551e-7,\"y\":1.4210854715202005e-14,\"z\":0.0}}"
+=======
+                "value": "{\"m_Value\":{\"x\":-1.1920930376163597e-7,\"y\":1.4210854715202005e-14,\"z\":0.0}}"
+>>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize",
+<<<<<<< Updated upstream
                 "value": "{\"m_Value\":{\"x\":-0.868748128414154,\"y\":1.9740068912506104,\"z\":-6.871006011962891}}"
+=======
+                "value": "{\"m_Value\":{\"x\":-1.0000001192092896,\"y\":3.000000476837158,\"z\":-6.0}}"
+>>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -163,6 +198,14 @@
             },
             {
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+<<<<<<< Updated upstream
+=======
+                "key": "ShapeBuilder.Plane",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+>>>>>>> Stashed changes
                 "key": "ShapeBuilder.Cube",
                 "value": "{}"
             }

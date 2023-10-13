@@ -10,6 +10,17 @@ public class UIManager : MonoBehaviour
     public int health;
     public int maxhealth;
 
+<<<<<<< Updated upstream
+=======
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+>>>>>>> Stashed changes
     void Update()
     {
         health = Player.health;
