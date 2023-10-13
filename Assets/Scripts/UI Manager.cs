@@ -10,14 +10,6 @@ public class UIManager : MonoBehaviour
     public int health;
     public int maxhealth;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         health = Player.health;
@@ -27,13 +19,13 @@ public class UIManager : MonoBehaviour
         {
             if (i < health)
             {
-                TotalHearts[i].color = new Color(100f,100f,100f,1f);
-                
+                TotalHearts[i].color = new Color(100f, 100f, 100f, 1f);
+
             }
             else
             {
                 TotalHearts[i].color = new Color(100f, 100f, 100f, .1f);
-                
+
 
             }
             if (i < maxhealth)

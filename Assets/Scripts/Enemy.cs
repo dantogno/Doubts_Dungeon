@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public float knockbackDistance = 2f;
     public float knockbackDuration = .5f;
 
+    public float maxRange = 15f;
+
     private float PathUpdateDeadline = 1f;
     private Transform target;
 
@@ -34,11 +36,13 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //FollowTarget();
-
         if (target != null)
         {
-            UpdatePath();
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            if (distanceToTarget <= maxRange)  // Adjust 'maxRange' to your desired maximum targeting range
+            {
+                UpdatePath();
+            }
         }
     }
 

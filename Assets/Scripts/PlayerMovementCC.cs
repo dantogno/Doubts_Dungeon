@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementCC : MonoBehaviour
 {
     public static event Action OnPlayerDeath;
-
-    private Rigidbody rb;
+    private CharacterController characterController;
     private PlayerMovement Player;
     public int health = 3;
     public int maxhealth;
@@ -18,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting = false;
     public float rotationSpeed = 360.0f;
 
+    private float gravity = -.81f;
+
     private bool canTakeDamage = true;
     public float damageCooldownDuration = 1f;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         Player = GetComponent<PlayerMovement>();
     }
 
@@ -50,32 +51,36 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        // Apply Gravity
+        ApplyGravity();
+
         // Movement
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
-        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //rb.velocity = move * currentSpeed;
 
-        // Calculate movement direction based on camera's perspective
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
 
-        // Ignore the y-component to stay in the x-z plane
         cameraForward.y = 0f;
         cameraRight.y = 0f;
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        // Calculate the movement direction based on input and camera orientation
-        Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
+        Vector3 moveDirection = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
+        Vector3 movement = moveDirection * currentSpeed;
 
-        // Apply gravity to the movement
-        Vector3 gravityVector = Physics.gravity;
-        move += gravityVector * Time.deltaTime;
-
-
-        rb.velocity = move * currentSpeed;
+        characterController.Move(movement * Time.deltaTime);
 
         LookAtMouse();
+    }
+
+    private void ApplyGravity()
+    {
+        // Apply gravity if not grounded
+        if (!characterController.isGrounded)
+        {
+            Vector3 gravityVector = Vector3.up * gravity;
+            characterController.Move(gravityVector * Time.deltaTime);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -90,6 +95,26 @@ public class PlayerMovement : MonoBehaviour
                 TakeDamage(1);
             }
 
+        }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = hit.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                // Calculate direction from the enemy to the player
+                Vector3 direction = transform.position - hit.transform.position;
+                direction.Normalize();
+
+                // Calculate the knockback position
+                Vector3 knockbackPosition = hit.transform.position + direction * enemy.knockbackDistance;
+
+                // Trigger knockback in the enemy
+                //enemy.TriggerKnockback(knockbackPosition, enemy.knockbackDuration);
+            }
         }
     }
 
@@ -171,5 +196,4 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = false;
         // You can add any post-sprint logic here, if needed.
     }
-
 }

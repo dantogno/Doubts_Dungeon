@@ -5,15 +5,17 @@ using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.ShaderData;
+//using static UnityEditor.ShaderData;
+using UnityEngine.UI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class EnemyManager : MonoBehaviour
 {
+
     public GameObject tallEnemyPrefab;
     public GameObject shortEnemyPrefab;
     public int numberOfEnemies = 5;
-    public float minDistanceBetweenEnemies = 3f;
+    public float minDistanceBetweenEnemies = 6f;
 
     private NavMeshSurface navMeshSurface;
 
@@ -56,41 +58,6 @@ public class EnemyManager : MonoBehaviour
             enemies.Add(enemy);
         }
     }
-
-    //private Vector3 GetRandomValidPosition()
-    //{
-    //    NavMeshHit hit;
-    //    Vector3 randomPosition = Vector3.zero;
-
-    //    while (true)
-    //    {
-    //        float x = Random.Range(-50f, 50f);
-    //        float z = Random.Range(-50f, 50f);
-
-    //        randomPosition = new Vector3(x, 0f, z);
-
-
-    //        if (!IsPositionWithinRestrictedArea(randomPosition, winFloor))
-    //        {
-    //            if (NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas))
-    //            {
-    //                bool validPosition = true;
-    //                foreach (var enemy in enemies)
-    //                {
-    //                    float distance = Vector3.Distance(enemy.transform.position, randomPosition);
-    //                    if (distance < minDistanceBetweenEnemies)
-    //                    {
-    //                        validPosition = false;
-    //                        break;
-    //                    }
-    //                }
-
-    //                if (validPosition)
-    //                    return hit.position;
-    //            }
-    //        }
-    //    }
-    //}
 
     private Vector3 GetRandomValidPosition()
     {
