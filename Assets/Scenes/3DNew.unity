@@ -32122,7 +32122,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133646684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b18a280e560df7e4e91fcdc5ad3e4156, type: 3}
   m_Name: 
@@ -32164,8 +32164,8 @@ MonoBehaviour:
   firingPoint: {fileID: 1903740648270588000}
   projectilePrefab: {fileID: 6478709952014175783, guid: 9345d279f57f1d348be9cd05c825d50a, type: 3}
   projectileSpeed: 15
-  steadyFireRate: 1
-  individualFireRate: 0.1
+  steadyFireRate: 2
+  individualFireRate: 2
 --- !u!4 &1903740648270588000
 Transform:
   m_ObjectHideFlags: 0
@@ -32279,6 +32279,7 @@ GameObject:
   - component: {fileID: 8163745266685904613}
   - component: {fileID: 755328393492083132}
   - component: {fileID: 7381964608665056536}
+  - component: {fileID: 8163745266685904619}
   - component: {fileID: 8163745266685904617}
   - component: {fileID: 8163745266685904618}
   m_Layer: 3
@@ -32349,7 +32350,7 @@ MonoBehaviour:
   sprintDuration: 2
   rotationSpeed: 360
   damageCooldownDuration: 1
-  decelerationFactor: 5
+  decelerationFactor: 10
 --- !u!54 &8163745266685904618
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32360,7 +32361,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -32374,9 +32375,30 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
+  m_Interpolate: 1
+  m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!65 &8163745266685904619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659373238706284336}
+  m_Material: {fileID: 13400000, guid: 1eb2b3d93ca73464493549c1eb8ad5db, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.004762869, y: 0.0015818613, z: 0.0034325074}
+  m_Center: {x: 0.00010810494, y: -0.0032202112, z: -0.0001411593}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
