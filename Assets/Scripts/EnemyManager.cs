@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
 
     public GameObject levelDoor;
+    public Text text;
     public GameObject winFloor;
 
     void Start()
@@ -48,6 +49,8 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnAndPlaceEnemies()
     {
+        text.text = "Use Left Shift to Sprint";
+
         for (int i = 0; i < numberOfEnemies; i++)
         {
             GameObject enemyPrefab = Random.Range(0, 2) == 0 ? tallEnemyPrefab : shortEnemyPrefab;
@@ -122,6 +125,8 @@ public class EnemyManager : MonoBehaviour
         // Remove the destroyed enemy from the list
         enemies.Remove(destroyedEnemy.gameObject);
 
+        text.text = $"There are {enemies.Count} left";
+
         // Check for cleared room when an enemy is destroyed
         CheckForClearedRoom();
     }
@@ -130,6 +135,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemies.Count == 0 && levelDoor != null)
         {
+            text.text = "The room is cleared!";
             Destroy(levelDoor);
         }
     }
