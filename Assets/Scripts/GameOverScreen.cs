@@ -26,6 +26,6 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("3D",LoadSceneMode.Single);
+        SceneManager.LoadScene("3DNew",LoadSceneMode.Single);
     }
 }
