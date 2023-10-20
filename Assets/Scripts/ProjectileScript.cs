@@ -12,6 +12,14 @@ public class ProjectileScript : MonoBehaviour
     public float individualFireRate = 0.1f;
     private float nextFireTime = 0f;
 
+    Plane plane;
+
+    private void Start()
+    {
+        //create a plane, pass in down for the in-normal, which is the opposite way the plane faces for some reason. apply the players y position as an offset
+        plane = new Plane(Vector3.down, transform.position.y);
+    }
+
     void Update()
     {
         if (Input.GetButton("Fire1"))
@@ -37,25 +45,24 @@ public class ProjectileScript : MonoBehaviour
     {
         // Cast a ray from the mouse position into the game world
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (plane.Raycast(ray, out float distance))
         {
-            // Get the point where the ray hit a collider
-            Vector3 targetPosition = hit.point;
+            // Get the point where the ray hits the plane
+            Vector3 targetPosition = ray.GetPoint(distance);
 
             // Preserve the y-coordinate of the firing point
-            targetPosition.y = firingPoint.position.y;
+            //targetPosition.y = firingPoint.position.y;
 
             // Calculate the direction only in the x and z plane, keeping y fixed
-            Vector3 direction = (targetPosition - firingPoint.position);
+            Vector3 direction = (targetPosition - transform.position);
             direction.y = 0; // Keep y-coordinate fixed (flat plane)
 
             // Normalize the direction
             direction.Normalize();
 
             // Create a new instance of the projectile
-            GameObject projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             // Get the rigidbody of the projectile (assuming it has one)
             Rigidbody rb = projectile.GetComponent<Rigidbody>();

@@ -21,10 +21,12 @@ public class PlayerMovement : MonoBehaviour
     private bool canTakeDamage = true;
     public float damageCooldownDuration = 1f;
 
+    Plane plane;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Player = GetComponent<PlayerMovement>();
+        plane = new Plane(Vector3.down, transform.position.y);
     }
 
     void Update()
@@ -131,20 +133,18 @@ public class PlayerMovement : MonoBehaviour
         Player.enabled = false;
     }
 
+    Vector3 targPos;
     private void LookAtMouse()
     {
         // Cast a ray from the mouse position into the game world
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if(plane.Raycast(ray, out float distance))
         {
-            // Get the point where the ray hit a collider
-            Vector3 targetPosition = hit.point;
+            Vector3 targetPosition = ray.GetPoint(distance);
+            targPos = targetPosition;
 
             // Preserve the y-coordinate of the player
-            targetPosition.y = transform.position.y;
-
             // Calculate the direction only in the x and z plane, keeping y fixed
             Vector3 direction = (targetPosition - transform.position);
             direction.y = 0; // Keep y-coordinate fixed (flat plane)
@@ -158,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
         }
+
     }
 
     private void StartSprint()
@@ -170,6 +171,12 @@ public class PlayerMovement : MonoBehaviour
     {
         isSprinting = false;
         // You can add any post-sprint logic here, if needed.
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(targPos, 0.1f);
+        Debug.DrawLine(transform.position, targPos, Color.cyan);
     }
 
 }
