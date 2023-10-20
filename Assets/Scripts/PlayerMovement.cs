@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canTakeDamage = true;
     public float damageCooldownDuration = 1f;
 
+    public float decelerationFactor = 10.0f; // Adjust the value as needed
+
     Plane plane;
     void Start()
     {
@@ -52,10 +54,33 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        //// Movement
+        //float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
+        ////Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        ////rb.velocity = move * currentSpeed;
+
+        //// Calculate movement direction based on camera's perspective
+        //Vector3 cameraForward = Camera.main.transform.forward;
+        //Vector3 cameraRight = Camera.main.transform.right;
+
+        //// Ignore the y-component to stay in the x-z plane
+        //cameraForward.y = 0f;
+        //cameraRight.y = 0f;
+        //cameraForward.Normalize();
+        //cameraRight.Normalize();
+
+        //// Calculate the movement direction based on input and camera orientation
+        //Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
+
+        //// Apply gravity to the movement
+        //Vector3 gravityVector = Physics.gravity;
+        //move += gravityVector * Time.deltaTime;
+
+
+        //rb.velocity = move * currentSpeed;
+
         // Movement
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
-        //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //rb.velocity = move * currentSpeed;
 
         // Calculate movement direction based on camera's perspective
         Vector3 cameraForward = Camera.main.transform.forward;
@@ -74,8 +99,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3 gravityVector = Physics.gravity;
         move += gravityVector * Time.deltaTime;
 
+        if (move.magnitude > 0)
+        {
+            // Player is providing input, move them at the current speed
+            rb.velocity = move * currentSpeed;
+        }
+        else
+        {
+            // No input provided, apply constant deceleration to gradually stop the player
+            rb.velocity -= rb.velocity.normalized * decelerationFactor * Time.deltaTime;
 
-        rb.velocity = move * currentSpeed;
+            // Ensure the velocity doesn't go negative
+            rb.velocity = Vector3.Max(rb.velocity, Vector3.zero);
+        }
 
         LookAtMouse();
     }

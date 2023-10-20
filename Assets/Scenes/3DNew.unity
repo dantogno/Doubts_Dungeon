@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32163,8 +32163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 1903740648270588000}
   projectilePrefab: {fileID: 6478709952014175783, guid: 9345d279f57f1d348be9cd05c825d50a, type: 3}
-  projectileSpeed: 10
-  steadyFireRate: 0.5
+  projectileSpeed: 15
+  steadyFireRate: 1
   individualFireRate: 0.1
 --- !u!4 &1903740648270588000
 Transform:
@@ -32250,7 +32250,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7659373238706284336}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1eb2b3d93ca73464493549c1eb8ad5db, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -32344,11 +32344,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxhealth: 0
-  regularSpeed: 4
-  sprintSpeed: 8
+  regularSpeed: 5
+  sprintSpeed: 12
   sprintDuration: 2
   rotationSpeed: 360
   damageCooldownDuration: 1
+  decelerationFactor: 5
 --- !u!54 &8163745266685904618
 Rigidbody:
   m_ObjectHideFlags: 0
