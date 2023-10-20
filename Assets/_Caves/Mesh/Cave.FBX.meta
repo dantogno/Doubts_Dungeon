@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: f8d8f69049b0ee64aa139fd77a8eb9f5
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1
+    100002: //RootNode
+    100004: CaveCeiling
+    100006: CaveStalactiteDouble
+    100008: CaveStalactiteLong
+    100010: CaveStalactiteMid1
+    100012: CaveStalactiteMid2
+    100014: CaveStalactiteShort
+    100016: CaveStalactiteTriple
+    100018: StalagmiteBig
+    100020: StalagmiteMid
+    100022: StalagmiteSmall
+    100024: WallBottom
+    100026: WallBottom2
+    100028: WallColumn
+    100030: WallMid1
+    100032: WallMid2
+    100034: WallTop
+    100036: WallTop2
+    400000: 1
+    400002: //RootNode
+    400004: CaveCeiling
+    400006: CaveStalactiteDouble
+    400008: CaveStalactiteLong
+    400010: CaveStalactiteMid1
+    400012: CaveStalactiteMid2
+    400014: CaveStalactiteShort
+    400016: CaveStalactiteTriple
+    400018: StalagmiteBig
+    400020: StalagmiteMid
+    400022: StalagmiteSmall
+    400024: WallBottom
+    400026: WallBottom2
+    400028: WallColumn
+    400030: WallMid1
+    400032: WallMid2
+    400034: WallTop
+    400036: WallTop2
+    2100000: Stalactites
+    2100002: Stalagmites
+    2100004: Wall
+    2100006: Wall2
+    2300000: 1
+    2300002: CaveCeiling
+    2300004: CaveStalactiteDouble
+    2300006: CaveStalactiteLong
+    2300008: CaveStalactiteMid1
+    2300010: CaveStalactiteMid2
+    2300012: CaveStalactiteShort
+    2300014: CaveStalactiteTriple
+    2300016: StalagmiteBig
+    2300018: StalagmiteMid
+    2300020: StalagmiteSmall
+    2300022: WallBottom
+    2300024: WallBottom2
+    2300026: WallColumn
+    2300028: WallMid1
+    2300030: WallMid2
+    2300032: WallTop
+    2300034: WallTop2
+    3300000: 1
+    3300002: CaveCeiling
+    3300004: CaveStalactiteDouble
+    3300006: CaveStalactiteLong
+    3300008: CaveStalactiteMid1
+    3300010: CaveStalactiteMid2
+    3300012: CaveStalactiteShort
+    3300014: CaveStalactiteTriple
+    3300016: StalagmiteBig
+    3300018: StalagmiteMid
+    3300020: StalagmiteSmall
+    3300022: WallBottom
+    3300024: WallBottom2
+    3300026: WallColumn
+    3300028: WallMid1
+    3300030: WallMid2
+    3300032: WallTop
+    3300034: WallTop2
+    4300000: CaveStalactiteTriple
+    4300002: CaveStalactiteMid1
+    4300004: CaveStalactiteMid2
+    4300006: CaveStalactiteDouble
+    4300008: CaveStalactiteShort
+    4300010: 1
+    4300012: CaveCeiling
+    4300014: CaveStalactiteLong
+    4300016: StalagmiteSmall
+    4300018: StalagmiteMid
+    4300020: StalagmiteBig
+    4300022: WallTop
+    4300024: WallColumn
+    4300026: WallBottom
+    4300028: WallMid2
+    4300030: WallMid1
+    4300032: WallTop2
+    4300034: WallBottom2
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
