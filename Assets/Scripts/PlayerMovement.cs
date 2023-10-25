@@ -48,7 +48,16 @@ public class PlayerMovement : MonoBehaviour
 
         RecoverStamina();
 
+        LookAtMouse();
+    }
 
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
+    public void Movement()
+    {
         // Movement
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
 
@@ -77,13 +86,42 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // No input provided, apply constant deceleration to gradually stop the player
-            rb.velocity -= rb.velocity.normalized * decelerationFactor * Time.deltaTime;
-
-            // Ensure the velocity doesn't go negative
-            rb.velocity = Vector3.Max(rb.velocity, Vector3.zero);
+            rb.velocity = Vector3.zero;
         }
+    }
 
-        LookAtMouse();
+    public void MovementOld()
+    {
+        // Movement
+        float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
+
+        // Calculate movement direction based on camera's perspective
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+
+        // Ignore the y-component to stay in the x-z plane
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Calculate the movement direction based on input and camera orientation
+        Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
+
+        // Apply gravity to the movement
+        Vector3 gravityVector = Physics.gravity;
+        move += gravityVector * Time.deltaTime;
+
+        if (move.magnitude > 0)
+        {
+            // Player is providing input, move them at the current speed
+            rb.velocity = move * currentSpeed;
+        }
+        else
+        {
+            // No input provided, apply constant deceleration to gradually stop the player
+            rb.velocity = Vector3.zero;
+        }
     }
 
     #region Sprint
