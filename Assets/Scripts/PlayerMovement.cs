@@ -9,13 +9,18 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private PlayerMovement Player;
+
     public int health = 3;
     public int maxhealth = 3;
+
+    public StaminaScript Stamina;
+
     public float regularSpeed = 4f; // Default speed
     public float sprintSpeed = 8f; // Speed while sprinting
     public float sprintDuration = 2f; // Duration of sprint in seconds
     private float currentSprintTime = 0f;
     private bool isSprinting = false;
+
     public float rotationSpeed = 360.0f;
 
     private bool canTakeDamage = true;
@@ -33,51 +38,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if the player wants to sprint
-        if (Input.GetButtonDown("Sprint") && !isSprinting)
-        {
-            StartSprint();
-        }
-
         if (health == 0)
         {
             OnGameOver();
         }
 
-        // Check if the sprint duration has passed
-        if (isSprinting)
-        {
-            currentSprintTime += Time.deltaTime;
-            if (currentSprintTime >= sprintDuration)
-            {
-                StopSprint();
-            }
-        }
+        // Check if the player wants to sprint
+        CheckForSprint();
 
-        //// Movement
-        //float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
-        ////Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        ////rb.velocity = move * currentSpeed;
+        RecoverStamina();
 
-        //// Calculate movement direction based on camera's perspective
-        //Vector3 cameraForward = Camera.main.transform.forward;
-        //Vector3 cameraRight = Camera.main.transform.right;
-
-        //// Ignore the y-component to stay in the x-z plane
-        //cameraForward.y = 0f;
-        //cameraRight.y = 0f;
-        //cameraForward.Normalize();
-        //cameraRight.Normalize();
-
-        //// Calculate the movement direction based on input and camera orientation
-        //Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
-
-        //// Apply gravity to the movement
-        //Vector3 gravityVector = Physics.gravity;
-        //move += gravityVector * Time.deltaTime;
-
-
-        //rb.velocity = move * currentSpeed;
 
         // Movement
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
@@ -115,6 +85,56 @@ public class PlayerMovement : MonoBehaviour
 
         LookAtMouse();
     }
+
+    #region Sprint
+
+    internal void CheckForSprint()
+    {
+        if (Input.GetButtonDown("Sprint") && !isSprinting)
+        {
+            if (Stamina.UseStamina(1))
+            {
+                isSprinting = true;
+            }
+            else
+            {
+                isSprinting = false;
+            }
+
+        }
+
+        if (Input.GetButtonUp("Sprint") && isSprinting) { isSprinting = false; }
+
+        if (isSprinting)
+        {
+            if (Stamina.UseStamina(.25f))
+            {
+                isSprinting = true;
+            }
+            else { isSprinting = false; }
+        }
+        else
+        {
+            if (Stamina.GetCurrentStamina() <= 0)
+            {
+                rb.velocity = Vector3.zero;
+            }
+
+        }
+    }
+
+    internal void RecoverStamina()
+    {
+        if (!isSprinting)
+        {
+            Stamina.RecoverStamina();
+        }
+    }
+
+
+    #endregion
+
+    #region Collision Damage & Death
 
     void OnCollisionEnter(Collision collision)
     {
@@ -168,6 +188,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Player.enabled = false;
     }
+    #endregion
+
+    //Mouse
 
     Vector3 targPos;
     private void LookAtMouse()
@@ -195,18 +218,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-    }
-
-    private void StartSprint()
-    {
-        isSprinting = true;
-        currentSprintTime = 0f;
-    }
-
-    private void StopSprint()
-    {
-        isSprinting = false;
-        // You can add any post-sprint logic here, if needed.
     }
 
     private void OnDrawGizmos()
