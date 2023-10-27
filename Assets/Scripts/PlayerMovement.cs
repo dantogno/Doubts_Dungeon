@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public static event Action OnPlayerDeath;
 
-    private Rigidbody rb;
     private PlayerMovement Player;
 
     public int health = 3;
@@ -16,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public StaminaScript Stamina;
 
     public float regularSpeed = 4f; // Default speed
+    public float decelerationSpeed = 4f;
     public float sprintSpeed = 8f; // Speed while sprinting
     public float sprintDuration = 2f; // Duration of sprint in seconds
     private float currentSprintTime = 0f;
@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     Plane plane;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         Player = GetComponent<PlayerMovement>();
         plane = new Plane(Vector3.down, transform.position.y);
     }
@@ -81,46 +80,20 @@ public class PlayerMovement : MonoBehaviour
         if (move.magnitude > 0)
         {
             // Player is providing input, move them at the current speed
-            rb.velocity = move * currentSpeed;
+            Vector3 newPosition = transform.position + move * currentSpeed * Time.deltaTime;
+            transform.position = newPosition;
         }
         else
         {
-            // No input provided, apply constant deceleration to gradually stop the player
-            rb.velocity = Vector3.zero;
-        }
-    }
+            // No input provided, apply gradual deceleration to stop the player
+            Vector3 deceleration = -transform.position.normalized * decelerationSpeed * Time.deltaTime;
+            transform.position += deceleration;
 
-    public void MovementOld()
-    {
-        // Movement
-        float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
-
-        // Calculate movement direction based on camera's perspective
-        Vector3 cameraForward = Camera.main.transform.forward;
-        Vector3 cameraRight = Camera.main.transform.right;
-
-        // Ignore the y-component to stay in the x-z plane
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        // Calculate the movement direction based on input and camera orientation
-        Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
-
-        // Apply gravity to the movement
-        Vector3 gravityVector = Physics.gravity;
-        move += gravityVector * Time.deltaTime;
-
-        if (move.magnitude > 0)
-        {
-            // Player is providing input, move them at the current speed
-            rb.velocity = move * currentSpeed;
-        }
-        else
-        {
-            // No input provided, apply constant deceleration to gradually stop the player
-            rb.velocity = Vector3.zero;
+            // Check if the velocity is very small and set it to zero to avoid continuous drift
+            if (transform.position.magnitude < 0.01f)
+            {
+                transform.position = Vector3.zero;
+            }
         }
     }
 
@@ -155,7 +128,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Stamina.GetCurrentStamina() <= 0)
             {
-                rb.velocity = Vector3.zero;
+                //rb.velocity = Vector3.zero;
+                transform.position = transform.position;
             }
 
         }
