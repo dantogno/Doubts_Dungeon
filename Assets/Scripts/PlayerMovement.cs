@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum ActionState { Dodge, Sprint, Attack, Default }
+
 
 public class PlayerMovement : MonoBehaviour
 {
-    public ActionState ActionState { get; set; }
+    PlayerStateManager stateManager;
 
     public static event Action OnPlayerDeath;
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Player = GetComponent<PlayerMovement>();
         plane = new Plane(Vector3.down, transform.position.y);
-
+        stateManager = PlayerStateManager.instance;
         //this.ActionState = ActionState.Default;
     }
 
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         cameraRight.Normalize();
 
         // Calculate the movement direction based on input and camera orientation
-        Vector3 move = (Input.GetAxis("Vertical") * cameraForward + Input.GetAxis("Horizontal") * cameraRight).normalized;
+        Vector3 move = (Input.GetAxisRaw("Vertical") * cameraForward + Input.GetAxisRaw("Horizontal") * cameraRight).normalized;
 
         // Apply gravity to the movement
         Vector3 gravityVector = Physics.gravity;
@@ -108,24 +108,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void CheckActionState()
-    {
-        switch(ActionState)
-        {
-            case ActionState.Dodge:
-                Debug.Log("ActionState: Dodge");
-                //cannot Attack
-                break;
-            case ActionState.Sprint:
-                Debug.Log("ActionState: Sprint");
-                //Cannot Attack
-                break;
-            case ActionState.Attack:
-                Debug.Log("ActionState: Attack");
-                //Pauses Movement
-                break;
-        }
-    }
+    
 
     #region Sprint
 
@@ -136,12 +119,12 @@ public class PlayerMovement : MonoBehaviour
             if (Stamina.UseStamina(1))
             {
                 isSprinting = true;
-                ActionState = ActionState.Sprint;
+                stateManager.ActionState = ActionState.Sprint;
             }
             else
             {
                 isSprinting = false;
-                ActionState = ActionState.Default;
+                stateManager.ActionState = ActionState.Idle;
             }
 
         }
@@ -178,12 +161,14 @@ public class PlayerMovement : MonoBehaviour
                 Dodge();
             }
         }
-        else { ActionState = ActionState.Default; }
+        else { stateManager.ActionState = ActionState.Idle; }
     }
-
+    
+    //maybe do a raycast, check hit result, if hits something move to the hit location.
+    //make distance of the raycast be dodge distance, so if nothing hti move to end of raycast
     internal void Dodge()
     {
-        ActionState = ActionState.Dodge;
+        stateManager.ActionState = ActionState.Dodge;
 
         // Calculate the dodge direction based on the player's current rotation
         Vector3 dodgeDirection = transform.forward; // Move forward in the player's facing direction

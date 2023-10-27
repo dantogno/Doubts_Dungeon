@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ProjectileScript : MonoBehaviour
 {
+    PlayerStateManager stateManager;
     public Transform firingPoint; // The 3D firing point transform
     public GameObject projectilePrefab; // The projectile prefab to instantiate
     public float projectileSpeed = 10f; // Speed of the projectile
@@ -18,6 +20,7 @@ public class ProjectileScript : MonoBehaviour
     {
         //create a plane, pass in down for the in-normal, which is the opposite way the plane faces for some reason. apply the players y position as an offset
         plane = new Plane(Vector3.down, transform.position.y);
+        stateManager = PlayerStateManager.instance;
     }
 
     void Update()
@@ -43,6 +46,7 @@ public class ProjectileScript : MonoBehaviour
 
     void Fire()
     {
+        
         // Cast a ray from the mouse position into the game world
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
