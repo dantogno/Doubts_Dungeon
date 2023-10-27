@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum ActionState { Dodge, Sprint, Attack, Default }
+
 public class PlayerMovement : MonoBehaviour
 {
+    public ActionState ActionState { get; set; }
+
     public static event Action OnPlayerDeath;
 
     private PlayerMovement Player;
@@ -36,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Player = GetComponent<PlayerMovement>();
         plane = new Plane(Vector3.down, transform.position.y);
+
+        //this.ActionState = ActionState.Default;
     }
 
     void Update()
@@ -102,6 +108,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void CheckActionState()
+    {
+        switch(ActionState)
+        {
+            case ActionState.Dodge:
+                Debug.Log("ActionState: Dodge");
+                //cannot Attack
+                break;
+            case ActionState.Sprint:
+                Debug.Log("ActionState: Sprint");
+                //Cannot Attack
+                break;
+            case ActionState.Attack:
+                Debug.Log("ActionState: Attack");
+                //Pauses Movement
+                break;
+        }
+    }
+
     #region Sprint
 
     internal void CheckForSprint()
@@ -111,10 +136,12 @@ public class PlayerMovement : MonoBehaviour
             if (Stamina.UseStamina(1))
             {
                 isSprinting = true;
+                ActionState = ActionState.Sprint;
             }
             else
             {
                 isSprinting = false;
+                ActionState = ActionState.Default;
             }
 
         }
@@ -133,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Stamina.GetCurrentStamina() <= 0)
             {
-                //rb.velocity = Vector3.zero;
                 transform.position = transform.position;
             }
 
@@ -152,10 +178,13 @@ public class PlayerMovement : MonoBehaviour
                 Dodge();
             }
         }
+        else { ActionState = ActionState.Default; }
     }
 
     internal void Dodge()
     {
+        ActionState = ActionState.Dodge;
+
         // Calculate the dodge direction based on the player's current rotation
         Vector3 dodgeDirection = transform.forward; // Move forward in the player's facing direction
 
@@ -247,7 +276,7 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    //Mouse
+    #region Mouse
 
     Vector3 targPos;
     private void LookAtMouse()
@@ -276,6 +305,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    #endregion
 
     private void OnDrawGizmos()
     {
