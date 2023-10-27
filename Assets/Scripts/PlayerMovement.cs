@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float rotationSpeed = 360.0f;
 
+    public float dodgeDistance = 2.5f;
+    public float dodgeDuration = 0.05f;
+
     private bool canTakeDamage = true;
     public float damageCooldownDuration = 1f;
 
@@ -44,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Check if the player wants to sprint
         CheckForSprint();
+
+        CheckForDodge();
 
         RecoverStamina();
 
@@ -135,6 +140,49 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Dodge
+    internal void CheckForDodge()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (Stamina.UseStamina(25))
+            {
+                Dodge();
+            }
+        }
+    }
+
+    internal void Dodge()
+    {
+        // Calculate the dodge direction based on the player's current rotation
+        Vector3 dodgeDirection = transform.forward; // Move forward in the player's facing direction
+
+        // Calculate the number of steps based on the duration
+        int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+
+        // Calculate the dodge step
+        Vector3 dodgeStep = dodgeDirection * dodgeDistance / numSteps;
+
+        // Start the dodge coroutine
+        StartCoroutine(PerformDodge(dodgeStep, numSteps));
+    }
+
+    private IEnumerator PerformDodge(Vector3 dodgeStep, int numSteps)
+    {
+        for (int i = 0; i < numSteps; i++)
+        {
+            // Update the player's position
+            transform.position += dodgeStep;
+
+            // Wait for the next fixed update frame
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    #endregion
+
     internal void RecoverStamina()
     {
         if (!isSprinting)
@@ -142,9 +190,6 @@ public class PlayerMovement : MonoBehaviour
             Stamina.RecoverStamina();
         }
     }
-
-
-    #endregion
 
     #region Collision Damage & Death
 

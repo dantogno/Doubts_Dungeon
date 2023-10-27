@@ -32448,7 +32448,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133646684}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b18a280e560df7e4e91fcdc5ad3e4156, type: 3}
   m_Name: 
@@ -32659,9 +32659,11 @@ MonoBehaviour:
   Stamina: {fileID: 196687025}
   regularSpeed: 5
   decelerationSpeed: 4
-  sprintSpeed: 12
+  sprintSpeed: 9
   sprintDuration: 2
   rotationSpeed: 360
+  dodgeDistance: 2.5
+  dodgeDuration: 0.05
   damageCooldownDuration: 1
   decelerationFactor: 10
 --- !u!54 &4797053204367634033
