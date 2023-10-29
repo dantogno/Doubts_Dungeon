@@ -73,6 +73,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f648213346fc6024cb1beaa7da6107d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4975573879086506695}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f648213346fc6024cb1beaa7da6107d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -621852464655895312}
   m_SourcePrefab: {fileID: 100100000, guid: f648213346fc6024cb1beaa7da6107d6, type: 3}
 --- !u!1 &5172808507987408554 stripped
 GameObject:
@@ -143,3 +146,32 @@ MonoBehaviour:
   maxRange: 15
   health: 5
   maxhealth: 0
+  DamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -621852464655895312}
+        m_TargetAssemblyTypeName: DamageFlash, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-621852464655895312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172808507987408554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f066698c5b87e14488b10977a82af123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.15
+  flashMaterial: {fileID: 2100000, guid: f17ef05a1c75dc044a624aaa803f3c27, type: 2}
