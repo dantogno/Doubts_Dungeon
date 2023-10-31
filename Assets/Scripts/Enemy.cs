@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
         transform.position = new Vector3(targetPosition.x, initialY, targetPosition.z);  // Set final position with correct y
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         DamageEvent.Invoke();
