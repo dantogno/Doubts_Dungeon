@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.AI;
 using System;
-using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,9 +22,6 @@ public class Enemy : MonoBehaviour
     public int maxhealth;
 
     public event Action<Enemy> OnEnemyDestroyed;
-
-    [SerializeField]
-    UnityEvent DamageEvent;
 
     private void Awake()
     {
@@ -105,7 +101,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        DamageEvent.Invoke();
+
         // Check for player death
         if (health <= 0)
         {

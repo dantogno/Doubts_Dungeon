@@ -13,13 +13,18 @@ public class EnemyManager : MonoBehaviour
 {
 
     public GameObject tallEnemyPrefab;
+    public int minEnemyVal;
+    public int maxEnemyVal;
+
     public GameObject shortEnemyPrefab;
     public int numberOfEnemies = 5;
     public float minDistanceBetweenEnemies = 6f;
+    private Vector3 enemyPosition;
 
     private NavMeshSurface navMeshSurface;
 
     public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> spawnpoints = new List<GameObject>();
 
     public GameObject levelDoor;
     public Text text;
@@ -32,6 +37,7 @@ public class EnemyManager : MonoBehaviour
 
         // Spawn and place enemies
         SpawnAndPlaceEnemies();
+
 
         foreach (var enemy in enemies)
         {
@@ -47,78 +53,96 @@ public class EnemyManager : MonoBehaviour
         CheckForClearedRoom();
     }
 
+    
     private void SpawnAndPlaceEnemies()
     {
         text.text = "Use Left Shift to Sprint";
 
-        for (int i = 0; i < numberOfEnemies; i++)
+        for (int i = 0; i < spawnpoints.Count; i++ )
+        {
+            enemyPosition = spawnpoints[i].transform.position;
+            //for each spawn point spawn a randome number of enemies
+           int inty =  Random.Range(minEnemyVal,maxEnemyVal);
+            SpawnSetNumEnemies(inty, enemyPosition);
+        }
+
+       
+    }
+
+    public void SpawnSetNumEnemies(int num, Vector3 enemyPos)
+    {
+        for(int i = 0; i < num; i++)//Shift to randomize whihc enemy spawns 
         {
             GameObject enemyPrefab = Random.Range(0, 2) == 0 ? tallEnemyPrefab : shortEnemyPrefab;
-            Vector3 enemyPosition = GetRandomValidPosition();
 
-            // Instantiate the enemy
-            GameObject enemy = Instantiate(enemyPrefab, enemyPosition, Quaternion.identity);
+            //Instantiate the enemy
+            GameObject enemy = Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
             enemies.Add(enemy);
         }
     }
 
-    private Vector3 GetRandomValidPosition()
+    private void GetRandomSpawner(Vector3 pos)
     {
-        NavMeshHit hit;
-        Vector3 randomPosition = Vector3.zero;
-
-        while (true)
-        {
-            float x = Random.Range(-50f, 50f);
-            float z = Random.Range(-50f, 50f);
-
-            randomPosition = new Vector3(x, 0f, z);
-
-            // Check if the position is within the NavMesh
-            if (!IsPositionWithinRestrictedArea(randomPosition, winFloor) &&
-                NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas) &&
-                !IsPositionOnWall(hit.position))
-            {
-                bool validPosition = true;
-                foreach (var enemy in enemies)
-                {
-                    float distance = Vector3.Distance(enemy.transform.position, randomPosition);
-                    if (distance < minDistanceBetweenEnemies)
-                    {
-                        validPosition = false;
-                        break;
-                    }
-                }
-
-                if (validPosition)
-                    return hit.position;
-            }
-        }
+        
     }
 
-    private bool IsPositionOnWall(Vector3 position)
-    {
-        NavMeshHit wallHit;
-        return NavMesh.Raycast(position + Vector3.up * 10f, Vector3.down, out wallHit, NavMesh.AllAreas);
-    }
+    //private Vector3 GetRandomValidPosition()
+    //{
+    //    NavMeshHit hit;
+    //    Vector3 randomPosition = Vector3.zero;
+
+    //    while (true)
+    //    {
+    //        float x = Random.Range(-50f, 50f);
+    //        float z = Random.Range(-50f, 50f);
+
+    //        randomPosition = new Vector3(x, 0f, z);
+
+    //        // Check if the position is within the NavMesh
+    //        if (!IsPositionWithinRestrictedArea(randomPosition, winFloor) &&
+    //            NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas) &&
+    //            !IsPositionOnWall(hit.position))
+    //        {
+    //            bool validPosition = true;
+    //            foreach (var enemy in enemies)
+    //            {
+    //                float distance = Vector3.Distance(enemy.transform.position, randomPosition);
+    //                if (distance < minDistanceBetweenEnemies)
+    //                {
+    //                    validPosition = false;
+    //                    break;
+    //                }
+    //            }
+
+    //            if (validPosition)
+    //                return hit.position;
+    //        }
+    //    }
+    //}
+
+    //private bool IsPositionOnWall(Vector3 position)
+    //{
+    //    NavMeshHit wallHit;
+    //    return NavMesh.Raycast(position + Vector3.up * 10f, Vector3.down, out wallHit, NavMesh.AllAreas);
+    //}
 
 
-    private bool IsPositionWithinRestrictedArea(Vector3 position, GameObject restrictedAreaObject)
-    {
-        if (restrictedAreaObject == null)
-        {
-            // If no restricted area defined, consider position as valid
-            return false;
-        }
+    //private bool IsPositionWithinRestrictedArea(Vector3 position, GameObject restrictedAreaObject)
+    //{
+    //    if (restrictedAreaObject == null)
+    //    {
+    //        // If no restricted area defined, consider position as valid
+    //        return false;
+    //    }
 
-        Collider restrictedCollider = restrictedAreaObject.GetComponent<Collider>();
-        if (restrictedCollider != null)
-        {
-            // Check if the position is within the collider bounds
-            return restrictedCollider.bounds.Contains(position);
-        }
-        return false; // If no valid collider found, consider position as valid
-    }
+    //    Collider restrictedCollider = restrictedAreaObject.GetComponent<Collider>();
+    //    if (restrictedCollider != null)
+    //    {
+    //        // Check if the position is within the collider bounds
+    //        return restrictedCollider.bounds.Contains(position);
+    //    }
+    //    return false; // If no valid collider found, consider position as valid
+    //}
 
     private void EnemyDestroyedHandler(Enemy destroyedEnemy)
     {
