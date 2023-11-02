@@ -119,12 +119,12 @@ public class PlayerMovement : MonoBehaviour
             if (Stamina.UseStamina(1))
             {
                 isSprinting = true;
-                stateManager.ActionState = ActionState.Sprint;
+                //stateManager.ActionState = ActionState.Sprint;
             }
             else
             {
                 isSprinting = false;
-                stateManager.ActionState = ActionState.Idle;
+                //stateManager.ActionState = ActionState.Idle;
             }
 
         }
@@ -161,14 +161,14 @@ public class PlayerMovement : MonoBehaviour
                 Dodge();
             }
         }
-        else { stateManager.ActionState = ActionState.Idle; }
+        //else { stateManager.ActionState = ActionState.Idle; }
     }
     
     //maybe do a raycast, check hit result, if hits something move to the hit location.
     //make distance of the raycast be dodge distance, so if nothing hti move to end of raycast
     internal void Dodge()
     {
-        stateManager.ActionState = ActionState.Dodge;
+        //stateManager.ActionState = ActionState.Dodge;
 
         // Calculate the dodge direction based on the player's current rotation
         Vector3 dodgeDirection = transform.forward; // Move forward in the player's facing direction

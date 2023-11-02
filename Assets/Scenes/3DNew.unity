@@ -32831,10 +32831,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tallEnemyPrefab: {fileID: 5172808507987408554, guid: d1978b554e322964aa96f44da767c652, type: 3}
+  minEnemyVal: 0
+  maxEnemyVal: 0
   shortEnemyPrefab: {fileID: 6475120841156253442, guid: bc03643acd94a0e489543200a9bdd501, type: 3}
   numberOfEnemies: 5
   minDistanceBetweenEnemies: 6
   enemies: []
+  spawnpoints: []
   levelDoor: {fileID: 632405273}
   text: {fileID: 453368748}
   winFloor: {fileID: 462108875}
@@ -32866,7 +32869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firingPoint: {fileID: 8242191868768539450}
-  projectilePrefab: {fileID: 6478709952014175783, guid: 9345d279f57f1d348be9cd05c825d50a, type: 3}
+  projectilePrefab: {fileID: 7149380401852705625, guid: e38c04968ca8b4448a21ff5d0a919cd0, type: 3}
   projectileSpeed: 25
   steadyFireRate: 0.3
   individualFireRate: 0.3
