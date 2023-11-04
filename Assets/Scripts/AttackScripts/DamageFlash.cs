@@ -11,11 +11,28 @@ public class DamageFlash : MonoBehaviour
     MeshRenderer meshrenderer;
     SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField]
+    Enemy enemyref;
+    [SerializeField]
     float flashTime = .15f;
     [SerializeField]
     Material flashMaterial;
     Material originalMat;
 
+     void OnEnable()
+    {
+        Enemy.EnemyHit += FlashEnemy;
+    }
+
+    void OnDisable()
+    {
+        Enemy.EnemyHit -= FlashEnemy;
+    }
+
+    void FlashEnemy()
+    {
+        Flash();
+       
+    }
     // Start is called before the first frame update
     void Start()
     {

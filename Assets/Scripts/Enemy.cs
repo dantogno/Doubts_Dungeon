@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     public int maxhealth;
 
     public event Action<Enemy> OnEnemyDestroyed;
+    public static event Action EnemyHit;
+
 
     private void Awake()
     {
@@ -100,6 +102,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        EnemyHit?.Invoke();
         health -= damage;
 
         // Check for player death
