@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
 using UnityEngine.AI;
 using System;
@@ -12,6 +13,9 @@ public class Enemy : MonoBehaviour
     public float EnemyPathingDelay = 0.2f;
     public float knockbackDistance = 2f;
     public float knockbackDuration = .5f;
+
+    [SerializeField]
+    private Animator animator;
 
     public float maxRange = 15f;
 
@@ -24,25 +28,32 @@ public class Enemy : MonoBehaviour
     public event Action<Enemy> OnEnemyDestroyed;
     public static event Action EnemyHit;
 
+    private const string AttackTrigger = "Attack";
+    private const string IsWalking = "IsWalking";
+    private const string HitTrigger = "isHit";
 
     private void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
+       
     }
 
     void Start()
     {
+
         // Initialize target to the player
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
+
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (distanceToTarget <= maxRange)  // Adjust 'maxRange' to your desired maximum targeting range
             {
+              
                 UpdatePath();
             }
         }
@@ -52,6 +63,7 @@ public class Enemy : MonoBehaviour
     {
         if (Time.time >= PathUpdateDeadline)
         {
+            animator.SetBool(IsWalking, true); 
             Debug.Log("Updating Path");
             PathUpdateDeadline = Time.time + EnemyPathingDelay;
             Agent.SetDestination(target.position);
@@ -62,6 +74,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            animator.SetTrigger(AttackTrigger);
+
             // Calculate direction from the enemy to the player
             Vector3 direction = transform.position - collision.transform.position;
             direction.Normalize();
@@ -104,6 +118,7 @@ public class Enemy : MonoBehaviour
     {
         EnemyHit?.Invoke();
         health -= damage;
+
 
         // Check for player death
         if (health <= 0)
