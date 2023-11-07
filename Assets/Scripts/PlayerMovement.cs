@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
-
+using Cinemachine;
+using Unity.Burst.CompilerServices;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Camera Properties")]
+    [SerializeField]
+    GameObject VirtualCamera;
+    [SerializeField]
+    float ShakeIntensity;
+    [SerializeField]
+    float totalShakeTime;
+    float shakeTimer;
+
+    CinemachineVirtualCamera CMVcam;
+
+    [Header("Movement Properties")]
     PlayerStateManager stateManager;
 
     public static event Action OnPlayerDeath;
@@ -36,12 +48,16 @@ public class PlayerMovement : MonoBehaviour
     public float decelerationFactor = 10.0f; // Adjust the value as needed
 
     Plane plane;
+
+    float playerHeight;
     void Start()
     {
         Player = GetComponent<PlayerMovement>();
         plane = new Plane(Vector3.down, transform.position.y);
         stateManager = PlayerStateManager.instance;
         //this.ActionState = ActionState.Default;
+        playerHeight = GetComponent<MeshRenderer>().bounds.max.y;
+        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
     }
 
     void Update()
@@ -59,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         RecoverStamina();
 
         LookAtMouse();
+
+        UpdateShakeTimer();
     }
 
     private void FixedUpdate()
@@ -168,28 +186,49 @@ public class PlayerMovement : MonoBehaviour
     //make distance of the raycast be dodge distance, so if nothing hti move to end of raycast
     internal void Dodge()
     {
-        //stateManager.ActionState = ActionState.Dodge;
+        stateManager.ActionState = ActionState.Dodge;
 
-        // Calculate the dodge direction based on the player's current rotation
-        Vector3 dodgeDirection = transform.forward; // Move forward in the player's facing direction
+        Vector3 dodgeDirection = transform.forward;
 
-        // Calculate the number of steps based on the duration
-        int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+        RaycastHit hit;
+        Ray dodgeRay = new Ray(transform.position, dodgeDirection);
+        Debug.DrawRay(transform.position, dodgeDirection, Color.cyan, dodgeDuration);
+        if (Physics.Raycast(dodgeRay, out hit, dodgeDistance))
+        {
+            float distance = hit.distance;
 
-        // Calculate the dodge step
-        Vector3 dodgeStep = dodgeDirection * dodgeDistance / numSteps;
+            // Calculate the dodge direction based on the player's current rotation
+            // Move forward in the player's facing direction
 
-        // Start the dodge coroutine
-        StartCoroutine(PerformDodge(dodgeStep, numSteps));
+            // Calculate the number of steps based on the duration
+            int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+
+            // Calculate the dodge step 
+            //.2 is magic number, could get meshrender.bounds.extents.x, bassicly here to give a bit of buffer so we dont end up halfway inside things
+            Vector3 dodgeStep = dodgeDirection * (distance-0.2f) / numSteps;
+
+            // Start the dodge coroutine
+            StartCoroutine(PerformDodge(dodgeStep, numSteps));
+        }
+        else
+        {
+            // Calculate the number of steps based on the duration
+            int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+
+            // Calculate the dodge step
+            Vector3 dodgeStep = dodgeDirection * dodgeDistance / numSteps;
+
+            // Start the dodge coroutine
+            StartCoroutine(PerformDodge(dodgeStep, numSteps));
+        }
     }
 
     private IEnumerator PerformDodge(Vector3 dodgeStep, int numSteps)
     {
         for (int i = 0; i < numSteps; i++)
         {
-            // Update the player's position
-            transform.position += dodgeStep;
-
+           
+           transform.position += dodgeStep;
             // Wait for the next fixed update frame
             yield return new WaitForFixedUpdate();
         }
@@ -217,6 +256,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(DamageCooldown());
                 // Reduce player's health when colliding with an enemy
                 TakeDamage(1);
+                
             }
 
         }
@@ -230,13 +270,17 @@ public class PlayerMovement : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        health -= damage;
-        canTakeDamage = true;
-
-        // Check for player death
-        if (health == 0)
+        if(health> 0)
         {
-            OnGameOver();
+            health -= damage;
+            canTakeDamage = true;
+            ShakeCamera();
+            // Check for player death
+            if (health == 0)
+            {
+                StopCameraShake();
+                OnGameOver();
+            }
         }
     }
 
@@ -290,6 +334,37 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    #endregion
+
+    #region Camera
+
+    public void ShakeCamera()
+    {
+        CinemachineBasicMultiChannelPerlin noise = CMVcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        noise.m_AmplitudeGain = ShakeIntensity;
+        noise.m_FrequencyGain = 5;
+        shakeTimer = totalShakeTime;
+    }
+
+    public void StopCameraShake()
+    {
+        CinemachineBasicMultiChannelPerlin noise = CMVcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        noise.m_AmplitudeGain = 0;
+        noise.m_FrequencyGain = 0;
+    }
+
+    void UpdateShakeTimer()
+    {
+        if(shakeTimer > 0)
+        {
+            shakeTimer -= Time.deltaTime;
+            if (shakeTimer <= 0)
+            {
+                StopCameraShake();
+            }
+        }
+    }
+
     #endregion
 
     private void OnDrawGizmos()
