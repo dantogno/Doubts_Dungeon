@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Weapon"))
         {
+            animator.SetTrigger(HitTrigger);
             TakeDamage(1);
         }
     }
