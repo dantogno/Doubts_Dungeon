@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-
         // Initialize target to the player
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -53,7 +52,6 @@ public class Enemy : MonoBehaviour
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (distanceToTarget <= maxRange)  // Adjust 'maxRange' to your desired maximum targeting range
             {
-              
                 UpdatePath();
             }
         }
@@ -90,6 +88,17 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Weapon"))
         {
             animator.SetTrigger(HitTrigger);
+
+            // Calculate direction from the enemy to the player
+            Vector3 direction = transform.position - collision.transform.position;
+            direction.Normalize();
+
+            // Calculate the knockback position
+            Vector3 knockbackPosition = transform.position + direction * knockbackDistance;
+
+            // Move the enemy to the knockback position over the knockback duration
+            StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
+
             TakeDamage(1);
         }
     }
