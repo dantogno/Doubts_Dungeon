@@ -13366,13 +13366,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a280e560df7e4e91fcdc5ad3e4156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverallText: {fileID: 1936479336}
   tallEnemyPrefab: {fileID: 5172808507987408554, guid: d1978b554e322964aa96f44da767c652, type: 3}
+  minEnemyVal: 0
+  maxEnemyVal: 0
   shortEnemyPrefab: {fileID: 6475120841156253442, guid: bc03643acd94a0e489543200a9bdd501, type: 3}
   numberOfEnemies: 5
   minDistanceBetweenEnemies: 3
   enemies: []
+  spawnpoints: []
   levelDoor: {fileID: 160775459}
+  text: {fileID: 0}
   winFloor: {fileID: 1222082851}
 --- !u!4 &700217712
 Transform:
