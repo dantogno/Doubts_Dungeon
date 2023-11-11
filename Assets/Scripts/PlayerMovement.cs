@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Cinemachine;
 using Unity.Burst.CompilerServices;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     Plane plane;
 
     float playerHeight;
+
+    [SerializeField]
+    public bool usingController;
     void Start()
     {
         Player = GetComponent<PlayerMovement>();
@@ -74,14 +78,56 @@ public class PlayerMovement : MonoBehaviour
 
         RecoverStamina();
 
-        LookAtMouse();
+        if(usingController)
+        {
+            JoystickAim();
+        }
+        else
+        {
+            LookAtMouse();
+        }
 
         UpdateShakeTimer();
+    }
+
+    private void JoystickAim()
+    {
+        Vector3 JoystickAimDirection = GetJoystickAimDirection();
+        if(JoystickAimDirection.sqrMagnitude > 0.0f)
+        {
+            transform.rotation = Quaternion.LookRotation(JoystickAimDirection , Vector3.up);
+        }
+    }
+
+    public Vector3 GetJoystickAimDirection()
+    {
+        return getCameraRight() * Input.GetAxisRaw("RSHorizontal") + getCameraForward() * Input.GetAxisRaw("RSVertical");
     }
 
     private void FixedUpdate()
     {
         Movement();
+    }
+
+    Vector3 getCameraForward()
+    {
+        // Calculate movement direction based on camera's perspective
+        Vector3 cameraForward = Camera.main.transform.forward;
+        // Ignore the y-component to stay in the x-z plane
+        cameraForward.y = 0f;
+        cameraForward.Normalize();
+        return cameraForward;
+    }
+
+    Vector3 getCameraRight()
+    {
+        // Calculate movement direction based on camera's perspective
+        Vector3 cameraRight = Camera.main.transform.right;
+
+        // Ignore the y-component to stay in the x-z plane
+        cameraRight.y = 0f;
+        cameraRight.Normalize();
+        return cameraRight;
     }
 
     public void Movement()
@@ -90,18 +136,12 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
 
         // Calculate movement direction based on camera's perspective
-        Vector3 cameraForward = Camera.main.transform.forward;
-        Vector3 cameraRight = Camera.main.transform.right;
+        Vector3 cameraForward = getCameraForward();
+        Vector3 cameraRight = getCameraRight();
 
-        // Ignore the y-component to stay in the x-z plane
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        // Calculate the movement direction based on input and camera orientation
-        Vector3 move = (Input.GetAxisRaw("Vertical") * cameraForward + Input.GetAxisRaw("Horizontal") * cameraRight).normalized;
-
+        //get move vector from different axis mapping depending on if using controller or not
+        Vector3 move = getMoveVector(cameraForward, cameraRight);
+        
         // Apply gravity to the movement
         Vector3 gravityVector = Physics.gravity;
         move += gravityVector * Time.deltaTime;
@@ -124,6 +164,21 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = Vector3.zero;
             }
         }
+    }
+
+    private Vector3 getMoveVector(Vector3 cameraForward, Vector3 cameraRight)
+    {
+        Vector3 move = Vector3.zero;
+        if (usingController)
+        {
+            move = (Input.GetAxisRaw("LSVertical") * cameraForward + Input.GetAxisRaw("LSHorizontal") * cameraRight).normalized;
+        }
+        else
+        {
+            // Calculate the movement direction based on input and camera orientation
+            move = (Input.GetAxisRaw("Vertical") * cameraForward + Input.GetAxisRaw("Horizontal") * cameraRight).normalized;
+        }
+        return move;
     }
 
     

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -16,11 +17,14 @@ public class ProjectileScript : MonoBehaviour
 
     Plane plane;
 
+    PlayerMovement movementScript;
+
     private void Start()
     {
         //create a plane, pass in down for the in-normal, which is the opposite way the plane faces for some reason. apply the players y position as an offset
         plane = new Plane(Vector3.down, transform.position.y);
         stateManager = PlayerStateManager.instance;
+        movementScript = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -29,7 +33,14 @@ public class ProjectileScript : MonoBehaviour
         {
             if (Time.time >= nextFireTime)
             {
-                Fire();
+                if (movementScript.usingController)
+                {
+                    FireWithGamepad();
+                }
+                else
+                {
+                    FireWithMouse();
+                }
                 nextFireTime = Time.time + steadyFireRate; // Use steady fire rate when holding
             }
         }
@@ -38,13 +49,20 @@ public class ProjectileScript : MonoBehaviour
             // Check if the "Fire1" button was clicked (not held)
             if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
             {
-                Fire();
+                if(movementScript.usingController)
+                {
+                    FireWithGamepad();
+                }
+                else
+                {
+                    FireWithMouse();
+                }
                 nextFireTime = Time.time + individualFireRate; // Use individual fire rate for clicks
             }
         }
     }
 
-    void Fire()
+    void FireWithMouse()
     {
         
         // Cast a ray from the mouse position into the game world
@@ -80,6 +98,27 @@ public class ProjectileScript : MonoBehaviour
             {
                 Debug.LogError("Projectile does not have a Rigidbody component!");
             }
+        }
+    }
+
+    void FireWithGamepad()
+    {
+        Vector3 direction = movementScript.GetJoystickAimDirection();
+
+        // Create a new instance of the projectile
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(direction, Vector3.up));
+
+        // Get the rigidbody of the projectile (assuming it has one)
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            // Set the velocity of the projectile based on the calculated direction and speed
+            rb.velocity = direction * projectileSpeed;
+        }
+        else
+        {
+            Debug.LogError("Projectile does not have a Rigidbody component!");
         }
     }
 }
