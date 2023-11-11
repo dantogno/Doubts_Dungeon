@@ -119,9 +119,11 @@ GameObject:
   - component: {fileID: 8066820780452945602}
   - component: {fileID: 7619500830607579934}
   - component: {fileID: 4718261763533627888}
+  - component: {fileID: 6889017278900982499}
   - component: {fileID: 5961811745843322128}
   - component: {fileID: 3801118550504413991}
   - component: {fileID: 116492051437782873}
+  - component: {fileID: 5343913153717839506}
   - component: {fileID: 7468302359622860061}
   m_Layer: 3
   m_Name: Player 1
@@ -138,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6830382165623866325}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.65, y: 0.58, z: -2.65}
   m_LocalScale: {x: 100, y: 140, z: 100}
   m_ConstrainProportionsScale: 0
@@ -214,6 +216,18 @@ MonoBehaviour:
   projectileSpeed: 25
   steadyFireRate: 0.3
   individualFireRate: 0.3
+--- !u!114 &6889017278900982499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830382165623866325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bb45557bc020840b1471369de1c625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &5961811745843322128
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -249,6 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37427756a13c5da4aad3059aceaa43d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VirtualCamera: {fileID: 0}
+  ShakeIntensity: 3
+  totalShakeTime: 0.2
   health: 3
   maxhealth: 3
   Stamina: {fileID: 0}
@@ -261,6 +278,7 @@ MonoBehaviour:
   dodgeDuration: 0.05
   damageCooldownDuration: 1
   decelerationFactor: 10
+  usingController: 0
 --- !u!54 &116492051437782873
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -288,6 +306,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!114 &5343913153717839506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830382165623866325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f5ec5f39703d54ba497eb3acfb201f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7468302359622860061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +401,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 51f98b9324e9edb428277f99493b232a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31d0970bc28dc094c897537d0fc08462, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 51f98b9324e9edb428277f99493b232a, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2
       objectReference: {fileID: 0}
@@ -381,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 51f98b9324e9edb428277f99493b232a, type: 3}
       propertyPath: m_Name
       value: BoneMeleeType3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51f98b9324e9edb428277f99493b232a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 51f98b9324e9edb428277f99493b232a, type: 3}
       propertyPath: m_TagString
