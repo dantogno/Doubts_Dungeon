@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     private const string AttackTrigger = "Attack";
     private const string IsWalking = "IsWalking";
+    private const string IsDead = "IsDead";
     private const string HitTrigger = "isHit";
 
     private void Awake()
@@ -145,6 +146,9 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         NotifyEnemyDestroyed();
-        Destroy(gameObject);
+        Agent.enabled = false;
+        animator.SetTrigger(IsDead);
+        Destroy(gameObject,6);
+        
     }
 }
