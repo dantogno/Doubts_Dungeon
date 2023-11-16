@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         NotifyEnemyDestroyed();
-        Agent.enabled = false;
+        Agent.speed = 0;
         animator.SetTrigger(IsDead);
         Destroy(gameObject,6);
         
