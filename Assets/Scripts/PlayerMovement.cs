@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     CinemachineVirtualCamera CMVcam;
 
-    [Header("Movement Properties")]
-    PlayerStateManager stateManager;
+    //[Header("Movement Properties")]
+    
+    //PlayerStateManager stateManager;
 
     public static event Action OnPlayerDeath;
 
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Player = GetComponent<PlayerMovement>();
         plane = new Plane(Vector3.down, transform.position.y);
-        stateManager = PlayerStateManager.instance;
+        //stateManager = PlayerStateManager.instance;
         //this.ActionState = ActionState.Default;
         playerHeight = GetComponent<MeshRenderer>().bounds.max.y;
         CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
@@ -78,14 +79,17 @@ public class PlayerMovement : MonoBehaviour
 
         RecoverStamina();
 
-        if(usingController)
+        if (PlayerStateManager.instance.ActionState != ActionState.Attack)
         {
-            JoystickAim();
-        }
-        else
-        {
-            LookAtMouse();
-        }
+            if (usingController)
+            {
+                JoystickAim();
+            }
+            else
+            {
+                LookAtMouse();
+            }
+        }    
 
         UpdateShakeTimer();
     }
@@ -106,7 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        if(PlayerStateManager.instance.ActionState != ActionState.Attack)
+        {
+            Movement();
+        }
+        
     }
 
     Vector3 getCameraForward()
@@ -241,7 +249,7 @@ public class PlayerMovement : MonoBehaviour
     //make distance of the raycast be dodge distance, so if nothing hti move to end of raycast
     internal void Dodge()
     {
-        stateManager.ActionState = ActionState.Dodge;
+        //stateManager.ActionState = ActionState.Dodge;
 
         Vector3 dodgeDirection = transform.forward;
 

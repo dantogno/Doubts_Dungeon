@@ -20,6 +20,9 @@ public class Melee : MonoBehaviour
         isAttacking = true;
         Animator ani = Sword.GetComponent<Animator>();
         ani.SetTrigger("Attack");
+
+        PlayerStateManager.instance.ActionState = ActionState.Attack;
+
         StartCoroutine(ResetAttackCooldown());
         
     }
@@ -31,6 +34,8 @@ public class Melee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isAttacking) { PlayerStateManager.instance.ActionState = ActionState.Idle; }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (CanAttack)
@@ -45,12 +50,13 @@ public class Melee : MonoBehaviour
         StartCoroutine(ResetAttackBool());
         yield return new WaitForSeconds(AttackCoolDown);
         CanAttack = true;
+
+        //PlayerStateManager.instance.ActionState = ActionState.Idle;
     }
 
     IEnumerator ResetAttackBool()
     {
-
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         isAttacking = false;
     }
 }
