@@ -23,7 +23,16 @@ ModelImporter:
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'PT_Spine' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: 
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tLeftUpperArm
+      average position error 9.4 mm and maximum position error 11.1 mm at time 6:15
+      (78.0%) Frame 195\n\tLeftLowerArm average position error 9.7 mm and maximum
+      position error 10.4 mm at time 6:21 (80.4%) Frame 201\n\tLeftHand average position
+      error 1.6 mm and maximum position error 1.8 mm at time 6:16 (78.4%) Frame 196\n\tRightUpperArm
+      average position error 9.4 mm and maximum position error 11.1 mm at time 6:15
+      (78.0%) Frame 195\n\tRightLowerArm average position error 7.4 mm and maximum
+      position error 8.3 mm at time 6:14 (77.6%) Frame 194\n\tHead average position
+      error 9.4 mm and maximum position error 11.1 mm at time 6:15 (78.0%) Frame
+      195\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -34,7 +43,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
