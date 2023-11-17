@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.9003944
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.455
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.949124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       propertyPath: m_LocalRotation.w
@@ -234,7 +234,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 82d450661699c71449c73ad4c15a6132, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
