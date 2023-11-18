@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         if (Time.time >= PathUpdateDeadline)
         {
             animator.SetBool(IsWalking, true); 
-            Debug.Log("Updating Path");
+            //Debug.Log("Updating Path");
             PathUpdateDeadline = Time.time + EnemyPathingDelay;
             Agent.SetDestination(target.position);
         }

@@ -89,8 +89,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 LookAtMouse();
             }
-        }    
-
+        }
         UpdateShakeTimer();
     }
 
@@ -336,6 +335,7 @@ public class PlayerMovement : MonoBehaviour
         if(health> 0)
         {
             health -= damage;
+            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)health / (float)maxhealth);
             canTakeDamage = true;
             ShakeCamera();
             // Check for player death
@@ -344,6 +344,7 @@ public class PlayerMovement : MonoBehaviour
                 StopCameraShake();
                 OnGameOver();
             }
+
         }
     }
 

@@ -8,6 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     public static PlayerStateManager instance;
 
     public ActionState ActionState { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
