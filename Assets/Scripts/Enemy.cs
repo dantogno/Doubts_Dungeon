@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour
     public int health = 5;
     public int maxhealth;
 
+    [SerializeField]
+    private bool CanBeKnockedBack = true;
+
     public event Action<Enemy> OnEnemyDestroyed;
     public static event Action EnemyHit;
 
@@ -88,17 +91,20 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            animator.SetTrigger(HitTrigger);
+            if (CanBeKnockedBack == true)
+            {
+                animator.SetTrigger(HitTrigger);
 
-            // Calculate direction from the enemy to the player
-            Vector3 direction = transform.position - collision.transform.position;
-            direction.Normalize();
+                // Calculate direction from the enemy to the player
+                Vector3 direction = transform.position - collision.transform.position;
+                direction.Normalize();
 
-            // Calculate the knockback position
-            Vector3 knockbackPosition = transform.position + direction * knockbackDistance;
+                // Calculate the knockback position
+                Vector3 knockbackPosition = transform.position + direction * knockbackDistance;
 
-            // Move the enemy to the knockback position over the knockback duration
-            StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
+                // Move the enemy to the knockback position over the knockback duration
+                StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
+            }
 
             TakeDamage(1);
         }

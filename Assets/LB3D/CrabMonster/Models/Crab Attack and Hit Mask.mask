@@ -22,21 +22,21 @@ AvatarMask:
   - m_Path: Armature/Head_Target/Head_Target_end
     m_Weight: 1
   - m_Path: Armature/Leg_B_Guide_L
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_B_Guide_L/Leg_B_Guide_L_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_B_Guide_R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_B_Guide_R/Leg_B_Guide_R_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_F_Guide_L
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_F_Guide_L/Leg_F_Guide_L_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_F_Guide_R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Leg_F_Guide_R/Leg_F_Guide_R_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Root
     m_Weight: 1
   - m_Path: Armature/Root/Thorax_1
