@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Animations;
 
 public class EnvironmentTrigger : MonoBehaviour
 {
-    public float Lifetime = 6f;
+    public float Lifetime = 3f;
 
     public List<string> textlist = new List<string>();
-    
+
+    [SerializeField]
+    private Animator floatupText;
+
     [SerializeField]
     private GameObject FloatingText;
     private bool Hasnotbeentrig;
@@ -22,7 +26,7 @@ public class EnvironmentTrigger : MonoBehaviour
         TextsMesh.GetComponent<MeshRenderer>();
         Hasnotbeentrig = true;
         texty = FloatingText.GetComponent<TextMesh>();
-        TextsMesh.enabled = false;
+        
         
     }
 
@@ -35,9 +39,10 @@ public class EnvironmentTrigger : MonoBehaviour
                 System.Random randWord = new System.Random();
                 int RandomChosen = randWord.Next(textlist.Count);
                 texty.text = textlist[RandomChosen];
-                transform.localPosition += Offset;
-                TextsMesh.enabled = true;
-                Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
+               
+                floatupText.SetTrigger("Wiggle");
+                
+               
                 Destroy(gameObject, Lifetime);
                 Hasnotbeentrig = false;
             }
