@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using System;
 using Cinemachine;
 using Unity.Burst.CompilerServices;
@@ -30,7 +31,16 @@ public class PlayerMovement : MonoBehaviour
     public int health = 3;
     public int maxhealth = 3;
 
+    
+    //public MeshRenderer playerheight;
+
     public StaminaScript Stamina;
+
+    [SerializeField]
+    private Animator playerAnimator;
+
+    private const string IsWalking = "IsWalking";
+    private const string NotWalking = "NotWalking";
 
     public float regularSpeed = 4f; // Default speed
     public float decelerationSpeed = 4f;
@@ -51,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     Plane plane;
 
-    float playerHeight;
+    //float playerHeight;
 
     [SerializeField]
     public bool usingController;
@@ -61,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         plane = new Plane(Vector3.down, transform.position.y);
         //stateManager = PlayerStateManager.instance;
         //this.ActionState = ActionState.Default;
-        playerHeight = GetComponent<MeshRenderer>().bounds.max.y;
+        //playerHeight =  playerheight.GetComponent<MeshRenderer>().bounds.max.y;
         CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
     }
 
@@ -157,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Player is providing input, move them at the current speed
             Vector3 newPosition = transform.position + move * currentSpeed * Time.deltaTime;
+            playerAnimator.SetTrigger(IsWalking);
             transform.position = newPosition;
         }
         else
@@ -169,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
             if (transform.position.magnitude < 0.01f)
             {
                 transform.position = Vector3.zero;
+                playerAnimator.SetTrigger(NotWalking);
+               
             }
         }
     }
