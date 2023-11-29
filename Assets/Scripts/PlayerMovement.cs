@@ -161,35 +161,11 @@ public class PlayerMovement : MonoBehaviour
 
         //get move vector from different axis mapping depending on if using controller or not
         Vector3 move = getMoveVector(cameraForward, cameraRight);
-        
-        // Apply gravity to the movement
-        Vector3 gravityVector = Physics.gravity;
-        move += gravityVector * Time.deltaTime;
+        playerAnimator.SetFloat("speed", move.magnitude);
 
+        Vector3 newPosition = transform.position + move * currentSpeed * Time.deltaTime;
+        transform.position = newPosition;
 
-
-        if (move.magnitude > 0)
-        {
-            // Player is providing input, move them at the current speed
-            Vector3 newPosition = transform.position + move * currentSpeed * Time.deltaTime;
-            transform.position = newPosition;
-            playerAnimator.SetTrigger(IsWalking);
-            playerAnimator.ResetTrigger(NotWalking);
-        }
-        else
-        {
-            // No input provided, apply gradual deceleration to stop the player
-            Vector3 deceleration = -transform.position.normalized * decelerationSpeed * Time.deltaTime;
-            transform.position += deceleration;
-
-            // Check if the velocity is very small and set it to zero to avoid continuous drift
-            if (transform.position.magnitude <= 0.01f)
-            {
-               transform.position = Vector3.zero;
-                playerAnimator.SetTrigger(NotWalking);
-                playerAnimator.ResetTrigger(IsWalking);
-            }
-        }
     }
 
     private Vector3 getMoveVector(Vector3 cameraForward, Vector3 cameraRight)
