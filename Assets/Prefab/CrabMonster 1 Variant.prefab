@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: skinmeshref
       value: 
       objectReference: {fileID: 8784864258482942737}
+    - target: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: originalskinnedmeshrefmat
+      value: 
+      objectReference: {fileID: 2100000, guid: e061968e56112fe4ca8c0ad3347c2a0d, type: 2}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: knockbackDistance
       value: 1
