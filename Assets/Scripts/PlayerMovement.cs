@@ -73,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
         //this.ActionState = ActionState.Default;
         //playerHeight =  playerheight.GetComponent<MeshRenderer>().bounds.max.y;
         CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
+    
+
     }
 
     void Update()
@@ -151,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movement
         float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
+        
 
         // Calculate movement direction based on camera's perspective
         Vector3 cameraForward = getCameraForward();
@@ -163,12 +166,15 @@ public class PlayerMovement : MonoBehaviour
         Vector3 gravityVector = Physics.gravity;
         move += gravityVector * Time.deltaTime;
 
+
+
         if (move.magnitude > 0)
         {
             // Player is providing input, move them at the current speed
             Vector3 newPosition = transform.position + move * currentSpeed * Time.deltaTime;
-            playerAnimator.SetTrigger(IsWalking);
             transform.position = newPosition;
+            playerAnimator.SetTrigger(IsWalking);
+            playerAnimator.ResetTrigger(NotWalking);
         }
         else
         {
@@ -177,11 +183,11 @@ public class PlayerMovement : MonoBehaviour
             transform.position += deceleration;
 
             // Check if the velocity is very small and set it to zero to avoid continuous drift
-            if (transform.position.magnitude < 0.01f)
+            if (transform.position.magnitude <= 0.01f)
             {
-                transform.position = Vector3.zero;
+               transform.position = Vector3.zero;
                 playerAnimator.SetTrigger(NotWalking);
-               
+                playerAnimator.ResetTrigger(IsWalking);
             }
         }
     }
