@@ -14,12 +14,9 @@ public class DamageFlash : MonoBehaviour
     SkinnedMeshRenderer skinmeshref;
     Enemy enemyref;
     [SerializeField]
-    Material flashMaterial;
-    [SerializeField]
     float flashTime = .15f;
     [SerializeField]
-    Material originalskinnedmeshrefmat;
-    
+    Material flashMaterial;
     Material originalMat;
 
      void OnEnable()
@@ -40,7 +37,6 @@ public class DamageFlash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         switch (type)
         {
             case RenderType.MeshRenderer:
@@ -56,7 +52,6 @@ public class DamageFlash : MonoBehaviour
                 if (skinnedMeshRenderer== null)
                 {
                     skinnedMeshRenderer= GetComponentInChildren<SkinnedMeshRenderer>();
-                    originalskinnedmeshrefmat = skinmeshref.material;
                 }
                 originalMat = skinnedMeshRenderer.material;
                 break;
@@ -86,11 +81,9 @@ public class DamageFlash : MonoBehaviour
         {
             case RenderType.MeshRenderer:
                 meshrenderer.material = originalMat;
-
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = originalMat;
-                skinmeshref.material = originalskinnedmeshrefmat;
                 break;
         }
         

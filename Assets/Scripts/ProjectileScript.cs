@@ -84,7 +84,7 @@ public class ProjectileScript : MonoBehaviour
             direction.Normalize();
 
             // Create a new instance of the projectile
-            GameObject projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             // Get the rigidbody of the projectile (assuming it has one)
             Rigidbody rb = projectile.GetComponent<Rigidbody>();

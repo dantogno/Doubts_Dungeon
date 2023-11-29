@@ -346,7 +346,6 @@ public class PlayerMovement : MonoBehaviour
     public void OnGameOver()
     {
         OnPlayerDeath?.Invoke();
-        playerAnimator.SetTrigger("Die");
     }
 
     private void OnEnable()
