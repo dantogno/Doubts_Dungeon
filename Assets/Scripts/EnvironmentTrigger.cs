@@ -34,7 +34,7 @@ public class EnvironmentTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Hasnotbeentrig == true)
+            if (Hasnotbeentrig == true && floatupText != null)
             {
                 System.Random randWord = new System.Random();
                 int RandomChosen = randWord.Next(textlist.Count);
