@@ -30,13 +30,19 @@ public class EnemyManager : MonoBehaviour
     public Text text;
     public GameObject winFloor;
 
+    public int NumOfWaves;
+    public int CurrentWave;
+
     void Start()
     {
         navMeshSurface = FindObjectOfType<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
 
+        NumOfWaves = 5;
+        CurrentWave = 0;
+
         // Spawn and place enemies
-        SpawnAndPlaceEnemies();
+        SpawnWave();
 
 
         foreach (var enemy in enemies)
@@ -48,15 +54,25 @@ public class EnemyManager : MonoBehaviour
 
     }
 
+    private void SpawnWave()
+    {
+        if(CurrentWave <= NumOfWaves)
+        {
+            SpawnAndPlaceEnemies();
+        }
+        
+    }
+
     private void Update()
     {
-        CheckForClearedRoom();
+        //CheckForClearedRoom();
     }
 
     
     private void SpawnAndPlaceEnemies()
     {
-        text.text = "Use Left Shift to Sprint";
+        CurrentWave++;
+        text.text = $"Wave: {CurrentWave}/{NumOfWaves}";
 
         for (int i = 0; i < spawnpoints.Count; i++ )
         {
@@ -81,69 +97,6 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void GetRandomSpawner(Vector3 pos)
-    {
-        
-    }
-
-    //private Vector3 GetRandomValidPosition()
-    //{
-    //    NavMeshHit hit;
-    //    Vector3 randomPosition = Vector3.zero;
-
-    //    while (true)
-    //    {
-    //        float x = Random.Range(-50f, 50f);
-    //        float z = Random.Range(-50f, 50f);
-
-    //        randomPosition = new Vector3(x, 0f, z);
-
-    //        // Check if the position is within the NavMesh
-    //        if (!IsPositionWithinRestrictedArea(randomPosition, winFloor) &&
-    //            NavMesh.SamplePosition(randomPosition, out hit, 10f, NavMesh.AllAreas) &&
-    //            !IsPositionOnWall(hit.position))
-    //        {
-    //            bool validPosition = true;
-    //            foreach (var enemy in enemies)
-    //            {
-    //                float distance = Vector3.Distance(enemy.transform.position, randomPosition);
-    //                if (distance < minDistanceBetweenEnemies)
-    //                {
-    //                    validPosition = false;
-    //                    break;
-    //                }
-    //            }
-
-    //            if (validPosition)
-    //                return hit.position;
-    //        }
-    //    }
-    //}
-
-    //private bool IsPositionOnWall(Vector3 position)
-    //{
-    //    NavMeshHit wallHit;
-    //    return NavMesh.Raycast(position + Vector3.up * 10f, Vector3.down, out wallHit, NavMesh.AllAreas);
-    //}
-
-
-    //private bool IsPositionWithinRestrictedArea(Vector3 position, GameObject restrictedAreaObject)
-    //{
-    //    if (restrictedAreaObject == null)
-    //    {
-    //        // If no restricted area defined, consider position as valid
-    //        return false;
-    //    }
-
-    //    Collider restrictedCollider = restrictedAreaObject.GetComponent<Collider>();
-    //    if (restrictedCollider != null)
-    //    {
-    //        // Check if the position is within the collider bounds
-    //        return restrictedCollider.bounds.Contains(position);
-    //    }
-    //    return false; // If no valid collider found, consider position as valid
-    //}
-
     private void EnemyDestroyedHandler(Enemy destroyedEnemy)
     {
         // Remove the destroyed enemy from the list
@@ -152,7 +105,13 @@ public class EnemyManager : MonoBehaviour
         text.text = $"There are {enemies.Count} left";
 
         // Check for cleared room when an enemy is destroyed
-        CheckForClearedRoom();
+        if(enemies.Count == 0)
+        {
+            SpawnWave();
+
+            CheckForCompletedWaves();
+        }
+        //CheckForClearedRoom();
     }
 
     private void CheckForClearedRoom()
@@ -160,6 +119,15 @@ public class EnemyManager : MonoBehaviour
         if (enemies.Count == 0 && levelDoor != null)
         {
             text.text = "The room is cleared!";
+            Destroy(levelDoor);
+        }
+    }
+
+    private void CheckForCompletedWaves()
+    {
+        if (CurrentWave >= NumOfWaves && levelDoor != null)
+        {
+            text.text = "The waves are cleared!";
             Destroy(levelDoor);
         }
     }
