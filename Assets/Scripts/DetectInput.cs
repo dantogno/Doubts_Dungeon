@@ -14,11 +14,11 @@ public class DetectInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 || Input.GetMouseButtonDown(0))
         {
             moveScript.usingController = false;
         }
-        if(Input.GetAxisRaw("LSHorizontal") != 0 || Input.GetAxisRaw("LSHorizontal") != 0)
+        if(Input.GetAxisRaw("LSHorizontal") != 0 || Input.GetAxisRaw("RSHorizontal") != 0)
         {
             moveScript.usingController = true;
         }

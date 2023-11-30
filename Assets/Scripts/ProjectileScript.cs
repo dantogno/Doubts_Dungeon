@@ -22,7 +22,7 @@ public class ProjectileScript : MonoBehaviour
     private void Start()
     {
         //create a plane, pass in down for the in-normal, which is the opposite way the plane faces for some reason. apply the players y position as an offset
-        plane = new Plane(Vector3.down, transform.position.y);
+        plane = new Plane(Vector3.down, firingPoint.position.y);
         stateManager = PlayerStateManager.instance;
         movementScript = GetComponent<PlayerMovement>();
     }
@@ -104,7 +104,10 @@ public class ProjectileScript : MonoBehaviour
     void FireWithGamepad()
     {
         Vector3 direction = movementScript.GetJoystickAimDirection();
-
+        if(direction == Vector3.zero)
+        {
+            direction =movementScript.transform.forward;
+        }
         // Create a new instance of the projectile
         GameObject projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.LookRotation(direction, Vector3.up));
 
