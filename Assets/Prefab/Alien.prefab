@@ -622,6 +622,7 @@ MonoBehaviour:
   EnemyPathingDelay: 0.2
   knockbackDistance: 2
   knockbackDuration: 0.5
+  enemydmg: {fileID: 5443724817369215536}
   animator: {fileID: 8339417567653367211}
   maxRange: 15
   health: 5

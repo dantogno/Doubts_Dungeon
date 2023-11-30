@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8784864258482942737}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: enemydmg
+      value: 
+      objectReference: {fileID: 3938503211901911962}
+    - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: knockbackDistance
       value: 1
       objectReference: {fileID: 0}
@@ -70,6 +74,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+--- !u!114 &3938503211901911962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+  m_PrefabInstance: {fileID: 2911737657138672803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f066698c5b87e14488b10977a82af123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &8784864258482942737 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5873409178248562610, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}

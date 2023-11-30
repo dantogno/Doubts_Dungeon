@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public float knockbackDuration = .5f;
 
     [SerializeField]
+    private DamageFlash enemydmg;
+
+    [SerializeField]
     private Animator animator;
 
     public float maxRange = 15f;
@@ -133,7 +136,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        EnemyHit?.Invoke();
+        enemydmg.Flash();
         health -= damage;
 
 

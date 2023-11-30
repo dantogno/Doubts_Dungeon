@@ -11,7 +11,7 @@ public class DamageFlash : MonoBehaviour
     MeshRenderer meshrenderer;
     SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField]
-    SkinnedMeshRenderer skinmeshref;
+    
     Enemy enemyref;
     [SerializeField]
     float flashTime = .15f;
@@ -19,15 +19,6 @@ public class DamageFlash : MonoBehaviour
     Material flashMaterial;
     Material originalMat;
 
-     void OnEnable()
-    {
-        Enemy.EnemyHit += FlashEnemy;
-    }
-
-    void OnDisable()
-    {
-        Enemy.EnemyHit -= FlashEnemy;
-    }
 
     void FlashEnemy()
     {
@@ -68,7 +59,6 @@ public class DamageFlash : MonoBehaviour
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = flashMaterial;
-                skinmeshref.material = flashMaterial;
                 Invoke("flashStop", flashTime);
                 break;
         }
