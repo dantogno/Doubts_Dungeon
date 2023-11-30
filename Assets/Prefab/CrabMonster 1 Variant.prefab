@@ -9,9 +9,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: originalMat
+      value: 
+      objectReference: {fileID: 2100000, guid: e061968e56112fe4ca8c0ad3347c2a0d, type: 2}
+    - target: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: skinmeshref
       value: 
       objectReference: {fileID: 8784864258482942737}
+    - target: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: skinnedMeshRenderer
+      value: 
+      objectReference: {fileID: 8784864258482942737}
+    - target: {fileID: 2215997743707911993, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: skinmeshreforiginalMat
+      value: 
+      objectReference: {fileID: 2100000, guid: e061968e56112fe4ca8c0ad3347c2a0d, type: 2}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: knockbackDistance
       value: 1
@@ -26,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.11
+      value: -9.446958
       objectReference: {fileID: 0}
     - target: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000045776367
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.25
+      value: -4.0441904
       objectReference: {fileID: 0}
     - target: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: m_LocalRotation.w

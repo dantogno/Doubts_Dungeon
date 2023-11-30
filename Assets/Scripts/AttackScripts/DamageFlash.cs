@@ -7,8 +7,9 @@ public class DamageFlash : MonoBehaviour
     public enum RenderType { MeshRenderer, SkinnedMeshRenderer}
 
     public RenderType type;
-
+    [SerializeField]
     MeshRenderer meshrenderer;
+    [SerializeField]
     SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField]
     SkinnedMeshRenderer skinmeshref;
@@ -17,9 +18,12 @@ public class DamageFlash : MonoBehaviour
     float flashTime = .15f;
     [SerializeField]
     Material flashMaterial;
+    [SerializeField]
     Material originalMat;
+    [SerializeField]
+    Material skinmeshreforiginalMat;
 
-     void OnEnable()
+    void OnEnable()
     {
         Enemy.EnemyHit += FlashEnemy;
     }
@@ -52,8 +56,10 @@ public class DamageFlash : MonoBehaviour
                 if (skinnedMeshRenderer== null)
                 {
                     skinnedMeshRenderer= GetComponentInChildren<SkinnedMeshRenderer>();
+                    skinmeshref = GetComponent<SkinnedMeshRenderer>();
                 }
                 originalMat = skinnedMeshRenderer.material;
+                skinmeshreforiginalMat = skinmeshref.material;
                 break;
         }
     }
@@ -84,6 +90,7 @@ public class DamageFlash : MonoBehaviour
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = originalMat;
+                skinmeshref.material = skinmeshreforiginalMat;
                 break;
         }
         
