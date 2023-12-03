@@ -35,8 +35,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        navMeshSurface = FindObjectOfType<NavMeshSurface>();
-        navMeshSurface.BuildNavMesh();
+        
 
         NumOfWaves = 5;
         CurrentWave = 0;
