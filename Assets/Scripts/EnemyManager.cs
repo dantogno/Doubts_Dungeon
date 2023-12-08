@@ -21,6 +21,8 @@ public class EnemyManager : MonoBehaviour
     public float minDistanceBetweenEnemies = 6f;
     private Vector3 enemyPosition;
 
+    public int roundEnemies;
+
     private NavMeshSurface navMeshSurface;
 
     public List<GameObject> enemies = new List<GameObject>();
@@ -35,7 +37,6 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        
 
         NumOfWaves = 5;
         CurrentWave = 0;
@@ -44,9 +45,10 @@ public class EnemyManager : MonoBehaviour
         SpawnWave();
 
 
-        foreach (var enemy in enemies)
+        //foreach (var enemy in enemies)
+        for (int i = 0; i < enemies.Count; i++)
         {
-            Enemy enemyComponent = enemy.GetComponent<Enemy>();
+            Enemy enemyComponent = enemies[i].GetComponent<Enemy>();
             if (enemyComponent != null)
                 enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
         }
@@ -65,9 +67,26 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         //CheckForClearedRoom();
+        if(enemies != null || enemies.Count == 0) 
+        {
+            for(int i =0; i < enemies.Count; i++)
+            {
+                Enemy enemyComponent = enemies[i].GetComponent<Enemy>();
+                if (enemyComponent != null)
+                    enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
+            }
+            //foreach (var enemy in enemies)
+            //{
+            //    Enemy enemyComponent = enemy.GetComponent<Enemy>();
+            //    if (enemyComponent != null)
+            //        enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
+            //}
+            //Be careful with foreach statments
+        }
+        
     }
 
-    
+
     private void SpawnAndPlaceEnemies()
     {
         CurrentWave++;
@@ -88,6 +107,8 @@ public class EnemyManager : MonoBehaviour
     {
         for(int i = 0; i < num; i++)//Shift to randomize whihc enemy spawns 
         {
+            roundEnemies++;
+
             GameObject enemyPrefab = Random.Range(0, 2) == 0 ? tallEnemyPrefab : shortEnemyPrefab;
 
             //Instantiate the enemy
@@ -101,11 +122,16 @@ public class EnemyManager : MonoBehaviour
         // Remove the destroyed enemy from the list
         enemies.Remove(destroyedEnemy.gameObject);
 
-        text.text = $"There are {enemies.Count} left";
+        if(enemies.Count < roundEnemies)
+        {
+            text.text = $"There are {enemies.Count} left";
+        }
+        
 
         // Check for cleared room when an enemy is destroyed
         if(enemies.Count == 0)
         {
+            roundEnemies = 0;
             SpawnWave();
 
             CheckForCompletedWaves();
