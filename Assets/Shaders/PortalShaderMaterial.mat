@@ -33,10 +33,10 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _DissolveAmount: 1.5
     - _Scale: 3.5
-    - _Speed: 0.5
-    - _TwirlStrength: 25
+    - _Speed: 0.62
+    - _TwirlStrength: 22.79
     m_Colors:
-    - _Color: {r: 29.508848, g: 29.508848, b: 29.508848, a: 0}
+    - _Color: {r: 3.194927, g: 25.273306, b: 22.20674, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2475956104150560986
 MonoBehaviour:
