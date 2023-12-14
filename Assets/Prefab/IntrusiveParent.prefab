@@ -135,28 +135,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lifetime: 4
   textlist:
-  - My friends aren't real, they don't care
-  - My life is empty, everything's tenporary
-  - Why does everything hurt
+  - I am alone
+  - "Nothing last\u2019s forever"
+  - Keep trying
   - My feelings, they're too much
-  - I'm angry at myself, for feeling such bad things
-  - I'm an jerk, no matter how much I hide it
-  - No one cares, whyc should I care
-  - You're like any other horrible monster in this world
-  - I want to scream, but I can't
-  - I hate how I am right now, but how do I leave?
-  - Nothing I say feels like enough, I'm a fraud
-  - I'm not smart, not aware, I'm an empty shell
-  - I know I'm empty, I try to fill it, but I can't
-  - I cry, I yell, I feel rage, yet I feel nothing after
-  - When am I enough, when will it stop
-  - I need to let it out, but how?
-  - I don't even belive my own words
-  - I know what I feel is wrong, but I'm just, trapped
-  - Who cares what I feel, everyone goes through it
-  - Nothing I feel is special
-  - I need to let how I feel out, I can't keep it in
-  - I'm not going anywhere with it though, I can feel myself regressing
+  - I must keep fighting
+  - Tomorrow is a new day
+  - No one cares about me
+  - Maybe the medicine will help
+  - I have people who care, remember that
+  - I feel so stuck
+  - "Don\u2019t give up"
+  - I feel empty
+  - Deep breaths deep breaths
+  - There must be more then this
+  - Will these feelings stop?
+  - How do I let it out?
+  - Could it really get better?
+  - "I\u2019m so tired"
+  - Others have it much worse
+  - Everything feels dull
+  - I cant keep it all in
+  - How I feel will never change
   floatupText: {fileID: 7630714298858624463}
   FloatingText: {fileID: 1003161838296412515}
   Offset: {x: 0, y: 0, z: 0}
