@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -37,5 +38,10 @@ public class PauseMenu : MonoBehaviour
     public void Leave()
     {
         Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadSceneAsync("3DNew");
     }
 }
