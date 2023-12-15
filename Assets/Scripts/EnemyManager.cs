@@ -93,7 +93,7 @@ public class EnemyManager : MonoBehaviour
     {
         //Adjusting to only increase the max range as increassing both made it impossible to quickly
         //minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
-        maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (10 * DifficultyLevel)));
+        maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (30 * DifficultyLevel)));
     }
 
     private void Update()
@@ -213,8 +213,7 @@ public class EnemyManager : MonoBehaviour
     public Text TimerTxt;
     public string MinuiteSecondFormat;
 
-    public List<float> Scores;
-    public float Highscore;
+    //public List<float> Scores;
 
     private void RunTimer()
     {
@@ -258,45 +257,82 @@ public class EnemyManager : MonoBehaviour
     public Text HighscoreText;
 
     bool NewHighscore = false;
+
+    int AllScores;
+    int ScoresBeat = 0;
+
+    public string HighscoreString;
+    public float HighscoreInt;
+
     private void CheckForHighscore()
     {
-        if(Scores.Count == 0)
+        #region Old Format
+        //if(Scores.Count == 0)
+        //{
+        //    Highscore = MinuiteSecondFormat;
+        //    HighscoreText.text = $"New Highscore! {MinuiteSecondFormat}";
+        //    Scores.Add(CurrentTime);
+        //}
+        //else
+        //{
+        //    Scores.Add(CurrentTime);
+
+        //    AllScores = Scores.Count;
+
+        //    foreach (float score in Scores)
+        //    {
+
+        //        if(score > CurrentTime)
+        //        {
+        //            NewHighscore = false;
+        //        }
+        //        else if (score < CurrentTime) 
+        //        {
+        //            Debug.Log($"Previous Score: {score} | Current Score {CurrentTime}");
+        //            ScoresBeat++;
+        //        }
+        //    }
+
+        //    if(ScoresBeat == AllScores)
+        //    {
+        //        NewHighscore = true;
+        //    }
+
+
+        //    if (NewHighscore)
+        //    {
+        //        HighscoreText.text = $"New Highscore! {CurrentTime}";
+        //        Highscore = MinuiteSecondFormat;
+        //    }
+        //    else
+        //    {
+        //        HighscoreText.text = $"Highscore: {Highscore} | Current Score: {MinuiteSecondFormat}";
+        //    }
+        //}
+        #endregion
+
+        float PrefScore = PlayerPrefs.GetFloat("HighscoreFloat", 0);
+
+        if (CurrentTime > PrefScore)//if current time is higher then highscore
         {
-            Highscore = CurrentTime;
+            //new highscore
+            PlayerPrefs.SetFloat("HighscoreFloat", CurrentTime);
             HighscoreText.text = $"New Highscore! {MinuiteSecondFormat}";
-            Scores.Add(CurrentTime);
         }
         else
         {
-            foreach(float score in Scores)
-            {
-                if (score < CurrentTime) 
-                {
-                    Debug.Log($"Previous Score: {score} | Current Score {CurrentTime}");
-                    NewHighscore = true;
-                }
-                else
-                {
-                    NewHighscore = false;
-                    break;
-                }
-            }
+            int m = Mathf.FloorToInt(PrefScore / 60);
+            int s = Mathf.FloorToInt(PrefScore % 60);
 
-            Scores.Add(CurrentTime);
-
-            if (NewHighscore)
-            {
-                HighscoreText.text = $"New Highscore! {CurrentTime}";
-                Highscore = CurrentTime;
-            }
-            else
-            {
-                HighscoreText.text = $"Highscore: {Highscore} | Current Score: {MinuiteSecondFormat}";
-            }
-
-            
-
+            HighscoreText.text = $"Highscore: {m:D2}:{s:D2} | Current Score: {MinuiteSecondFormat}";
         }
+
     }
+
+    public void SaveFloat()
+    {
+        PlayerPrefs.SetFloat("HighscoreFloat", CurrentTime);
+    }
+
     #endregion
 }
