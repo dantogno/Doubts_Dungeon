@@ -82,7 +82,7 @@ public class EnemyManager : MonoBehaviour
 
     private void StartSurvival()
     {
-
+        SpawnAndPlaceEnemies();
     }
 
     private void Update()
@@ -106,8 +106,11 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnAndPlaceEnemies()
     {
-        CurrentWave++;
-        text.text = $"Wave: {CurrentWave}/{NumOfWaves}";
+        if(EnemyState == EnemyState.Waves) 
+        {
+            CurrentWave++;
+            text.text = $"Wave: {CurrentWave}/{NumOfWaves}";
+        }
 
         for (int i = 0; i < spawnpoints.Count; i++ )
         {
@@ -116,7 +119,6 @@ public class EnemyManager : MonoBehaviour
            int inty =  Random.Range(minEnemyVal,maxEnemyVal);
             SpawnSetNumEnemies(inty, enemyPosition);
         }
-
        
     }
 
@@ -139,9 +141,12 @@ public class EnemyManager : MonoBehaviour
         // Remove the destroyed enemy from the list
         enemies.Remove(destroyedEnemy.gameObject);
 
-        if(enemies.Count < roundEnemies)
+        if(EnemyState == EnemyState.Waves)
         {
-            text.text = $"There are {enemies.Count} left";
+            if (enemies.Count < roundEnemies)
+            {
+                text.text = $"There are {enemies.Count} left";
+            }
         }
         
 
@@ -149,9 +154,18 @@ public class EnemyManager : MonoBehaviour
         if(enemies.Count == 0)
         {
             roundEnemies = 0;
-            SpawnWave();
 
-            CheckForCompletedWaves();
+            if(EnemyState == EnemyState.Waves)
+            {
+                SpawnWave();
+
+                CheckForCompletedWaves();
+            }
+            else if(EnemyState == EnemyState.Survival)
+            {
+                SpawnAndPlaceEnemies();
+            }
+            
         }
         //CheckForClearedRoom();
     }
@@ -209,6 +223,7 @@ public class EnemyManager : MonoBehaviour
 
     #endregion
 
+    #region Highscore
     bool NewHighscore = false;
     private void CheckForHighscore()
     {
@@ -243,4 +258,5 @@ public class EnemyManager : MonoBehaviour
             
         }
     }
+    #endregion
 }
