@@ -345,6 +345,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnGameOver()
     {
+        //set something on enemymanager
+        EnemyManager.Instance.StopTimer();
         OnPlayerDeath?.Invoke();
     }
 

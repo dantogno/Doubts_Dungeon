@@ -17,6 +17,7 @@ public enum EnemyState
 
 public class EnemyManager : MonoBehaviour
 {
+    public static EnemyManager Instance;
 
     public EnemyState EnemyState = new EnemyState();
 
@@ -45,6 +46,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         if(EnemyState == EnemyState.Waves)
         {
             NumOfWaves = 5;
@@ -235,7 +237,7 @@ public class EnemyManager : MonoBehaviour
         TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
     }
 
-    private void StopTimer()
+    public void StopTimer()
     {
         TimerOn = false;
         Debug.Log($"Time Reached: {CurrentTime}");
