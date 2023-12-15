@@ -93,7 +93,7 @@ public class EnemyManager : MonoBehaviour
     {
         //Adjusting to only increase the max range as increassing both made it impossible to quickly
         //minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
-        maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (25 * DifficultyLevel)));
+        maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (10 * DifficultyLevel)));
     }
 
     private void Update()
@@ -211,6 +211,7 @@ public class EnemyManager : MonoBehaviour
     public bool TimerOn = false;
 
     public Text TimerTxt;
+    public string MinuiteSecondFormat;
 
     public List<float> Scores;
     public float Highscore;
@@ -238,12 +239,14 @@ public class EnemyManager : MonoBehaviour
         }
 
         TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
+
+        MinuiteSecondFormat = $"{minutes:D2}:{seconds:D2}";
     }
 
     public void StopTimer()
     {
         TimerOn = false;
-        Debug.Log($"Time Reached: {CurrentTime}");
+        Debug.Log($"Time Reached: {MinuiteSecondFormat}");
         CheckForHighscore();
         CurrentTime = 0;
     }
@@ -252,7 +255,7 @@ public class EnemyManager : MonoBehaviour
 
     #region Highscore
 
-    public TextMesh HighscoreText;
+    public Text HighscoreText;
 
     bool NewHighscore = false;
     private void CheckForHighscore()
@@ -260,7 +263,7 @@ public class EnemyManager : MonoBehaviour
         if(Scores.Count == 0)
         {
             Highscore = CurrentTime;
-            HighscoreText.text = $"New Highscore! {CurrentTime}";
+            HighscoreText.text = $"New Highscore! {MinuiteSecondFormat}";
             Scores.Add(CurrentTime);
         }
         else
@@ -271,7 +274,6 @@ public class EnemyManager : MonoBehaviour
                 {
                     Debug.Log($"Previous Score: {score} | Current Score {CurrentTime}");
                     NewHighscore = true;
-                    continue;
                 }
                 else
                 {
@@ -287,7 +289,13 @@ public class EnemyManager : MonoBehaviour
                 HighscoreText.text = $"New Highscore! {CurrentTime}";
                 Highscore = CurrentTime;
             }
+            else
+            {
+                HighscoreText.text = $"Highscore: {Highscore} | Current Score: {MinuiteSecondFormat}";
+            }
+
             
+
         }
     }
     #endregion
