@@ -9,8 +9,16 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
+public enum EnemyState
+{
+    Waves,
+    Survival
+}
+
 public class EnemyManager : MonoBehaviour
 {
+
+    public EnemyState EnemyState = new EnemyState();
 
     public GameObject tallEnemyPrefab;
     public int minEnemyVal;
@@ -37,12 +45,20 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        if(EnemyState == EnemyState.Waves)
+        {
+            NumOfWaves = 5;
+            CurrentWave = 0;
 
-        NumOfWaves = 5;
-        CurrentWave = 0;
-
-        // Spawn and place enemies
-        SpawnWave();
+            // Spawn and place enemies
+            SpawnWave();
+        }
+        
+        if(EnemyState == EnemyState.Survival)
+        {
+            TimerOn = true;
+            StartSurvival();
+        }
 
 
         //foreach (var enemy in enemies)
@@ -64,6 +80,11 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    private void StartSurvival()
+    {
+
+    }
+
     private void Update()
     {
         //CheckForClearedRoom();
@@ -75,17 +96,13 @@ public class EnemyManager : MonoBehaviour
                 if (enemyComponent != null)
                     enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
             }
-            //foreach (var enemy in enemies)
-            //{
-            //    Enemy enemyComponent = enemy.GetComponent<Enemy>();
-            //    if (enemyComponent != null)
-            //        enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
-            //}
-            //Be careful with foreach statments
         }
-        
     }
 
+    private void FixedUpdate()
+    {
+        if (EnemyState == EnemyState.Survival) { RunTimer(); }
+    }
 
     private void SpawnAndPlaceEnemies()
     {
@@ -154,6 +171,76 @@ public class EnemyManager : MonoBehaviour
         {
             text.text = "The waves are cleared!";
             Destroy(levelDoor);
+        }
+    }
+
+    #region Timer
+
+    public float CurrentTime;
+    public bool TimerOn = false;
+
+    public Text TimerTxt;
+
+    public List<float> Scores;
+    public float Highscore;
+
+    private void RunTimer()
+    {
+        CurrentTime += Time.deltaTime;
+        ConvertToMinutes(CurrentTime);
+    }
+
+    int minuites, seconds;
+    private void ConvertToMinutes(float time)
+    {
+        minuites = Mathf.FloorToInt(CurrentTime / 60);
+        seconds = Mathf.FloorToInt(CurrentTime % 60);
+
+        TimerTxt.text = $"{minuites:D2}:{seconds:D2}";
+    }
+
+    private void StopTimer()
+    {
+        TimerOn = false;
+        Debug.Log($"Time Reached: {CurrentTime}");
+        CheckForHighscore();
+        CurrentTime = 0;
+    }
+
+    #endregion
+
+    bool NewHighscore = false;
+    private void CheckForHighscore()
+    {
+        if(Scores.Count == 0)
+        {
+            Highscore = CurrentTime;
+            Scores.Add(CurrentTime);
+        }
+        else
+        {
+            foreach(float score in Scores)
+            {
+                if (score < CurrentTime) 
+                {
+                    Debug.Log($"Previous Score: {score} | Current Score {CurrentTime}");
+                    NewHighscore = true;
+                    continue;
+                }
+                else
+                {
+                    NewHighscore = false;
+                    break;
+                }
+            }
+
+            Scores.Add(CurrentTime);
+
+            if (NewHighscore)
+            {
+                Highscore = CurrentTime;
+            }
+            
         }
     }
 }
