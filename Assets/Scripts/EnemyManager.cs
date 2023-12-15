@@ -89,7 +89,8 @@ public class EnemyManager : MonoBehaviour
 
     private void DifficultyIncreassed()
     {
-        minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
+        //Adjusting to only increase the max range as increassing both made it impossible to quickly
+        //minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
         maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (25 * DifficultyLevel)));
     }
 
