@@ -60,8 +60,6 @@ public class EnemyManager : MonoBehaviour
             StartSurvival();
         }
 
-
-        //foreach (var enemy in enemies)
         for (int i = 0; i < enemies.Count; i++)
         {
             Enemy enemyComponent = enemies[i].GetComponent<Enemy>();
@@ -80,9 +78,19 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    public int DifficultyLevel = 1;
+    public int DifficultyDuration = 30;//30 seconds
+    public int CurrentDuration = 30;
+
     private void StartSurvival()
     {
         SpawnAndPlaceEnemies();
+    }
+
+    private void DifficultyIncreassed()
+    {
+        minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
+        maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (25 * DifficultyLevel)));
     }
 
     private void Update()
@@ -101,7 +109,10 @@ public class EnemyManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (EnemyState == EnemyState.Survival) { RunTimer(); }
+        if (EnemyState == EnemyState.Survival) 
+        {
+            RunTimer(); 
+        }
     }
 
     private void SpawnAndPlaceEnemies()
@@ -204,13 +215,21 @@ public class EnemyManager : MonoBehaviour
         ConvertToMinutes(CurrentTime);
     }
 
-    int minuites, seconds;
+    int minuites, seconds, unconvertedSeconds;
     private void ConvertToMinutes(float time)
     {
-        minuites = Mathf.FloorToInt(CurrentTime / 60);
-        seconds = Mathf.FloorToInt(CurrentTime % 60);
+        minuites = Mathf.FloorToInt(time / 60);
+        seconds = Mathf.FloorToInt(time % 60);
 
-        TimerTxt.text = $"{minuites:D2}:{seconds:D2}";
+        if (CurrentTime >= CurrentDuration)
+        {
+            DifficultyLevel++;
+            DifficultyIncreassed();
+
+            CurrentDuration += seconds;
+        }
+
+        TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minuites:D2}:{seconds:D2}";
     }
 
     private void StopTimer()
