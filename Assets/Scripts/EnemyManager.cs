@@ -215,21 +215,23 @@ public class EnemyManager : MonoBehaviour
         ConvertToMinutes(CurrentTime);
     }
 
-    int minuites, seconds, unconvertedSeconds;
+    int minutes, seconds, totalSeconds;
     private void ConvertToMinutes(float time)
     {
-        minuites = Mathf.FloorToInt(time / 60);
+        minutes = Mathf.FloorToInt(time / 60);
         seconds = Mathf.FloorToInt(time % 60);
 
-        if (CurrentTime >= CurrentDuration)
+        totalSeconds = minutes * 60 + seconds; // Convert minutes back to seconds and add to remaining seconds
+
+        if (totalSeconds >= CurrentDuration)
         {
             DifficultyLevel++;
             DifficultyIncreassed();
 
-            CurrentDuration += seconds;
+            CurrentDuration += CurrentDuration;
         }
 
-        TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minuites:D2}:{seconds:D2}";
+        TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
     }
 
     private void StopTimer()
