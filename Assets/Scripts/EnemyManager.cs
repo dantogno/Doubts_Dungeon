@@ -114,7 +114,10 @@ public class EnemyManager : MonoBehaviour
     {
         if (EnemyState == EnemyState.Survival) 
         {
-            RunTimer(); 
+            if (TimerOn)
+            {
+                RunTimer();
+            }
         }
     }
 
@@ -248,12 +251,16 @@ public class EnemyManager : MonoBehaviour
     #endregion
 
     #region Highscore
+
+    public TextMesh HighscoreText;
+
     bool NewHighscore = false;
     private void CheckForHighscore()
     {
         if(Scores.Count == 0)
         {
             Highscore = CurrentTime;
+            HighscoreText.text = $"New Highscore! {CurrentTime}";
             Scores.Add(CurrentTime);
         }
         else
@@ -277,6 +284,7 @@ public class EnemyManager : MonoBehaviour
 
             if (NewHighscore)
             {
+                HighscoreText.text = $"New Highscore! {CurrentTime}";
                 Highscore = CurrentTime;
             }
             
