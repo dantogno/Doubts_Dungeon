@@ -13,6 +13,18 @@ PrefabInstance:
       value: Menty Phantom Player Comp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4906406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4906406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4906406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.47
       objectReference: {fileID: 0}
