@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Animations;
 
+//Needed!
 public class EnvironmentTrigger : MonoBehaviour
 {
     public float Lifetime = 3f;
