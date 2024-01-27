@@ -54,7 +54,9 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.05f;
 
-    private bool canTakeDamage = true;
+    //Made this public so trap can check if player can take damage, probably better way to do this
+    public bool canTakeDamage = true;
+
     public float damageCooldownDuration = 1f;
 
     public float decelerationFactor = 10.0f; // Adjust the value as needed
@@ -309,14 +311,19 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canTakeDamage)
             {
-                canTakeDamage = false;
-                StartCoroutine(DamageCooldown());
-                // Reduce player's health when colliding with an enemy
-                TakeDamage(1);
-                
+                PlayerHasBeenHit();
             }
 
         }
+    }
+
+    //made this so other damaging classes can acesss, need feedback if this is fine - Marco
+    public void PlayerHasBeenHit()
+    {
+        canTakeDamage = false;
+        StartCoroutine(DamageCooldown());
+        // Reduce player's health when colliding with an enemy
+        TakeDamage(1);
     }
 
     private IEnumerator DamageCooldown()
@@ -325,6 +332,7 @@ public class PlayerMovement : MonoBehaviour
         canTakeDamage = true; // Allow taking damage again after cooldown
     }
 
+    //Made take damage public so trap could access it, may also need to be refactored
     void TakeDamage(int damage)
     {
         if(health> 0)
