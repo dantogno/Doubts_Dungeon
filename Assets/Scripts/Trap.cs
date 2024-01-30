@@ -12,9 +12,6 @@ public class Trap : MonoBehaviour
     [SerializeField]
     private float TrapCooldownTime;
 
-    
-    public bool IsTrapActive;
-
     [SerializeField]
     public Animator TrapAni;
 
