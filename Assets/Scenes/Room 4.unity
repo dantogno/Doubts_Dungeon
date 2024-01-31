@@ -2015,6 +2015,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae936061d7f9b754e8bcfcf4c4e4ab27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &226089126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 70895637087271346, guid: 623747d8c16922b41b32231015333675, type: 3}
+  m_PrefabInstance: {fileID: 226089124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &251259035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,9 +2591,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1372447098}
     - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
+      propertyPath: TimerTxt
+      value: 
+      objectReference: {fileID: 1372447098}
+    - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
+      propertyPath: HighscoreText
+      value: 
+      objectReference: {fileID: 226089126}
+    - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
+      propertyPath: tallEnemyPrefab
+      value: 
+      objectReference: {fileID: 8650121548184644653, guid: c57d83670972c044d8a2b53b16972fcb, type: 3}
+    - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
+      propertyPath: shortEnemyPrefab
+      value: 
+      objectReference: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
     - target: {fileID: 7906177454541077625, guid: 252eac7d6019c6e4ba7acbc7487bbb7d, type: 3}
       propertyPath: spawnpoints.Array.size
       value: 4
@@ -19705,7 +19732,7 @@ GameObject:
   - component: {fileID: 1675225566}
   m_Layer: 0
   m_Name: Trap
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19833,7 +19860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 425744424}
   TrapCooldownTime: 3
-  IsTrapActive: 0
   TrapAni: {fileID: 1675225566}
 --- !u!1 &1690783148
 GameObject:
@@ -21726,7 +21752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrapRef: {fileID: 1675225567}
-  traptriggered: 0
 --- !u!1 &1886072230
 GameObject:
   m_ObjectHideFlags: 0

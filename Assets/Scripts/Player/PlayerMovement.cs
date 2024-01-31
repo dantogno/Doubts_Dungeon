@@ -307,6 +307,13 @@ public class PlayerMovement : Player
             }
 
         }
+        else if (collision.gameObject.CompareTag("Trap"))
+        {
+            if (canTakeDamage)
+            {
+                PlayerHasBeenHit();
+            }
+        }
     }
 
     //made this so other damaging classes can acesss, need feedback if this is fine - Marco
