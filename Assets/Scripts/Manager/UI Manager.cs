@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public Player player;
     public Image[] TotalHearts;
+    public TextMeshProUGUI healthPickups;
     public int health;
     public int maxhealth;
 
@@ -37,5 +39,12 @@ public class UIManager : MonoBehaviour
                 TotalHearts[i].enabled = false;
             }
         }
+
+        UpdateHealthPickups();
+    }
+
+    private void UpdateHealthPickups()
+    {
+        healthPickups.text = $"Stabalizers: {player.healthPickups}";
     }
 }

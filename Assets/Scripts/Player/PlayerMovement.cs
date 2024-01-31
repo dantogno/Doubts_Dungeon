@@ -79,7 +79,8 @@ public class PlayerMovement : Player
         }
 
         // Check if the player wants to sprint
-        CheckForSprint();
+        //CheckForSprint();
+        CheckForHealthPickup();
 
         CheckForDodge();
 
@@ -181,42 +182,42 @@ public class PlayerMovement : Player
 
     #region Sprint
 
-    internal void CheckForSprint()
-    {
-        if (Input.GetButtonDown("Sprint") && !isSprinting)
-        {
-            if (Stamina.UseStamina(1))
-            {
-                isSprinting = true;
-                //stateManager.ActionState = ActionState.Sprint;
-            }
-            else
-            {
-                isSprinting = false;
-                //stateManager.ActionState = ActionState.Idle;
-            }
+    //internal void CheckForSprint()
+    //{
+    //    if (Input.GetButtonDown("Sprint") && !isSprinting)
+    //    {
+    //        if (Stamina.UseStamina(1))
+    //        {
+    //            isSprinting = true;
+    //            //stateManager.ActionState = ActionState.Sprint;
+    //        }
+    //        else
+    //        {
+    //            isSprinting = false;
+    //            //stateManager.ActionState = ActionState.Idle;
+    //        }
 
-        }
+    //    }
 
-        if (Input.GetButtonUp("Sprint") && isSprinting) { isSprinting = false; }
+    //    if (Input.GetButtonUp("Sprint") && isSprinting) { isSprinting = false; }
 
-        if (isSprinting)
-        {
-            if (Stamina.UseStamina(.25f))
-            {
-                isSprinting = true;
-            }
-            else { isSprinting = false; }
-        }
-        else
-        {
-            if (Stamina.GetCurrentStamina() <= 0)
-            {
-                transform.position = transform.position;
-            }
+    //    if (isSprinting)
+    //    {
+    //        if (Stamina.UseStamina(.25f))
+    //        {
+    //            isSprinting = true;
+    //        }
+    //        else { isSprinting = false; }
+    //    }
+    //    else
+    //    {
+    //        if (Stamina.GetCurrentStamina() <= 0)
+    //        {
+    //            transform.position = transform.position;
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     #endregion
 
@@ -285,6 +286,16 @@ public class PlayerMovement : Player
         }
     }
 
+    #endregion
+
+    #region Health Pickup
+    internal void CheckForHealthPickup()
+    {
+        if (Input.GetButtonDown("Sprint"))
+        {
+            UseHealth();
+        }
+    }
     #endregion
 
     internal void RecoverStamina()

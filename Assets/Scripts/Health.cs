@@ -14,12 +14,9 @@ public class Health : MonoBehaviour
         {
             playerref = other.GetComponent<Player>();
 
-            if(playerref.GetHealth() < 3)
-            {
-                playerref.GainHealth(healthamount);
+            playerref.PickupHealth();
 
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 }
