@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public PlayerMovement Player;
+    public Player player;
     public Image[] TotalHearts;
     public int health;
     public int maxhealth;
 
     void Update()
     {
-        health = Player.health;
-        maxhealth = Player.maxhealth;
+        health = player.GetHealth();
+        maxhealth = player.GetMaxHealth();
 
         for (int i = 0; i < TotalHearts.Length; i++)
         {

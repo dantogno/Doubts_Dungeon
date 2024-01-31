@@ -5,18 +5,18 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int healthamount;
-    private PlayerMovement playerref;
+    private Player playerref;
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerref = other.GetComponent<PlayerMovement>();
+            playerref = other.GetComponent<Player>();
 
-            if(playerref.health < 3)
+            if(playerref.GetHealth() < 3)
             {
-                playerref.health += healthamount;
+                playerref.GainHealth(healthamount);
 
                 Destroy(gameObject);
             }

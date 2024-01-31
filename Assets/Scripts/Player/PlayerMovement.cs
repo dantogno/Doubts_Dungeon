@@ -7,8 +7,11 @@ using Cinemachine;
 using Unity.Burst.CompilerServices;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Player
 {
+    private PlayerMovement PlayerMove;
+
+
     [Header("Camera Properties")]
     [SerializeField]
     GameObject VirtualCamera;
@@ -20,19 +23,14 @@ public class PlayerMovement : MonoBehaviour
 
     CinemachineVirtualCamera CMVcam;
 
-    //[Header("Movement Properties")]
-    
-    //PlayerStateManager stateManager;
-
     public static event Action OnPlayerDeath;
 
-    private PlayerMovement Player;
-
-    public int health = 3;
-    public int maxhealth = 3;
-
     
-    //public MeshRenderer playerheight;
+
+    //public int health = 3;
+    //public int maxhealth = 3;
+
+
 
     public StaminaScript Stamina;
 
@@ -54,34 +52,28 @@ public class PlayerMovement : MonoBehaviour
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.05f;
 
-    //Made this public so trap can check if player can take damage, probably better way to do this
-    public bool canTakeDamage = true;
+    ////Made this public so trap can check if player can take damage, probably better way to do this
+    //public bool canTakeDamage = true;
 
-    public float damageCooldownDuration = 1f;
+    //public float damageCooldownDuration = 1f;
 
     public float decelerationFactor = 10.0f; // Adjust the value as needed
 
     Plane plane;
 
-    //float playerHeight;
-
     [SerializeField]
     public bool usingController;
     void Start()
     {
-        Player = GetComponent<PlayerMovement>();
+        PlayerMove = GetComponent<PlayerMovement>();
+        //player = GetComponent<Player>();
         plane = new Plane(Vector3.down, transform.position.y);
-        //stateManager = PlayerStateManager.instance;
-        //this.ActionState = ActionState.Default;
-        //playerHeight =  playerheight.GetComponent<MeshRenderer>().bounds.max.y;
         CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
-    
-
     }
 
     void Update()
     {
-        if (health == 0)
+        if (GetHealth() == 0)
         {
             OnGameOver();
         }
@@ -93,16 +85,17 @@ public class PlayerMovement : MonoBehaviour
 
         RecoverStamina();
 
-        if (PlayerStateManager.instance.ActionState != ActionState.Attack)
+        //if (PlayerStateManager.instance.ActionState != ActionState.Attack)
+        //{
+            
+        //}
+        if (usingController)
         {
-            if (usingController)
-            {
-                JoystickAim();
-            }
-            else
-            {
-                LookAtMouse();
-            }
+            JoystickAim();
+        }
+        else
+        {
+            LookAtMouse();
         }
         UpdateShakeTimer();
     }
@@ -123,11 +116,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(PlayerStateManager.instance.ActionState != ActionState.Attack)
-        {
-            Movement();
-        }
-        
+        //if(PlayerStateManager.instance.ActionState != ActionState.Attack)
+        //{
+            
+        //}
+        Movement();
+
     }
 
     Vector3 getCameraForward()
@@ -184,8 +178,6 @@ public class PlayerMovement : MonoBehaviour
         }
         return move;
     }
-
-    
 
     #region Sprint
 
@@ -323,7 +315,7 @@ public class PlayerMovement : MonoBehaviour
         canTakeDamage = false;
         StartCoroutine(DamageCooldown());
         // Reduce player's health when colliding with an enemy
-        TakeDamage(1);
+        ManageDamage(1);
     }
 
     private IEnumerator DamageCooldown()
@@ -333,16 +325,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Made take damage public so trap could access it, may also need to be refactored
-    void TakeDamage(int damage)
+    void ManageDamage(int damage)
     {
-        if(health> 0)
+        if(GetHealth() > 0)
         {
-            health -= damage;
-            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)health / (float)maxhealth);
+            TakeDamage(damage);
+
+            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
             canTakeDamage = true;
             ShakeCamera();
             // Check for player death
-            if (health == 0)
+            if (GetHealth() == 0)
             {
                 StopCameraShake();
                 OnGameOver();
@@ -370,7 +363,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisablePlayer()
     {
-        Player.enabled = false;
+        PlayerMove.enabled = false;
     }
     #endregion
 
