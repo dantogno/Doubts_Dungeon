@@ -31,14 +31,15 @@ public class ProjectileScript : MonoBehaviour
         {
             if (Time.time >= nextFireTime)
             {
-                if (movementScript.inputType == InputType.Controller)
-                {
-                    FireWithGamepad();
-                }
-                else
-                {
-                    FireWithMouse();
-                }
+                FireWithMouse();
+                //if (movementScript.inputType == InputType.Controller)
+                //{
+                //    FireWithGamepad();
+                //}
+                //else
+                //{
+                //    FireWithMouse();
+                //}
                 nextFireTime = Time.time + steadyFireRate; // Use steady fire rate when holding
             }
         }

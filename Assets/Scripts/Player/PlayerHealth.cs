@@ -13,13 +13,14 @@ public class PlayerHealth : MonoBehaviour
     public bool canTakeDamage = true;
 
     public float damageCooldownDuration = 1f;
-
-    CameraEffect CE;
+    
 
     public void Update()
     {
         CheckForHealthPickup();
     }
+
+    
 
     public int GetHealth()
     {
@@ -81,11 +82,11 @@ public class PlayerHealth : MonoBehaviour
 
             MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
             canTakeDamage = true;
-            CE.ShakeCamera();
+            //ShakeCamera();
             // Check for player death
             if (GetHealth() == 0)
             {
-                CE.StopCameraShake();
+                //CE.StopCameraShake();
                 //OnGameOver();
             }
 

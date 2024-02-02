@@ -5,14 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int healthamount;
-    private Player playerref;
+    private PlayerHealth playerref;
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerref = other.GetComponent<Player>();
+            playerref = other.GetComponent<PlayerHealth>();
 
             playerref.PickupHealth();
 
