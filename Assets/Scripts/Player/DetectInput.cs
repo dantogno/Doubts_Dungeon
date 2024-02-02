@@ -17,11 +17,11 @@ public class DetectInput : MonoBehaviour
     {
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 || Input.GetMouseButtonDown(0))
         {
-            moveScript.usingController = false;
+            moveScript.inputType = InputType.Keyboard;
         }
         if(Input.GetAxisRaw("LSHorizontal") != 0 || Input.GetAxisRaw("RSHorizontal") != 0)
         {
-            moveScript.usingController = true;
+            moveScript.inputType = InputType.Controller;
         }
     }
 

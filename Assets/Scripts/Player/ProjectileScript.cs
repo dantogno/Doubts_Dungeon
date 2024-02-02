@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    PlayerStateManager stateManager;
     public Transform firingPoint; // The 3D firing point transform
     public GameObject projectilePrefab; // The projectile prefab to instantiate
     public float projectileSpeed = 10f; // Speed of the projectile
@@ -18,13 +17,12 @@ public class ProjectileScript : MonoBehaviour
     Plane plane;
 
     PlayerMovement movementScript;
+    ShootBehavior SB;
 
     private void Start()
     {
-        //create a plane, pass in down for the in-normal, which is the opposite way the plane faces for some reason. apply the players y position as an offset
         plane = new Plane(Vector3.down, firingPoint.position.y);
-        stateManager = PlayerStateManager.instance;
-        movementScript = GetComponent<PlayerMovement>();
+        SB = GetComponent<ShootBehavior>();
     }
 
     void Update()
@@ -33,7 +31,7 @@ public class ProjectileScript : MonoBehaviour
         {
             if (Time.time >= nextFireTime)
             {
-                if (movementScript.usingController)
+                if (movementScript.inputType == InputType.Controller)
                 {
                     FireWithGamepad();
                 }
@@ -103,10 +101,10 @@ public class ProjectileScript : MonoBehaviour
 
     void FireWithGamepad()
     {
-        Vector3 direction = movementScript.GetJoystickAimDirection();
+        Vector3 direction = SB.GetJoystickAimDirection();
         if(direction == Vector3.zero)
         {
-            direction =movementScript.transform.forward;
+            direction = transform.forward;
         }
         // Create a new instance of the projectile
         GameObject projectile = Instantiate(projectilePrefab, firingPoint.position, Quaternion.LookRotation(direction, Vector3.up));

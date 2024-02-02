@@ -29,6 +29,11 @@ public class StaminaScript : MonoBehaviour
         staminaBar.value = maxStamina;
     }
 
+    private void Update()
+    {
+        RecoverStamina();
+    }
+
     public bool UseStamina(float amount)
     {
         if(currentStamina - amount >= 0)

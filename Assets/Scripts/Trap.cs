@@ -6,7 +6,7 @@ using UnityEngine.Animations;
 public class Trap : MonoBehaviour
 {
     [SerializeField]
-    private PlayerMovement Player;
+    private PlayerHealth PH;
 
  
     [SerializeField]
@@ -24,7 +24,7 @@ public class Trap : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Player.PlayerHasBeenHit();
+            PH.PlayerHasBeenHit();
         }
     }
 

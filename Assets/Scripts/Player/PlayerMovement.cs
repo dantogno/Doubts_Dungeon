@@ -7,21 +7,10 @@ using Cinemachine;
 using Unity.Burst.CompilerServices;
 using TMPro;
 
-public class PlayerMovement : Player
+public class PlayerMovement : MonoBehaviour
 {
-    private PlayerMovement PlayerMove;
-
-
-    [Header("Camera Properties")]
     [SerializeField]
-    GameObject VirtualCamera;
-    [SerializeField]
-    float ShakeIntensity;
-    [SerializeField]
-    float totalShakeTime;
-    float shakeTimer;
-
-    CinemachineVirtualCamera CMVcam;
+    public InputType inputType;
 
     public static event Action OnPlayerDeath;
 
@@ -32,17 +21,11 @@ public class PlayerMovement : Player
     private Animator playerAnimator;
 
     public float Speed = 8f;
-    //private bool isSprinting = false;
 
     public float rotationSpeed = 360.0f;
 
     public float dodgeDistance = 2.5f;
     public float dodgeDuration = 0.05f;
-
-    ////Made this public so trap can check if player can take damage, probably better way to do this
-    //public bool canTakeDamage = true;
-
-    //public float damageCooldownDuration = 1f;
 
     public float decelerationFactor = 10.0f; // Adjust the value as needed
 
@@ -52,64 +35,32 @@ public class PlayerMovement : Player
     public bool usingController;
     void Start()
     {
-        PlayerMove = GetComponent<PlayerMovement>();
-        //player = GetComponent<Player>();
         plane = new Plane(Vector3.down, transform.position.y);
-        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
     }
 
     void Update()
     {
-        if (GetHealth() == 0)
-        {
-            OnGameOver();
-        }
-
-        // Check if the player wants to sprint
-        //CheckForSprint();
-        CheckForHealthPickup();
+        //if (GetHealth() == 0)
+        //{
+        //    OnGameOver();//Game Manager
+        //}
 
         CheckForDodge();
 
-        RecoverStamina();
-
-        //if (PlayerStateManager.instance.ActionState != ActionState.Attack)
-        //{
-            
-        //}
         if (usingController)
         {
-            JoystickAim();
+            //JoystickAim();
         }
         else
         {
             LookAtMouse();
         }
-        UpdateShakeTimer();
-    }
 
-    private void JoystickAim()
-    {
-        Vector3 JoystickAimDirection = GetJoystickAimDirection();
-        if(JoystickAimDirection.sqrMagnitude > 0.0f)
-        {
-            transform.rotation = Quaternion.LookRotation(JoystickAimDirection , Vector3.up);
-        }
-    }
-
-    public Vector3 GetJoystickAimDirection()
-    {
-        return getCameraRight() * Input.GetAxisRaw("RSHorizontal") + getCameraForward() * Input.GetAxisRaw("RSVertical");
     }
 
     private void FixedUpdate()
     {
-        //if(PlayerStateManager.instance.ActionState != ActionState.Attack)
-        //{
-            
-        //}
         Movement();
-
     }
 
     Vector3 getCameraForward()
@@ -137,7 +88,6 @@ public class PlayerMovement : Player
     {
         // Movement
         float currentSpeed = Speed;
-        
 
         // Calculate movement direction based on camera's perspective
         Vector3 cameraForward = getCameraForward();
@@ -155,18 +105,18 @@ public class PlayerMovement : Player
     private Vector3 getMoveVector(Vector3 cameraForward, Vector3 cameraRight)
     {
         Vector3 move = Vector3.zero;
-        if (usingController)
-        {
-            move = (Input.GetAxisRaw("LSVertical") * cameraForward + Input.GetAxisRaw("LSHorizontal") * cameraRight).normalized;
-        }
-        else
-        {
+        //if (GameManager.usingController)
+        //{
+        //    move = (Input.GetAxisRaw("LSVertical") * cameraForward + Input.GetAxisRaw("LSHorizontal") * cameraRight).normalized;
+        //}
+        //else
+        //{
             // Calculate the movement direction based on input and camera orientation
             move = (Input.GetAxisRaw("Vertical") * cameraForward + Input.GetAxisRaw("Horizontal") * cameraRight).normalized;
-        }
+        //}
         return move;
     }
-
+    //Movement
     #region Dodge
     internal void CheckForDodge()
     {
@@ -185,10 +135,6 @@ public class PlayerMovement : Player
     //make distance of the raycast be dodge distance, so if nothing hti move to end of raycast
     internal void Dodge()
     {
-        //stateManager.ActionState = ActionState.Dodge;
-
-        //Vector3 dodgeDirection = transform.forward;
-
         // Get input from WASD keys
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -242,101 +188,35 @@ public class PlayerMovement : Player
 
     #endregion
 
-    #region Health Pickup
-    internal void CheckForHealthPickup()
-    {
-        if (Input.GetButtonDown("UseHealth"))
-        {
-            Debug.Log("Player hit: UseHealth | E key");
-            UseHealth();
-        }
-    }
-    #endregion
 
-    internal void RecoverStamina()
-    {
-        Stamina.RecoverStamina();
-    }
+    //------------------------------------------------------------------
+    //------------------------------------------------------------------
 
-    #region Collision Damage & Death
+    //Game Manager
+    //public void OnGameOver()
+    //{
+    //    //set something on enemymanager
+    //    EnemyManager.Instance.StopTimer();
+    //    OnPlayerDeath?.Invoke();
+    //}
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Enemies"))
-        {
-            if (canTakeDamage)
-            {
-                PlayerHasBeenHit();
-            }
-
-        }
-        else if (collision.gameObject.CompareTag("Trap"))
-        {
-            if (canTakeDamage)
-            {
-                PlayerHasBeenHit();
-            }
-        }
-    }
-
-    //made this so other damaging classes can acesss, need feedback if this is fine - Marco
-    public void PlayerHasBeenHit()
-    {
-        canTakeDamage = false;
-        StartCoroutine(DamageCooldown());
-        // Reduce player's health when colliding with an enemy
-        ManageDamage(1);
-    }
-
-    private IEnumerator DamageCooldown()
-    {
-        yield return new WaitForSeconds(damageCooldownDuration);
-        canTakeDamage = true; // Allow taking damage again after cooldown
-    }
-
-    //Made take damage public so trap could access it, may also need to be refactored
-    void ManageDamage(int damage)
-    {
-        if(GetHealth() > 0)
-        {
-            TakeDamage(damage);
-
-            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
-            canTakeDamage = true;
-            ShakeCamera();
-            // Check for player death
-            if (GetHealth() == 0)
-            {
-                StopCameraShake();
-                OnGameOver();
-            }
-
-        }
-    }
-
-    public void OnGameOver()
-    {
-        //set something on enemymanager
-        EnemyManager.Instance.StopTimer();
-        OnPlayerDeath?.Invoke();
-    }
-
+    
     private void OnEnable()
     {
-        PlayerMovement.OnPlayerDeath += DisablePlayer;
+        OnPlayerDeath += DisablePlayer;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.OnPlayerDeath -= DisablePlayer;
+        OnPlayerDeath -= DisablePlayer;
     }
 
     public void DisablePlayer()
     {
-        PlayerMove.enabled = false;
+        enabled = false;
     }
-    #endregion
 
+    //In movement
     #region Mouse
 
     Vector3 targPos;
@@ -368,41 +248,5 @@ public class PlayerMovement : Player
     }
     #endregion
 
-    #region Camera
-
-    public void ShakeCamera()
-    {
-        CinemachineBasicMultiChannelPerlin noise = CMVcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        noise.m_AmplitudeGain = ShakeIntensity;
-        noise.m_FrequencyGain = 5;
-        shakeTimer = totalShakeTime;
-    }
-
-    public void StopCameraShake()
-    {
-        CinemachineBasicMultiChannelPerlin noise = CMVcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        noise.m_AmplitudeGain = 0;
-        noise.m_FrequencyGain = 0;
-    }
-
-    void UpdateShakeTimer()
-    {
-        if(shakeTimer > 0)
-        {
-            shakeTimer -= Time.deltaTime;
-            if (shakeTimer <= 0)
-            {
-                StopCameraShake();
-            }
-        }
-    }
-
-    #endregion
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(targPos, 0.1f);
-        Debug.DrawLine(transform.position, targPos, Color.cyan);
-    }
 
 }
