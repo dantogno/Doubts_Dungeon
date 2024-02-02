@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
         OnPlayerDeath -= DisablePlayer;
     }
 
-    public void DisablePlayer()
+    public void DisablePlayer() // for when the player dies so they don't keep moving around
     {
         enabled = false;
     }
