@@ -180,52 +180,12 @@ public class PlayerMovement : Player
         return move;
     }
 
-    #region Sprint
-
-    //internal void CheckForSprint()
-    //{
-    //    if (Input.GetButtonDown("Sprint") && !isSprinting)
-    //    {
-    //        if (Stamina.UseStamina(1))
-    //        {
-    //            isSprinting = true;
-    //            //stateManager.ActionState = ActionState.Sprint;
-    //        }
-    //        else
-    //        {
-    //            isSprinting = false;
-    //            //stateManager.ActionState = ActionState.Idle;
-    //        }
-
-    //    }
-
-    //    if (Input.GetButtonUp("Sprint") && isSprinting) { isSprinting = false; }
-
-    //    if (isSprinting)
-    //    {
-    //        if (Stamina.UseStamina(.25f))
-    //        {
-    //            isSprinting = true;
-    //        }
-    //        else { isSprinting = false; }
-    //    }
-    //    else
-    //    {
-    //        if (Stamina.GetCurrentStamina() <= 0)
-    //        {
-    //            transform.position = transform.position;
-    //        }
-
-    //    }
-    //}
-
-    #endregion
-
     #region Dodge
     internal void CheckForDodge()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Dodge"))
         {
+            Debug.Log("Player hit: Dodge | left shift key");
             if (Stamina.UseStamina(25))
             {
                 Dodge();
@@ -240,7 +200,14 @@ public class PlayerMovement : Player
     {
         //stateManager.ActionState = ActionState.Dodge;
 
-        Vector3 dodgeDirection = transform.forward;
+        //Vector3 dodgeDirection = transform.forward;
+
+        // Get input from WASD keys
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Construct dodge direction from input
+        Vector3 dodgeDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
         RaycastHit hit;
         Ray dodgeRay = new Ray(transform.position, dodgeDirection);
@@ -291,8 +258,9 @@ public class PlayerMovement : Player
     #region Health Pickup
     internal void CheckForHealthPickup()
     {
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButtonDown("UseHealth"))
         {
+            Debug.Log("Player hit: UseHealth | E key");
             UseHealth();
         }
     }
