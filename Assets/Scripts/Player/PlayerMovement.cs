@@ -9,7 +9,7 @@ using TMPro;
 
 public class PlayerMovement : Player
 {
-    private PlayerMovement PlayerMove;
+   private PlayerMovement PlayerMove;
 
 
     [Header("Camera Properties")]
@@ -331,7 +331,7 @@ public class PlayerMovement : Player
         PlayerMovement.OnPlayerDeath -= DisablePlayer;
     }
 
-    public void DisablePlayer()
+    public void DisablePlayer() // for when the player dies so they don't keep moving around
     {
         PlayerMove.enabled = false;
     }
