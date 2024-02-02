@@ -25,27 +25,14 @@ public class PlayerMovement : Player
 
     public static event Action OnPlayerDeath;
 
-    
-
-    //public int health = 3;
-    //public int maxhealth = 3;
-
-
 
     public StaminaScript Stamina;
 
     [SerializeField]
     private Animator playerAnimator;
 
-    private const string IsWalking = "IsWalking";
-    private const string NotWalking = "NotWalking";
-
-    public float regularSpeed = 4f; // Default speed
-    public float decelerationSpeed = 4f;
-    public float sprintSpeed = 8f; // Speed while sprinting
-    public float sprintDuration = 2f; // Duration of sprint in seconds
-    private float currentSprintTime = 0f;
-    private bool isSprinting = false;
+    public float Speed = 8f;
+    //private bool isSprinting = false;
 
     public float rotationSpeed = 360.0f;
 
@@ -149,7 +136,7 @@ public class PlayerMovement : Player
     public void Movement()
     {
         // Movement
-        float currentSpeed = isSprinting ? sprintSpeed : regularSpeed;
+        float currentSpeed = Speed;
         
 
         // Calculate movement direction based on camera's perspective
@@ -268,10 +255,7 @@ public class PlayerMovement : Player
 
     internal void RecoverStamina()
     {
-        if (!isSprinting)
-        {
-            Stamina.RecoverStamina();
-        }
+        Stamina.RecoverStamina();
     }
 
     #region Collision Damage & Death
