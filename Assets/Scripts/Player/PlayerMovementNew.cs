@@ -78,8 +78,8 @@ public class PlayerMovementNew : MonoBehaviour
         // the dodge action
     }
 
-    bool CanDodge()
-    {
-        // checks if player can dodge
-    }
+    //bool CanDodge()
+    //{
+    //    // checks if player can dodge
+    //}
 }
