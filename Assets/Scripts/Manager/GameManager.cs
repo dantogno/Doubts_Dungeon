@@ -8,6 +8,7 @@ public enum InputType { Controller, Keyboard }
 public class GameManager : MonoBehaviour
 {
     public static event Action OnPlayerDeath;
+    public PlayerHealth PH;
 
 
     // Start is called before the first frame update
@@ -18,7 +19,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(PH.health == 0)
+        {
+            OnGameOver();
+        }
     }
 
     public void OnGameOver()

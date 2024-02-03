@@ -11,12 +11,12 @@ public class GameOverScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerMovement.OnPlayerDeath += SetUp;
+        GameManager.OnPlayerDeath += SetUp;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.OnPlayerDeath -= SetUp;
+        GameManager.OnPlayerDeath -= SetUp;
     }
 
     public void SetUp()

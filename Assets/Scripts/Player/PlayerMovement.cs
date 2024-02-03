@@ -12,9 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public InputType inputType;
 
-    public static event Action OnPlayerDeath;
-
-
     public StaminaScript Stamina;
 
     [SerializeField]
@@ -31,25 +28,24 @@ public class PlayerMovement : MonoBehaviour
 
     Plane plane;
 
+    public ShootBehavior SB;
+
     [SerializeField]
     public bool usingController;
     void Start()
     {
         plane = new Plane(Vector3.down, transform.position.y);
+        SB = GetComponent<ShootBehavior>();
     }
 
     void Update()
     {
-        //if (GetHealth() == 0)
-        //{
-        //    OnGameOver();//Game Manager
-        //}
 
         CheckForDodge();
 
         if (usingController)
         {
-            //JoystickAim();
+            SB.JoystickAim();
         }
         else
         {
@@ -105,15 +101,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 getMoveVector(Vector3 cameraForward, Vector3 cameraRight)
     {
         Vector3 move = Vector3.zero;
-        //if (GameManager.usingController)
-        //{
-        //    move = (Input.GetAxisRaw("LSVertical") * cameraForward + Input.GetAxisRaw("LSHorizontal") * cameraRight).normalized;
-        //}
-        //else
-        //{
-            // Calculate the movement direction based on input and camera orientation
+        if (inputType == InputType.Controller)
+        {
+            move = (Input.GetAxisRaw("LSVertical") * cameraForward + Input.GetAxisRaw("LSHorizontal") * cameraRight).normalized;
+        }
+        else
+        {
+            //Calculate the movement direction based on input and camera orientation
             move = (Input.GetAxisRaw("Vertical") * cameraForward + Input.GetAxisRaw("Horizontal") * cameraRight).normalized;
-        //}
+        }
         return move;
     }
     //Movement
@@ -188,28 +184,6 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-
-    //------------------------------------------------------------------
-    //------------------------------------------------------------------
-
-    //Game Manager
-    //public void OnGameOver()
-    //{
-    //    //set something on enemymanager
-    //    EnemyManager.Instance.StopTimer();
-    //    OnPlayerDeath?.Invoke();
-    //}
-
-    
-    private void OnEnable()
-    {
-        OnPlayerDeath += DisablePlayer;
-    }
-
-    private void OnDisable()
-    {
-        OnPlayerDeath -= DisablePlayer;
-    }
 
     public void DisablePlayer() // for when the player dies so they don't keep moving around
     {

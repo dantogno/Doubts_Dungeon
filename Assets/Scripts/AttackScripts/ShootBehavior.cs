@@ -23,7 +23,7 @@ public class ShootBehavior : MonoBehaviour
         }
     }
 
-    private void JoystickAim()
+    public void JoystickAim()
     {
         Vector3 JoystickAimDirection = GetJoystickAimDirection();
         if (JoystickAimDirection.sqrMagnitude > 0.0f)
