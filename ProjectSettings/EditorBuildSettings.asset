@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/HubRoom.unity
     guid: 090fd3f015d03de4d904079db007d504
   - enabled: 1
-    path: Assets/Scenes/3DNew.unity
+    path: Assets/Scenes/CombatRooms/3DNew.unity
     guid: 1756c1aa0a6a8124d9aa446c01c50e6c
   m_configObjects: {}
