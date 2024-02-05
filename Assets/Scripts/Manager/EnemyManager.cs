@@ -30,6 +30,9 @@ public class EnemyManager : MonoBehaviour
     public float minDistanceBetweenEnemies = 6f;
     private Vector3 enemyPosition;
 
+    [SerializeField]
+    private int WaveNumbers;
+
     public int roundEnemies;
 
     private NavMeshSurface navMeshSurface;
@@ -49,7 +52,7 @@ public class EnemyManager : MonoBehaviour
         Instance = this;
         if(EnemyState == EnemyState.Waves)
         {
-            NumOfWaves = 5;
+            NumOfWaves = WaveNumbers;
             CurrentWave = 0;
 
             // Spawn and place enemies
