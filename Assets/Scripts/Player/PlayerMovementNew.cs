@@ -40,6 +40,8 @@ public class PlayerMovementNew : MonoBehaviour
     public ShootBehavior SB;
     private Rigidbody rb;
     CinemachineVirtualCamera CMVcam;
+    [SerializeField]
+    OnScreenConsole console;
 
 
     // U N I T Y  M E T H O D S
