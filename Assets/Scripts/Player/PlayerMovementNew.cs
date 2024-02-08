@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputMode { MouseAndKeyboard, Controller }
+
 public class PlayerMovementNew : MonoBehaviour
 {
     // P R O P E R T I E S
     
     [Header("Movement Settings")]
     [SerializeField] float Speed = 8f;
+    float SpeedMultiplier = 1000;
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
@@ -34,7 +35,7 @@ public class PlayerMovementNew : MonoBehaviour
     Plane plane;
 
     [SerializeField]
-    public InputMode PlayerInputMode;
+    public InputType PlayerInputMode;
 
     [Header("References")]
     public ShootBehavior SB;
@@ -64,6 +65,7 @@ public class PlayerMovementNew : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        CheckForDodge();
         HandleLookDirection();
     }
 
@@ -74,11 +76,11 @@ public class PlayerMovementNew : MonoBehaviour
     {
         switch(PlayerInputMode)
         {
-            case InputMode.MouseAndKeyboard:
+            case InputType.Keyboard:
                 LookAtMouse();
                 break;
 
-            case InputMode.Controller:
+            case InputType.Controller:
 
                 break;
         }
@@ -113,9 +115,13 @@ public class PlayerMovementNew : MonoBehaviour
         Vector3 move = GetMoveVector();
         playerAnimator.SetFloat("speed", move.magnitude);
 
+        //Speed *= SpeedMultiplier;
         move *= Speed * Time.deltaTime;
-        rb.AddForce(move, ForceMode.Force);
-
+        console.Log("Move Vector with Speed and Time Adjustment", move, 1);
+        //rb.AddForce(move, ForceMode.Force);
+        Vector3 movePosition = transform.position + move;
+        transform.position = movePosition;
+        console.Log("Player Position", transform.position, 2);
     }
 
     Vector3 GetMoveVector()
@@ -126,17 +132,17 @@ public class PlayerMovementNew : MonoBehaviour
 
         switch (PlayerInputMode)
         {
-            case InputMode.MouseAndKeyboard:
+            case InputType.Keyboard:
                 move = (Input.GetAxis("Vertical") * getCameraForward()
                     + Input.GetAxis("Horizontal") * getCameraRight()).normalized;
                 break;
 
-            case InputMode.Controller:
+            case InputType.Controller:
                 move = (Input.GetAxis("LSVertical") * getCameraForward()
                     + Input.GetAxis("LSHorizontal") * getCameraRight()).normalized;
                 break;
         }
-
+        console.Log("Move Vector", move, 0);
         return move;
         
     }
@@ -162,11 +168,74 @@ public class PlayerMovementNew : MonoBehaviour
 
     void Dodge()
     {
-        // the dodge action
+        // Get input from WASD keys
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Construct dodge direction from input
+        Vector3 dodgeDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+        //raycast for dodge distatnce
+        RaycastHit hit;
+        Ray dodgeRay = new Ray(transform.position, dodgeDirection);
+        //draws the ray for debug
+        Debug.DrawRay(transform.position, dodgeDirection, Color.cyan, dodgeDuration);
+        
+        // if we hit something, the distance from us to the thing is the distance we dodge
+        if (Physics.Raycast(dodgeRay, out hit, dodgeDistance))
+        {
+            float distance = hit.distance;
+
+            // Calculate the dodge direction based on the player's current rotation
+            // Move forward in the player's facing direction
+
+            // Calculate the number of steps based on the duration
+            int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+
+            // Calculate the dodge step 
+            //.2 is magic number, could get meshrender.bounds.extents.x,
+            //      bassicly here to give a bit of buffer so we dont end up halfway inside things
+            Vector3 dodgeStep = dodgeDirection * (distance - 0.2f) / numSteps;
+
+            // Start the dodge coroutine
+            StartCoroutine(PerformDodge(dodgeStep, numSteps));
+        }
+        // if we don't hit something, dodge the set dodge distance?
+        else 
+        {
+            // Calculate the number of steps based on the duration
+            int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
+
+            // Calculate the dodge step
+            Vector3 dodgeStep = dodgeDirection * dodgeDistance / numSteps;
+
+            // Start the dodge coroutine
+            StartCoroutine(PerformDodge(dodgeStep, numSteps));
+        }
     }
 
-    //bool CanDodge()
-    //{
-    //    // checks if player can dodge
-    //}
+    void CheckForDodge()
+    {
+        if (Input.GetButtonDown("Dodge"))
+        {
+            Debug.Log("Player hit: Dodge | left shift key");
+            //if (Stamina.UseStamina(25))
+            //{
+            //    return true;
+            //}
+            Dodge();
+        }
+        
+    }
+
+    private IEnumerator PerformDodge(Vector3 dodgeStep, int numSteps)
+    {
+        for (int i = 0; i < numSteps; i++)
+        {
+
+            transform.position += dodgeStep;
+            // Wait for the next fixed update frame
+            yield return new WaitForFixedUpdate();
+        }
+    }
 }

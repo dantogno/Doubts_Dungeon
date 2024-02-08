@@ -152,7 +152,8 @@ public class PlayerMovement : MonoBehaviour
             int numSteps = Mathf.FloorToInt(dodgeDuration / Time.fixedDeltaTime);
 
             // Calculate the dodge step 
-            //.2 is magic number, could get meshrender.bounds.extents.x, bassicly here to give a bit of buffer so we dont end up halfway inside things
+            //.2 is magic number, could get meshrender.bounds.extents.x,
+            //      bassicly here to give a bit of buffer so we dont end up halfway inside things
             Vector3 dodgeStep = dodgeDirection * (distance-0.2f) / numSteps;
 
             // Start the dodge coroutine
