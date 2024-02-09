@@ -7,12 +7,19 @@ using UnityEngine;
 
 public class Player: MonoBehaviour
 {
+    //Inventory
+    public List<Item> Inventory = new List<Item>();
+
+    //Currancy
+    [SerializeField]
+    int Currancy;
+
+    //Health
     public int health;
     public int maxHealth;
 
     public int healthPickups;
 
-    //Made this public so trap can check if player can take damage, probably better way to do this
     public bool canTakeDamage = true;
 
     public float damageCooldownDuration = 1f;

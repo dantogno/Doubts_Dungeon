@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class VendorManager : MonoBehaviour
 {
+    //Vendor only has one of each item it pulls there are not stacking items for the vendor
+
     public List<Item> VendorItems = new List<Item>();
 
     public List<Item> AllItems = new List<Item>();
 
+    //The number of items avalable forsame at a time
     public int VendorTotalItems = 5;
 
-    
+    InventoryManager IM = new InventoryManager();
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +30,10 @@ public class VendorManager : MonoBehaviour
     
     void PopulateItems()
     {
-
+        //Items can be put in by code or put in through the edior
     }
 
-    void PopulateVendor()
+    void PopulateVendor()//Randomly pull times from out set item list
     {
         int randomIndex = Random.Range(0, AllItems.Count);
 
@@ -39,9 +43,29 @@ public class VendorManager : MonoBehaviour
         }
     }
 
+    public void BuyItem(Item item)
+    {
+        if(item.Cost <= IM.player.Currancy)
+        {
+            VendorItems.Remove(item);
+            IM.AddItem(item);
+
+            IM.player.Currancy -= item.Cost;
+        }
+    }
+
+    //Could be used for chests
+    public Item ReturnItem()
+    {
+        int randomIndex = Random.Range(0, AllItems.Count);
+        return AllItems[randomIndex];
+    }
 
 }
 
+enum ItemType { }
+
+//Have to consider how I am coding debuf items
 [CreateAssetMenu]
 public class Item : ScriptableObject
 {
@@ -50,18 +74,28 @@ public class Item : ScriptableObject
     public int Count; 
     public bool Stackable;
 
-    public Item(string name, string description, int count, bool stackable)
+    public int Cost;
+
+    public Item(string name, string description, int count, bool stackable, int cost)
     {
         Name = name;
         Description = description;
         Count = count;
         Stackable = stackable;
+
+        Cost = cost;
     }
 }
 
-public class InventoryManager
+public class InventoryManager : MonoBehaviour
 {
-    public List<Item> PlayerInventory = new List<Item>();
+    [SerializeField]
+    public Player player;
+
+    private void Start()
+    {
+        player = GetComponent<Player>();
+    }
 
     public void AddItem(Item item)
     {
@@ -72,17 +106,17 @@ public class InventoryManager
                 index = GetItemIndex(item);
                 if (index >= 0)
                 {
-                    PlayerInventory[index].Count++;
+                    player.Inventory[index].Count++;
                 }
             }
             else
             {
-                PlayerInventory.Add(item);
+                player.Inventory.Add(item);
             }
         }
         else
         {
-            PlayerInventory.Add(item);
+            player.Inventory.Add(item);
         }
     }
 
@@ -95,27 +129,27 @@ public class InventoryManager
                 index = GetItemIndex(item);
                 if (index >= 0)
                 {
-                    PlayerInventory[index].Count--;
+                    player.Inventory[index].Count--;
                 }
             }
             else
             {
-                PlayerInventory.Remove(item);
+                player.Inventory.Remove(item);
             }
         }
         else
         {
-            PlayerInventory.Remove(item);
+            player.Inventory.Remove(item);
         }
     }
 
     int index = -1;
     public bool CheckForItem(Item item)
     {
-        if (PlayerInventory.Count == 0){
+        if (player.Inventory.Count == 0){
             return false;
         }
-        else if (PlayerInventory.Contains(item)){
+        else if (player.Inventory.Contains(item)){
             return true;
         }
         else{
@@ -126,10 +160,10 @@ public class InventoryManager
 
     public int GetItemIndex(Item item)
     {
-        foreach(Item i in PlayerInventory) {
+        foreach(Item i in player.Inventory) {
             if (i.Name == item.Name)
             {
-                return PlayerInventory.IndexOf(i);
+                return player.Inventory.IndexOf(i);
             }
         }
 
