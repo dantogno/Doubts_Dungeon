@@ -20031,7 +20031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec247e1f09636846bf070d31c515d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PH: {fileID: 0}
+  PH: {fileID: 425744426}
   TrapCooldownTime: 3
   TrapAni: {fileID: 1675225566}
 --- !u!1 &1690783148

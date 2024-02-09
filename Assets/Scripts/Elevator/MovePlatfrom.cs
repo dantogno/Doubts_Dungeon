@@ -31,7 +31,6 @@ public class MovePlatfrom : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, points[i].position) <= 0.01f)
         {
-            CanMove = false;
 
             if (i == points.Length - 1)
             {

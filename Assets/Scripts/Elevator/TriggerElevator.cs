@@ -14,7 +14,7 @@ public class TriggerElevator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        while (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             platform.CanMove = true;
         }
