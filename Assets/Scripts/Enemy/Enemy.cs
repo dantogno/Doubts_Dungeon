@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 using System;
 
 //Needed!
@@ -40,6 +41,14 @@ public class Enemy : MonoBehaviour
     private const string IsDead = "IsDead";
     private const string HitTrigger = "isHit";
 
+    //Dissolve Shader: Variables
+    public SkinnedMeshRenderer skinnedMesh;
+    public VisualEffect VFXGraph;
+    public float dissolveRate = 0.0125f;
+    public float refreshRate = 0.025f;
+
+    private Material[] skinnedMaterials;
+
     private void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -50,6 +59,10 @@ public class Enemy : MonoBehaviour
     {
         // Initialize target to the player
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        //Dissolve Shader: Whenever the skinned mesh changes, this if function sets that new material in the array
+        if (skinnedMesh != null)
+            skinnedMaterials = skinnedMesh.materials;
     }
 
     void Update()
@@ -145,6 +158,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            StartCoroutine(Dissolve());
         }
     }
 
@@ -160,5 +174,26 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger(IsDead);
         Destroy(gameObject,6);
         
+    }
+
+    IEnumerator Dissolve()
+    {
+        if (VFXGraph != null)
+            VFXGraph.Play();
+
+        if (skinnedMaterials.Length > 0)
+        {
+            float counter = 0;
+
+            while (skinnedMaterials[0].GetFloat("_DissolveAmount") < 1)
+            {
+                counter += dissolveRate;
+                for (int i = 0; i < skinnedMaterials.Length; i++)
+                {
+                    skinnedMaterials[i].SetFloat("_DissolveAmount", counter);
+                }
+                yield return new WaitForSeconds(refreshRate);
+            }
+        }
     }
 }
