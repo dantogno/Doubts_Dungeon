@@ -12,7 +12,7 @@ public class Player: MonoBehaviour
 
     //Currancy
     [SerializeField]
-    int Currancy;
+    public int Currancy;
 
     //Health
     public int health;
