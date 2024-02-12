@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BattleScenes:
+  - {fileID: 102900000, guid: 1756c1aa0a6a8124d9aa446c01c50e6c, type: 3}
   - {fileID: 102900000, guid: 53b4e56da85f23f4ea9e274a35f671f7, type: 3}
   - {fileID: 102900000, guid: f27614ad77e1b6d4ba76877dc3e00800, type: 3}
   - {fileID: 102900000, guid: 7b2eb2d9c6659ba4b952ec980aede230, type: 3}
