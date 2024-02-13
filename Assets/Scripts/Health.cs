@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,13 @@ public class Health : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerref = other.GetComponent<PlayerHealth>();
-
-            playerref.PickupHealth();
-
-            Destroy(gameObject);
+            HealthPickupGain();
         }
+    }
+
+    public void HealthPickupGain()
+    {
+        playerref.PickupHealth();
+        Destroy(gameObject);
     }
 }

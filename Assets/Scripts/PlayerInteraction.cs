@@ -6,6 +6,10 @@ public class PlayerInteraction : MonoBehaviour
 {
 
     Interactable interactable;
+
+    [SerializeField]
+    private bool HasbeenInteracted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +19,14 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            interact();
+            if(HasbeenInteracted == false)
+            {
+                interact();
+                
+            }
+            
         }
     }
 
@@ -25,7 +34,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(interactable != null)
         {
+            Debug.Log("Is Interacting");
             interactable.Interact();
+            HasbeenInteracted = false;
         }
     }
 
