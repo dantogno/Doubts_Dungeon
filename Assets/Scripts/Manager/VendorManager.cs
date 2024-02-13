@@ -63,29 +63,6 @@ public class VendorManager : MonoBehaviour
 
 }
 
-enum ItemType { }
-
-//Have to consider how I am coding debuf items
-[CreateAssetMenu]
-public class Item : ScriptableObject
-{
-    public string Name;
-    public string Description;
-    public int Count; 
-    public bool Stackable;
-
-    public int Cost;
-
-    public Item(string name, string description, int count, bool stackable, int cost)
-    {
-        Name = name;
-        Description = description;
-        Count = count;
-        Stackable = stackable;
-
-        Cost = cost;
-    }
-}
 
 public class InventoryManager : MonoBehaviour
 {
