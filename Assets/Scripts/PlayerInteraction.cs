@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
+    [SerializeField]
     Interactable interactable;
 
     [SerializeField]
-    private bool HasbeenInteracted;
+    private bool isTalking;
+
+    [SerializeField]
+    private bool isChest;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +26,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if(HasbeenInteracted == false)
-            {
+            
                 interact();
                 
-            }
+            
             
         }
     }
@@ -36,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Is Interacting");
             interactable.Interact();
-            HasbeenInteracted = false;
+           
         }
     }
 
@@ -58,5 +62,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    
 
 }

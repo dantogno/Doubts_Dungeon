@@ -17,10 +17,17 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     Color normal, flash;
 
+    public List<Item> AllItemsInGame = new List<Item>();
+
+    InventoryManager IM = new InventoryManager();
+    [SerializeField]
+    public Player player;
+
     Material HighlightMat;
     // Start is called before the first frame update
     void Start()
     {
+        
         HighlightMat = mesh.GetComponent<MeshRenderer>().material;
         HighlightMat.SetFloat("_Outline_Thickness", 0);
         HighlightMat.SetColor("_Outline_Color", normal);
@@ -53,5 +60,17 @@ public class Interactable : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         HighlightMat.SetColor("_Outline_Color", normal);
+    }
+
+    public void ChestChosen()
+    {
+        ChestInteraction();
+    }
+    public void ChestInteraction()
+    {
+        int randomIndex = Random.Range(0, AllItemsInGame.Count);
+        Debug.Log("Chest Interacting");
+
+        IM.AddItem(AllItemsInGame[randomIndex]);
     }
 }
