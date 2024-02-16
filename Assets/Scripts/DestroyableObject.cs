@@ -14,6 +14,9 @@ public class DestroyableObject : MonoBehaviour
     [SerializeField]
     private float WaitTimeDespawn;
 
+    [SerializeField]
+    private InventoryManager InventoryManager;
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Weapon")
@@ -26,6 +29,7 @@ public class DestroyableObject : MonoBehaviour
     {
         IntitalState.SetActive(false);
         BrokeState.SetActive(true);
+        InventoryManager.player.Currancy++;
         StartCoroutine(TimeToDestroy());
     }
 
