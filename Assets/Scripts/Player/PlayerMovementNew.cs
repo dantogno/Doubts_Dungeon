@@ -1,8 +1,9 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 
 public class PlayerMovementNew : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class PlayerMovementNew : MonoBehaviour
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
     [SerializeField] float decelerationFactor = 10.0f; // Adjust the value as needed
+
+
+
+    // INPUT ACTION STUFF
+    Vector2 currentMoveInput;
+    Vector3 moveVector;
+
 
     [Header("Camera Properties")]
     [SerializeField]
@@ -43,17 +51,39 @@ public class PlayerMovementNew : MonoBehaviour
     CinemachineVirtualCamera CMVcam;
     [SerializeField]
     OnScreenConsole console;
+    ControlInput playerInput;
 
 
     // U N I T Y  M E T H O D S
+
+    private void Awake()
+    {
+
+        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
+        playerAnimator = GetComponent<Animator>();
+        SB = GetComponent<ShootBehavior>();
+        rb = GetComponent<Rigidbody>();
+
+        playerInput = new ControlInput();
+
+
+        //setting input callbacks
+        playerInput.Player.Movement.started += OnMoveInput;
+        playerInput.Player.Movement.performed += OnMoveInput;
+        playerInput.Player.Movement.canceled += OnMoveInput;
+
+        playerInput.Player.Dodge.started += OnDodgeInput;
+        playerInput.Player.Dodge.canceled += OnDodgeInput;
+
+        playerInput.Player.Look.started += OnLookInput;
+        playerInput.Player.Look.performed += OnLookInput;
+        playerInput.Player.Look.canceled += OnLookInput;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         plane = new Plane(Vector3.down, transform.position.y);
-        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
-        playerAnimator = GetComponent<Animator>();
-        SB = GetComponent<ShootBehavior>(); 
-        rb = GetComponent<Rigidbody>(); 
     }
 
     // Update is called once per frame
@@ -69,9 +99,27 @@ public class PlayerMovementNew : MonoBehaviour
         HandleLookDirection();
     }
 
+    #region 'Input Action Callbacks'
+    void OnMoveInput(InputAction.CallbackContext context)
+    {
+        currentMoveInput = context.ReadValue<Vector2>();
+        moveVector = new Vector3(currentMoveInput.x, 0, currentMoveInput.y);
+    }
 
-    // M I S C
+    void OnDodgeInput(InputAction.CallbackContext context)
+    {
 
+    }
+
+    void OnLookInput(InputAction.CallbackContext context)
+    {
+
+    }
+
+    #endregion
+
+    #region 'Mouse Look'
+    // L O O K  D I R E C T I O N
     void HandleLookDirection()
     {
         switch(PlayerInputMode)
@@ -88,6 +136,8 @@ public class PlayerMovementNew : MonoBehaviour
     void LookAtMouse()
     {
         // turns the player to be looking at the mouse
+
+        // converting mouse pos to a ray
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out float distance))
         {
@@ -109,6 +159,11 @@ public class PlayerMovementNew : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    // M O V E M E N T 
+    
     void Move()
     {
         // moves the player 
@@ -165,6 +220,9 @@ public class PlayerMovementNew : MonoBehaviour
         cameraRight.Normalize();
         return cameraRight;
     }
+
+
+    #region 'Dodge'
 
     void Dodge()
     {
@@ -238,4 +296,5 @@ public class PlayerMovementNew : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+    #endregion
 }
