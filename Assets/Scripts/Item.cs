@@ -4,11 +4,13 @@ using UnityEngine;
 
 public enum ItemType { Stabilizer, Adrenalin, Histamine, Acetylcholine, Endorphins, Noradrenaline, Dopamine }
 
+public enum EffectDuration { Duration, Permanent, SingleUse }
+
 [CreateAssetMenu]
 public class Item : ScriptableObject
 {
-    [SerializeField]
-    ItemType itemType;
+    public ItemType itemType;
+    public EffectDuration EffecrDuration;
 
     public string Name;
     public string Description;

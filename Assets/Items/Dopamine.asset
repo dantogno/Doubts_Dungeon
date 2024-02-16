@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d37c326613c43514d96d6d971ee3b987, type: 3}
   m_Name: Dopamine
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemType: 5
+  itemType: 6
+  EffecrDuration: 1
   Name: Dopamine
-  Description: Increses reward mechanism in the brain increasing energy drops perminantly
+  Description: Handels reward mecanisim increasing drops
   Count: 1
   Stackable: 0
   Cost: 20

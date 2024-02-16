@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d37c326613c43514d96d6d971ee3b987, type: 3}
   m_Name: Adrenalin
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemType: 0
+  itemType: 1
   Name: Adrenalin
-  Description: Raises alert and energy to make you invensible for a period of timeo
-    m
+  Description: Hightens energy allowing invinciblity for a duration
   Count: 1
-  Stackable: 1
-  Cost: 5
+  Stackable: 0
+  Cost: 10

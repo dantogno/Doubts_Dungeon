@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Stabilizer
   m_EditorClassIdentifier: 
   itemType: 0
+  EffecrDuration: 2
   Name: Stabilizer
   Description: Used to get a heart back after loosing it
   Count: 1
-  Stackable: 1
-  Cost: 2
+  Stackable: 0
+  Cost: 5
