@@ -15,7 +15,10 @@ public class Interactable : MonoBehaviour
     float outlineThickness, flashDuration;
 
     [SerializeField]
-    Color normal, flash;
+    Color normal;
+
+    [SerializeField]
+    Color flash;
 
     public List<Item> AllItemsInGame = new List<Item>();
 
@@ -23,12 +26,13 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     public Player player;
 
+    [SerializeField]
     Material HighlightMat;
     // Start is called before the first frame update
     void Start()
     {
         
-        HighlightMat = mesh.GetComponent<MeshRenderer>().material;
+        
         HighlightMat.SetFloat("_Outline_Thickness", 0);
         HighlightMat.SetColor("_Outline_Color", normal);
     }

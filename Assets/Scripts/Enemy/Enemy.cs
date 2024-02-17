@@ -20,6 +20,11 @@ public class Enemy : MonoBehaviour
     private DamageFlash enemydmg;
 
     [SerializeField]
+    private float despawntime = 1.2f;
+
+    private bool deaddrop;
+
+    [SerializeField]
     private Animator animator;
 
     public float maxRange = 15f;
@@ -27,8 +32,14 @@ public class Enemy : MonoBehaviour
     private float PathUpdateDeadline = 1f;
     private Transform target;
 
+    [SerializeField]
+    private Transform spawnpos;
+
     public int health = 5;
     public int maxhealth;
+
+    [SerializeField]
+    private Transform YOffset;
 
     [SerializeField]
     private bool CanBeKnockedBack = true;
@@ -44,6 +55,9 @@ public class Enemy : MonoBehaviour
     //Dissolve Shader: Variables
     public SkinnedMeshRenderer skinnedMesh;
     public VisualEffect VFXGraph;
+
+    public Currancy orbref;
+
     public float dissolveRate = 0.0125f;
     public float refreshRate = 0.025f;
 
@@ -57,6 +71,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        
+
         // Initialize target to the player
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -155,8 +171,9 @@ public class Enemy : MonoBehaviour
 
 
         // Check for player death
-        if (health <= 0)
+        if (health == 0)
         {
+            deaddrop = true;
             Die();
             StartCoroutine(Dissolve());
         }
@@ -169,10 +186,17 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if(deaddrop == true)
+        {
+            orbref.transform.position = new Vector3(gameObject.transform.position.x, YOffset.position.y, gameObject.transform.position.z);
+            orbref.SpawnObject();
+        }
+        
+       
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
-        Destroy(gameObject,6);
+        Destroy(gameObject,despawntime);
         
     }
 

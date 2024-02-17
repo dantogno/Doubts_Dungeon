@@ -10520,7 +10520,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: dfde47a0a52607c47b62b264b8f6b183, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 016e4f517746ff84aac7eb086e3ef4b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 9d51a8899840d04409a23cbeb2faf6b4, type: 2}
     - target: {fileID: -4683669308469848369, guid: dfde47a0a52607c47b62b264b8f6b183, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -11079,13 +11079,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  outlineThickness: 0.05
-  flashDuration: 0.5
-  normal: {r: 1, g: 0.97547174, b: 0.97547174, a: 1}
-  flash: {r: 0, g: 0.12682652, b: 1, a: 1}
+  outlineThickness: 0.09
+  flashDuration: 1
+  normal: {r: 0.9433962, g: 0.33285865, b: 0.7468904, a: 1}
+  flash: {r: 0.48490566, g: 1, b: 0.7619223, a: 1}
   AllItemsInGame:
   - {fileID: 11400000, guid: da6f5640cf28a8241815c3664d53845f, type: 2}
   player: {fileID: 1702553538}
+  HighlightMat: {fileID: 2100000, guid: 9d51a8899840d04409a23cbeb2faf6b4, type: 2}
 --- !u!65 &1546327816
 BoxCollider:
   m_ObjectHideFlags: 0

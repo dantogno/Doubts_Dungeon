@@ -111,6 +111,37 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &8568839431479279615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4377706203673139829}
+  m_Layer: 6
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4377706203673139829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568839431479279615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.104, z: 0}
+  m_LocalScale: {x: 0.16915, y: 0.16915, z: 0.16915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6873204438202300199}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6406439155874844876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,6 +723,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5198990639993585440}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4377706203673139829}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}
       insertIndex: -1
@@ -739,11 +773,14 @@ MonoBehaviour:
   enemydmg: {fileID: 5443724817369215536}
   animator: {fileID: 8339417567653367211}
   maxRange: 15
+  spawnpos: {fileID: 4377706203673139829}
   health: 5
   maxhealth: 10
+  YOffset: {fileID: 4377706203673139829}
   CanBeKnockedBack: 1
   skinnedMesh: {fileID: 8667439185434526453}
   VFXGraph: {fileID: 4767953504235688236}
+  orbref: {fileID: 2560766445012645421, guid: 972666b93d26a7843af781650ebace2d, type: 3}
   dissolveRate: 0.0125
   refreshRate: 0.025
 --- !u!195 &8411478547279041796

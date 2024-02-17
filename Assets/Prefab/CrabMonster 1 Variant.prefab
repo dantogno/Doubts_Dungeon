@@ -111,6 +111,37 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &7600596209539154862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2326643172915846247}
+  m_Layer: 6
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2326643172915846247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600596209539154862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.09, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8647715019908143531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2911737657138672803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,6 +155,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8784864258482942737}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: orbref
+      value: 
+      objectReference: {fileID: 2560766445012645421, guid: 972666b93d26a7843af781650ebace2d, type: 3}
+    - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: YOffset
+      value: 
+      objectReference: {fileID: 2326643172915846247}
+    - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: VFXGraph
       value: 
       objectReference: {fileID: 3668736738830255338}
@@ -131,6 +170,10 @@ PrefabInstance:
       propertyPath: enemydmg
       value: 
       objectReference: {fileID: 3938503211901911962}
+    - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: spawnpos
+      value: 
+      objectReference: {fileID: 2326643172915846247}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: skinnedMesh
       value: 
@@ -198,6 +241,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4268154255079120711}
+    - targetCorrespondingSourceObject: {fileID: 5794526363542072584, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2326643172915846247}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
 --- !u!114 &3938503211901911962 stripped
