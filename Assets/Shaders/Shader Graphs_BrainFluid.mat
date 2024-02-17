@@ -37,16 +37,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _LiquidMetallic: 0.4
-    - _LiquidNormalsStrength: 0.01
+    - _LiquidMetallic: 0.55
+    - _LiquidNormalsStrength: 0.8
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SmoothnessLiquid: 1.4
-    - _VoronoiAgitation: 1
-    - _VoronoiPower: 2
-    - _VoronoiScale: 10
+    - _SmoothnessLiquid: 4.96
+    - _VoronoiAgitation: 3.06
+    - _VoronoiPower: 2.86
+    - _VoronoiScale: 12.68
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.4392157}
+    - _BaseColor: {r: 0.046458244, g: 0.046458244, b: 0.046458244, a: 0}
     - _NormalsSpeed: {r: 0, g: 0.2, b: 0, a: 0}
     - _VoronoiColor: {r: 2.2396777, g: 2.6416442, b: 0.25918013, a: 0.76862746}
     - _VoronoiOffsetLiquid: {r: 1, g: 1, b: 0, a: 0}

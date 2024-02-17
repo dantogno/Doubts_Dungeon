@@ -48,7 +48,6 @@ MonoBehaviour:
   - {fileID: 102900000, guid: 1756c1aa0a6a8124d9aa446c01c50e6c, type: 3}
   - {fileID: 102900000, guid: 53b4e56da85f23f4ea9e274a35f671f7, type: 3}
   - {fileID: 102900000, guid: f27614ad77e1b6d4ba76877dc3e00800, type: 3}
-  - {fileID: 102900000, guid: 7b2eb2d9c6659ba4b952ec980aede230, type: 3}
   - {fileID: 102900000, guid: f584e401a7a325641b5429df76edf6a8, type: 3}
   ChestScenes:
   - {fileID: 102900000, guid: eaff61b47caec49428a88d34ada3c242, type: 3}

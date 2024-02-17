@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4898655112923282963}
   - component: {fileID: 2751418504858120125}
   - component: {fileID: 7873286412570944026}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: PolpyBreakableParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   IntitalState: {fileID: 5432061448254916284}
   BrokeState: {fileID: 735805264851709572}
   WaitTimeDespawn: 3
+  InventoryManager: {fileID: 0}
 --- !u!65 &7873286412570944026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,17 +124,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2828148541889126105, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2908378298725379797, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 31d0970bc28dc094c897537d0fc08462, type: 2}
+    - target: {fileID: 3053304910370390824, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271997977503690615, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3314668255173522137, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_Name
       value: PolypBreakableBroken
       objectReference: {fileID: 0}
     - target: {fileID: 3314668255173522137, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314668255173522137, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152869819141973030, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6045293656229980618, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -147,14 +168,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 31d0970bc28dc094c897537d0fc08462, type: 2}
+    - target: {fileID: 7724681033222444488, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8147691917330129955, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 31d0970bc28dc094c897537d0fc08462, type: 2}
+    - target: {fileID: 8774127302608962314, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8806442442164551448, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 31d0970bc28dc094c897537d0fc08462, type: 2}
+    - target: {fileID: 8844167926793013201, guid: dd5317c2514a52741935da1ac5f7e60b, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -645,6 +678,10 @@ PrefabInstance:
     - target: {fileID: 2300370776813254434, guid: bd00b98a610ca5f49af0dbe2f4f7165b, type: 3}
       propertyPath: m_Name
       value: PolypBreakable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300370776813254434, guid: bd00b98a610ca5f49af0dbe2f4f7165b, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2300370776813254434, guid: bd00b98a610ca5f49af0dbe2f4f7165b, type: 3}
       propertyPath: m_IsActive

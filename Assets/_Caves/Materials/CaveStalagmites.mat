@@ -41,30 +41,8 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 238cfea76857da2438ece6271a6fc1ea, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: 9d90cfebda4ff7b46bdec1e283c0c084, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicMap:
-        m_Texture: {fileID: 2800000, guid: 094a4bd65e242a54db29eaf3a4cb9076, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: b353adc12948b1d46aea844957a05d24, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SmoothnessMap:
-        m_Texture: {fileID: 2800000, guid: a98ea74be0561da4a9633566c03fa022, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - _AlbedoColor: {r: 1, g: 0.09811318, b: 0.09811318, a: 1}
-    - _CubemapColor: {r: 1, g: 0.069811285, b: 0.069811285, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
