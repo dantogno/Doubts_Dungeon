@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
@@ -26,13 +27,19 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     public Player player;
 
+    public bool isVendor;
+
+    public bool VendorSetup;
+
+    [SerializeField]
+    private GameObject Vendor;
+
     [SerializeField]
     Material HighlightMat;
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        HighlightMat = mesh.GetComponent<Material>();
         HighlightMat.SetFloat("_Outline_Thickness", 0);
         HighlightMat.SetColor("_Outline_Color", normal);
     }
@@ -53,11 +60,13 @@ public class Interactable : MonoBehaviour
     public void EnterTrigger()
     {
         HighlightMat.SetFloat("_Outline_Thickness", outlineThickness);
+       
     }
 
     public void ExitTrigger()
     {
         HighlightMat.SetFloat("_Outline_Thickness", 0);
+      
     }
     
     IEnumerator flashColor()
@@ -66,9 +75,11 @@ public class Interactable : MonoBehaviour
         HighlightMat.SetColor("_Outline_Color", normal);
     }
 
-    public void ChestChosen()
+    public void VendorInteract() 
     {
-        ChestInteraction();
+       
+            Vendor.SetActive(true);
+        
     }
     public void ChestInteraction()
     {

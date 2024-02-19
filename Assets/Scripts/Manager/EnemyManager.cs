@@ -134,10 +134,14 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < spawnpoints.Count; i++ )
         {
-            enemyPosition = spawnpoints[i].transform.position;
-            //for each spawn point spawn a randome number of enemies
-           int inty =  Random.Range(minEnemyVal,maxEnemyVal);
-            SpawnSetNumEnemies(inty, enemyPosition);
+            if (spawnpoints[i].active == true)
+            {
+                enemyPosition = spawnpoints[i].transform.position;
+                //for each spawn point spawn a randome number of enemies
+                int inty = Random.Range(minEnemyVal, maxEnemyVal);
+                SpawnSetNumEnemies(inty, enemyPosition);
+            }
+           
         }
        
     }

@@ -11,6 +11,8 @@ public class Currancy : MonoBehaviour
     [SerializeField]
     VisualEffect OrbEffect;
 
+ 
+
     [SerializeField]
     private Collider collider;
 

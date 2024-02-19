@@ -20,14 +20,20 @@ public class TransitionManager : MonoBehaviour
     private Room Battle3 = new Room(RoomType.Battle);
     private Room Chest = new Room(RoomType.Chest);
     private Room Vendor = new Room(RoomType.Vendor);
-    private List<Room> Rooms;
+
+    [SerializeField]
+    public List<Room> Rooms;
 
     public Room ChosenRoom;
+
+    [SerializeField]
+    private Room StartRoomScene;
 
     public SceneAsset sceneToLoad; // The scene to transition to
 
     public bool SeenChest = false;
     public bool SeenVendor = false;
+    public bool StartRoom = false;
 
     
 
@@ -44,7 +50,10 @@ public class TransitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Rooms.Count <= 1)
+        {
+            StartRoom = true;
+        }
     }
 
     public void WhichRoom()
@@ -58,6 +67,8 @@ public class TransitionManager : MonoBehaviour
 
         chosenRoomType = ChosenRoom.roomType;//Set choosen room type
         ChooseScene();
+
+        
 
     }
 
@@ -90,6 +101,7 @@ public class TransitionManager : MonoBehaviour
             int num = UnityEngine.Random.Range(0, SA.Count);//random number betwen list range
             return SA[num];//return random pick
         }
+       
         else { return SA[0]; }// else return first and only Scene
     }
 
@@ -97,6 +109,11 @@ public class TransitionManager : MonoBehaviour
     {
         if (sceneToLoad != null)
         {
+            if(StartRoom == true)
+            {
+                SceneManager.LoadScene("HubRoom");
+            }
+            else 
             SceneManager.LoadScene(sceneToLoad.name);
         }
         else
@@ -120,7 +137,7 @@ public class TransitionManager : MonoBehaviour
 
 }
 
-public class Room
+public class Room: MonoBehaviour
 {
     public RoomType roomType;
 
