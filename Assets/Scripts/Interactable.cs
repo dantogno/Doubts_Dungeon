@@ -24,24 +24,23 @@ public class Interactable : MonoBehaviour
     public List<Item> AllItemsInGame = new List<Item>();
 
     InventoryManager IM = new InventoryManager();
-    [SerializeField]
-    public Player player;
+    
 
     public bool isVendor;
 
     public bool VendorSetup;
 
     [SerializeField]
-    private GameObject Vendor;
+    public GameObject Vendor;
 
-    [SerializeField]
+   
     Material HighlightMat;
     // Start is called before the first frame update
     void Start()
     {
-        HighlightMat = mesh.GetComponent<Material>();
+        HighlightMat = mesh.GetComponent<MeshRenderer>().material;
         HighlightMat.SetFloat("_Outline_Thickness", 0);
-        HighlightMat.SetColor("_Outline_Color", normal);
+        
     }
 
     // Update is called once per frame
@@ -60,14 +59,22 @@ public class Interactable : MonoBehaviour
     public void EnterTrigger()
     {
         HighlightMat.SetFloat("_Outline_Thickness", outlineThickness);
+
+        if (isVendor == true )
+        {
+            Vendor.SetActive(true);
+        }
        
     }
 
     public void ExitTrigger()
     {
         HighlightMat.SetFloat("_Outline_Thickness", 0);
+        Vendor.SetActive(false);
       
     }
+
+    
     
     IEnumerator flashColor()
     {
@@ -75,12 +82,8 @@ public class Interactable : MonoBehaviour
         HighlightMat.SetColor("_Outline_Color", normal);
     }
 
-    public void VendorInteract() 
-    {
-       
-            Vendor.SetActive(true);
-        
-    }
+
+
     public void ChestInteraction()
     {
         int randomIndex = Random.Range(0, AllItemsInGame.Count);

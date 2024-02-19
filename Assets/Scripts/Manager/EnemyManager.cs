@@ -25,6 +25,12 @@ public class EnemyManager : MonoBehaviour
     public int minEnemyVal;
     public int maxEnemyVal;
 
+
+ 
+    public int minSpawnNum;
+    public int AmountToChangeSpawns;
+
+
     public GameObject shortEnemyPrefab;
     public int numberOfEnemies = 5;
     public float minDistanceBetweenEnemies = 6f;
@@ -36,6 +42,8 @@ public class EnemyManager : MonoBehaviour
     public int roundEnemies;
 
     private NavMeshSurface navMeshSurface;
+
+  
 
     public List<GameObject> enemies = new List<GameObject>();
     public List<GameObject> spawnpoints = new List<GameObject>();
@@ -49,6 +57,8 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
+        RandomizeSpawnPoints();
+
         Instance = this;
         if(EnemyState == EnemyState.Waves)
         {
@@ -73,6 +83,17 @@ public class EnemyManager : MonoBehaviour
         }
 
     }
+
+    private void RandomizeSpawnPoints()
+    {
+        for (int i = 0; i < AmountToChangeSpawns; i++)
+        {
+            int inty = Random.Range(minSpawnNum, spawnpoints.Count);
+
+            spawnpoints.RemoveAt(inty);
+        }
+    }
+
 
     private void SpawnWave()
     {

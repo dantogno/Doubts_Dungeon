@@ -18,8 +18,8 @@ public class Spawnable : MonoBehaviour
         for (int i = 0; i < AmountToChangeSpawns; i++)
         {
             int inty = Random.Range(minSpawnNum, Spawns.Count);
-          
-            Spawns[inty].SetActive(false);
+
+            Spawns.RemoveAt(inty);
         }
     }
 }

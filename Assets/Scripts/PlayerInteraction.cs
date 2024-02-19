@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField]
+  
     Interactable interactable;
 
     [SerializeField]
@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [SerializeField]
     private bool isChest;
+
 
 
     // Start is called before the first frame update
@@ -24,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             
                 interact();
@@ -50,6 +51,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             interactable = script;
             script.EnterTrigger();
+            
         }
     }
 
