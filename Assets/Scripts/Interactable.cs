@@ -60,10 +60,6 @@ public class Interactable : MonoBehaviour
     {
         HighlightMat.SetFloat("_Outline_Thickness", outlineThickness);
 
-        if (isVendor == true )
-        {
-            Vendor.SetActive(true);
-        }
        
     }
 
