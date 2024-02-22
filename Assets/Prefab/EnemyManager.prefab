@@ -44,11 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a280e560df7e4e91fcdc5ad3e4156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tallEnemyPrefab: {fileID: 5172808507987408554, guid: d1978b554e322964aa96f44da767c652, type: 3}
-  shortEnemyPrefab: {fileID: 6475120841156253442, guid: bc03643acd94a0e489543200a9bdd501, type: 3}
-  numberOfEnemies: 5
+  EnemyState: 0
+  tallEnemyPrefab: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
+  minEnemyVal: 1
+  maxEnemyVal: 3
+  minSpawnNum: 0
+  AmountToChangeSpawns: 0
+  shortEnemyPrefab: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
+  numberOfEnemies: 2
   minDistanceBetweenEnemies: 6
+  WaveNumbers: 0
+  roundEnemies: 0
   enemies: []
+  spawnpoints:
+  - {fileID: 0}
+  - {fileID: 0}
   levelDoor: {fileID: 0}
   text: {fileID: 0}
   winFloor: {fileID: 0}
+  NumOfWaves: 0
+  CurrentWave: 0
+  DifficultyLevel: 1
+  DifficultyDuration: 30
+  CurrentDuration: 30
+  CurrentTime: 0
+  TimerOn: 0
+  TimerTxt: {fileID: 0}
+  MinuiteSecondFormat: 
+  HighscoreText: {fileID: 0}
+  HighscoreString: 
+  HighscoreInt: 0

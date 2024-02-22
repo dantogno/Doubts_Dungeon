@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using TMPro;
 using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,7 +50,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> spawnpoints = new List<GameObject>();
 
     public GameObject levelDoor;
-    public Text text;
+    public TextMeshProUGUI text;
     public GameObject winFloor;
 
     public int NumOfWaves;
@@ -238,7 +239,7 @@ public class EnemyManager : MonoBehaviour
     public float CurrentTime;
     public bool TimerOn = false;
 
-    public Text TimerTxt;
+    public TextMeshProUGUI TimerTxt;
     public string MinuiteSecondFormat;
 
     //public List<float> Scores;
@@ -282,7 +283,7 @@ public class EnemyManager : MonoBehaviour
 
     #region Highscore
 
-    public Text HighscoreText;
+    public TextMeshProUGUI HighscoreText;
 
     bool NewHighscore = false;
 

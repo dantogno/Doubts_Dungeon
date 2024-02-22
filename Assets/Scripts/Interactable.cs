@@ -66,7 +66,10 @@ public class Interactable : MonoBehaviour
     public void ExitTrigger()
     {
         HighlightMat.SetFloat("_Outline_Thickness", 0);
-        Vendor.SetActive(false);
+        if (isVendor == true)
+        {
+            Vendor.SetActive(false);
+        }
       
     }
 
