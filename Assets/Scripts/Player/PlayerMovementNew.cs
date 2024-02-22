@@ -1,7 +1,5 @@
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,12 +9,11 @@ public class PlayerMovementNew : MonoBehaviour
     
     [Header("Movement Settings")]
     [SerializeField] float Speed = 8f;
-    float SpeedMultiplier = 1000;
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
     [SerializeField] float decelerationFactor = 10.0f; // Adjust the value as needed
-
+    public StaminaScript Stamina;
 
 
     // INPUT ACTION STUFF
@@ -24,14 +21,6 @@ public class PlayerMovementNew : MonoBehaviour
     Vector3 moveVector;
 
 
-    [Header("Camera Properties")]
-    [SerializeField]
-    GameObject VirtualCamera;
-    [SerializeField]
-    float ShakeIntensity;
-    [SerializeField]
-    float totalShakeTime;
-    float shakeTimer;
 
     
 
@@ -50,7 +39,7 @@ public class PlayerMovementNew : MonoBehaviour
     private Rigidbody rb;
     CinemachineVirtualCamera CMVcam;
     [SerializeField]
-    OnScreenConsole console;
+    //OnScreenConsole console;
     ControlInput playerInput;
 
 
@@ -58,8 +47,6 @@ public class PlayerMovementNew : MonoBehaviour
 
     private void Awake()
     {
-
-        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
         playerAnimator = GetComponent<Animator>();
         SB = GetComponent<ShootBehavior>();
         rb = GetComponent<Rigidbody>();
@@ -172,11 +159,11 @@ public class PlayerMovementNew : MonoBehaviour
 
         //Speed *= SpeedMultiplier;
         move *= Speed * Time.deltaTime;
-        console.Log("Move Vector with Speed and Time Adjustment", move, 1);
+        //console.Log("Move Vector with Speed and Time Adjustment", move, 1);
         //rb.AddForce(move, ForceMode.Force);
         Vector3 movePosition = transform.position + move;
         transform.position = movePosition;
-        console.Log("Player Position", transform.position, 2);
+        //console.Log("Player Position", transform.position, 2);
     }
 
     Vector3 GetMoveVector()
@@ -197,7 +184,7 @@ public class PlayerMovementNew : MonoBehaviour
                     + Input.GetAxis("LSHorizontal") * getCameraRight()).normalized;
                 break;
         }
-        console.Log("Move Vector", move, 0);
+        //console.Log("Move Vector", move, 0);
         return move;
         
     }
@@ -277,11 +264,10 @@ public class PlayerMovementNew : MonoBehaviour
         if (Input.GetButtonDown("Dodge"))
         {
             Debug.Log("Player hit: Dodge | left shift key");
-            //if (Stamina.UseStamina(25))
-            //{
-            //    return true;
-            //}
-            Dodge();
+            if (Stamina.UseStamina(25))
+            {
+                Dodge();
+            }
         }
         
     }
@@ -297,4 +283,9 @@ public class PlayerMovementNew : MonoBehaviour
         }
     }
     #endregion
+
+    public void DisablePlayer() // for when the player dies so they don't keep moving around
+    {
+        enabled = false;
+    }
 }

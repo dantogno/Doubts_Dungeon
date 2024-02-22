@@ -5,11 +5,11 @@ using UnityEngine;
 //Needed!
 public class DetectInput : MonoBehaviour
 {
-    PlayerMovement moveScript;
+    PlayerMovementNew moveScript;
     // Start is called before the first frame update
     void Start()
     {
-        moveScript = GetComponent<PlayerMovement>();
+        moveScript = GetComponent<PlayerMovementNew>();
     }
 
     // Update is called once per frame
@@ -17,11 +17,11 @@ public class DetectInput : MonoBehaviour
     {
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 || Input.GetMouseButtonDown(0))
         {
-            moveScript.inputType = InputType.Keyboard;
+            moveScript.PlayerInputMode = InputType.Keyboard;
         }
         if(Input.GetAxisRaw("LSHorizontal") != 0 || Input.GetAxisRaw("RSHorizontal") != 0)
         {
-            moveScript.inputType = InputType.Controller;
+            moveScript.PlayerInputMode = InputType.Controller;
         }
     }
 

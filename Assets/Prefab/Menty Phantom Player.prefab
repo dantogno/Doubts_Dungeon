@@ -1574,9 +1574,6 @@ PrefabInstance:
       addedObject: {fileID: 1112379573712705663}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3551610949390156093}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 113755668514906055}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
       insertIndex: -1
@@ -1587,6 +1584,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2345647481519195395}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7428456020193019127}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8820439866521983242}
@@ -1663,28 +1663,6 @@ MonoBehaviour:
   VirtualCamera: {fileID: 0}
   ShakeIntensity: 1
   totalShakeTime: 1
---- !u!114 &3551610949390156093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717427241403973288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37427756a13c5da4aad3059aceaa43d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputType: 0
-  Stamina: {fileID: 0}
-  playerAnimator: {fileID: 7943514222392245864}
-  Speed: 8
-  rotationSpeed: 360
-  dodgeDistance: 2.5
-  dodgeDuration: 0.05
-  decelerationFactor: 10
-  SB: {fileID: 0}
-  usingController: 0
 --- !u!114 &113755668514906055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,6 +1718,27 @@ MonoBehaviour:
   canTakeDamage: 1
   damageCooldownDuration: 1
   CE: {fileID: 1112379573712705663}
+--- !u!114 &7428456020193019127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717427241403973288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749945bd256176d41893a39dbcee02ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 8
+  rotationSpeed: 360
+  dodgeDistance: 2.5
+  dodgeDuration: 0.05
+  decelerationFactor: 10
+  Stamina: {fileID: 5637432308802347062}
+  playerAnimator: {fileID: 0}
+  PlayerInputMode: 1
+  SB: {fileID: 0}
 --- !u!54 &8820439866521983242
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1770,10 +1769,5 @@ Rigidbody:
 --- !u!4 &4097471702094455826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
-  m_PrefabInstance: {fileID: 4564290129794122745}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7943514222392245864 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 0c0af08dee531c9418f5a3af55d132a5, type: 3}
   m_PrefabInstance: {fileID: 4564290129794122745}
   m_PrefabAsset: {fileID: 0}
