@@ -30,12 +30,27 @@ public class PlayerMovement : MonoBehaviour
 
     public ShootBehavior SB;
 
+    Vector3 SpawnPosition;
+
     [SerializeField]
     public bool usingController;
     void Start()
     {
         plane = new Plane(Vector3.down, transform.position.y);
         SB = GetComponent<ShootBehavior>();
+
+        GameObject spawnLocation = GameObject.Find("SpawnLocation");
+        SpawnPosition = spawnLocation.transform.position;
+
+        gameObject.transform.position = SpawnPosition;
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        GameObject spawnLocation = GameObject.Find("SpawnLocation");
+        SpawnPosition = spawnLocation.transform.position;
+
+        gameObject.transform.position = SpawnPosition;
     }
 
     void Update()

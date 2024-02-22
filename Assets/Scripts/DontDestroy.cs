@@ -15,14 +15,14 @@ public class DontDestroy : MonoBehaviour
     void Start()
     {
         //This Enables objects to not duplicate when returning to a previous space
-       // DontDestroy[] protectedObjects = Object.FindObjectsOfType<DontDestroy>();
+        DontDestroy[] protectedObjects = Object.FindObjectsOfType<DontDestroy>();
 
         //For all of the objects that have the DontDestroy Script
-        for (int i =0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
+        for (int i =0; i < protectedObjects.Length; i++)
         {
-            if (Object.FindObjectsOfType<DontDestroy>()[i] != this)
+            if (protectedObjects[i] != this)
             {
-                if (Object.FindObjectsOfType<DontDestroy>()[i].objectID == objectID)
+                if (protectedObjects[i].objectID == objectID)
                 {
                     Destroy(gameObject);
                 }

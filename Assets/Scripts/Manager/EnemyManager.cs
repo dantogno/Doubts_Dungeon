@@ -56,8 +56,24 @@ public class EnemyManager : MonoBehaviour
     public int NumOfWaves;
     public int CurrentWave;
 
+    //Timer
+
+    public float CurrentTime;
+    public bool TimerOn = false;
+
+    //!!!
+    public TextMeshProUGUI TimerTxt;
+    public string MinuiteSecondFormat;
+
     void Start()
     {
+        //Get DontDestroy Components
+        Canvas canvas = FindObjectOfType<Canvas>();
+        Transform textTransform = canvas.transform.Find("TxtDisplay");
+        TimerTxt = textTransform.GetComponent<TextMeshProUGUI>();
+
+        text = textTransform.GetComponent<TextMeshProUGUI>();
+
         RandomizeSpawnPoints();
 
         Instance = this;
@@ -236,13 +252,7 @@ public class EnemyManager : MonoBehaviour
 
     #region Timer
 
-    public float CurrentTime;
-    public bool TimerOn = false;
-
-    public TextMeshProUGUI TimerTxt;
-    public string MinuiteSecondFormat;
-
-    //public List<float> Scores;
+    
 
     private void RunTimer()
     {
