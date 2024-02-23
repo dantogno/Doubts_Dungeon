@@ -1,5 +1,6 @@
 using Cinemachine;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -81,12 +82,20 @@ public class PlayerMovementNew : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+        //GameObject CameraPivot = GameObject.Find("Camera Pivot");
+        //GameObject VirtualCamera = CameraPivot.Find("");
+
+        //   .GetComponent<CinemachineVirtualCamera>();//Breaking
+
+        //Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
+        //Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
+        //HighscoreText = highscoreTransform.GetComponent<TextMeshProUGUI>();
+
         GameObject spawnLocation = GameObject.Find("SpawnLocation");
         SpawnPosition = spawnLocation.transform.position;
 
         gameObject.transform.position = SpawnPosition;
-
-        CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        
     }
 
     // Update is called once per frame
@@ -208,7 +217,7 @@ public class PlayerMovementNew : MonoBehaviour
     Vector3 getCameraForward()
     {
         // Calculate movement direction based on camera's perspective
-        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraForward = Camera.main.transform.forward;//Breaking
         // Ignore the y-component to stay in the x-z plane
         cameraForward.y = 0f;
         cameraForward.Normalize();
@@ -310,7 +319,7 @@ public class PlayerMovementNew : MonoBehaviour
     {
         if (CMVcam == null)
         {
-            CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+            CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();//break
         }
     }
 }
