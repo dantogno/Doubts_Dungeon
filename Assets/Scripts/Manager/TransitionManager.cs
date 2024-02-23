@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public enum RoomType { Battle, Chest, Vendor }
 
+//Change whe then next room is figured
 public class TransitionManager : MonoBehaviour
 {
     public List<SceneAsset> BattleScenes = new List<SceneAsset>();
