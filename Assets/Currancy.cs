@@ -10,7 +10,6 @@ public class Currancy : MonoBehaviour
 
     [SerializeField]
     VisualEffect OrbEffect;
-
  
 
     [SerializeField]
@@ -19,6 +18,11 @@ public class Currancy : MonoBehaviour
     [SerializeField]
     private int CurrancyAmount;
 
+
+    private void Start()
+    {
+
+    }
 
     public void SpawnObject()
     {
@@ -32,6 +36,7 @@ public class Currancy : MonoBehaviour
         {
             OrbEffect.Stop();
             collider.enabled = false;
+            //other.gameObject.GetComponent<Player>().Currancy += CurrancyAmount;
         }
     }
 }
