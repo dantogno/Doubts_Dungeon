@@ -25,6 +25,7 @@ public class PortalState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TransitionManagerRef = FindObjectOfType<TransitionManager>();
 
         if (isCombatRoom == true)
         {
