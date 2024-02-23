@@ -85,12 +85,14 @@ public class PlayerMovementNew : MonoBehaviour
         SpawnPosition = spawnLocation.transform.position;
 
         gameObject.transform.position = SpawnPosition;
+
+        CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckCameraReference();
     }
 
     private void FixedUpdate()
@@ -99,6 +101,7 @@ public class PlayerMovementNew : MonoBehaviour
         CheckForDodge();
         HandleLookDirection();
     }
+
 
     #region 'Input Action Callbacks'
     void OnMoveInput(InputAction.CallbackContext context)
@@ -301,5 +304,13 @@ public class PlayerMovementNew : MonoBehaviour
     public void DisablePlayer() // for when the player dies so they don't keep moving around
     {
         enabled = false;
+    }
+
+    void CheckCameraReference()
+    {
+        if (CMVcam == null)
+        {
+            CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        }
     }
 }

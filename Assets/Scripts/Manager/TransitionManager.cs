@@ -56,6 +56,7 @@ public class TransitionManager : MonoBehaviour
             StartRoom = true;
         }
     }
+    
 
     public void WhichRoom()
     {
