@@ -65,6 +65,19 @@ public class EnemyManager : MonoBehaviour
     public TextMeshProUGUI TimerTxt;
     public string MinuiteSecondFormat;
 
+    //
+
+    //HighScore
+    public TextMeshProUGUI HighscoreText;
+
+    bool NewHighscore = false;
+
+    int AllScores;
+    int ScoresBeat = 0;
+
+    public string HighscoreString;
+    public float HighscoreInt;
+
     void Start()
     {
         //Get DontDestroy Components
@@ -73,6 +86,11 @@ public class EnemyManager : MonoBehaviour
         TimerTxt = textTransform.GetComponent<TextMeshProUGUI>();
 
         text = textTransform.GetComponent<TextMeshProUGUI>();
+
+        Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
+        Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
+        HighscoreText = highscoreTransform.GetComponent<TextMeshProUGUI>();
+
 
         RandomizeSpawnPoints();
 
@@ -293,15 +311,6 @@ public class EnemyManager : MonoBehaviour
 
     #region Highscore
 
-    public TextMeshProUGUI HighscoreText;
-
-    bool NewHighscore = false;
-
-    int AllScores;
-    int ScoresBeat = 0;
-
-    public string HighscoreString;
-    public float HighscoreInt;
 
     private void CheckForHighscore()
     {

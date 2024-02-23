@@ -8,7 +8,7 @@ public class PlayerMovementNew : MonoBehaviour
     // P R O P E R T I E S
     
     [Header("Movement Settings")]
-    [SerializeField] float Speed = 8f;
+    public float Speed = 8f; //Needed for DamageSurface
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
@@ -42,6 +42,8 @@ public class PlayerMovementNew : MonoBehaviour
     //OnScreenConsole console;
     ControlInput playerInput;
 
+    Vector3 SpawnPosition;
+
 
     // U N I T Y  M E T H O D S
 
@@ -71,6 +73,18 @@ public class PlayerMovementNew : MonoBehaviour
     void Start()
     {
         plane = new Plane(Vector3.down, transform.position.y);
+        GameObject spawnLocation = GameObject.Find("SpawnLocation");
+        SpawnPosition = spawnLocation.transform.position;
+
+        gameObject.transform.position = SpawnPosition;
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        GameObject spawnLocation = GameObject.Find("SpawnLocation");
+        SpawnPosition = spawnLocation.transform.position;
+
+        gameObject.transform.position = SpawnPosition;
     }
 
     // Update is called once per frame

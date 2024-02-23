@@ -23,7 +23,7 @@ public class DamageSurface : MonoBehaviour
             DamagePlayer(collision);
         }
 
-        collision.gameObject.GetComponent<PlayerMovement>().Speed = EnvSpeed;
+        collision.gameObject.GetComponent<PlayerMovementNew>().Speed = EnvSpeed;
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -47,6 +47,6 @@ public class DamageSurface : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        collision.gameObject.GetComponent<PlayerMovement>().Speed = 8;
+        collision.gameObject.GetComponent<PlayerMovementNew>().Speed = 8;
     }
 }
