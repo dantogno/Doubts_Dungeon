@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.ScriptableObjects;
 
 public enum RoomType { Battle, Chest, Vendor }
 
@@ -15,12 +16,6 @@ public class TransitionManager : MonoBehaviour
     public List<SceneAsset> BattleScenes = new List<SceneAsset>();
     public List<SceneAsset> ChestScenes = new List<SceneAsset>();
     public List<SceneAsset> VendorScenes = new List<SceneAsset>();
-
-    private Room Battle1 = new Room(RoomType.Battle);
-    private Room Battle2 = new Room(RoomType.Battle);
-    private Room Battle3 = new Room(RoomType.Battle);
-    private Room Chest = new Room(RoomType.Chest);
-    private Room Vendor = new Room(RoomType.Vendor);
 
     [SerializeField]
     public List<Room> Rooms;
@@ -43,10 +38,14 @@ public class TransitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rooms = new List<Room>() { Battle1, Battle2, Battle3, Chest, Vendor};
         Randomize<Room>(Rooms);//Randomize list on creation
-
+        WhichRoom();
     }
+
+    //private void OnLevelWasLoaded(int level)
+    //{
+    //    WhichRoom();
+    //}
 
     // Update is called once per frame
     void Update()
@@ -56,21 +55,28 @@ public class TransitionManager : MonoBehaviour
             StartRoom = true;
         }
     }
-    
 
+    [SerializeField] int RandomRoomNum;
     public void WhichRoom()
     {
-        //get a random number within rooms range
-        int range = UnityEngine.Random.Range(0, Rooms.Count);
-        ChosenRoom = Rooms[range];//Set choosen room
 
-        Rooms.RemoveAt(range);//Remove that one from the list
+        if(Rooms.Count == 0 )
+        {
+            StartRoom = true;
+            LoadScene();
+            return;
+        }
+
+        //get a random number within rooms range
+        RandomRoomNum = UnityEngine.Random.Range(0, Rooms.Count);
+        ChosenRoom = Rooms[RandomRoomNum];//Set choosen room
+        
         //(This is to ensure that each playthrough has 3 battle rooms, 1 chest room, and 1 vendor room)
 
         chosenRoomType = ChosenRoom.roomType;//Set choosen room type
         ChooseScene();
 
-        
+        Rooms.RemoveAt(RandomRoomNum);//Remove that one from the list
 
     }
 
@@ -137,15 +143,5 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-}
-
-public class Room: MonoBehaviour
-{
-    public RoomType roomType;
-
-    public Room(RoomType rt)
-    {
-        roomType = rt;
-    }
 }
 

@@ -20,65 +20,66 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance;
 
+
+    [Header("Enemies")]
+    [SerializeField] GameObject tallEnemyPrefab;
+    [SerializeField] GameObject shortEnemyPrefab;
+    public List<GameObject> enemies = new List<GameObject>();
+
+    [SerializeField] int minEnemyVal;
+    [SerializeField] int maxEnemyVal;
+
+    [Header("Enemy State")]
     public EnemyState EnemyState = new EnemyState();
+    [SerializeField] private int WaveNumbers;
+    [SerializeField] int roundEnemies;
+    [SerializeField] public int NumOfWaves;
+    [SerializeField] public int CurrentWave;
 
-    public GameObject tallEnemyPrefab;
-    public int minEnemyVal;
-    public int maxEnemyVal;
-
-
- 
-    public int minSpawnNum;
-    public int AmountToChangeSpawns;
+    [SerializeField] int DifficultyLevel = 1;
+    [SerializeField] int DifficultyDuration = 30;//30 seconds
 
 
-    public GameObject shortEnemyPrefab;
-    public int numberOfEnemies = 5;
-    public float minDistanceBetweenEnemies = 6f;
-    private Vector3 enemyPosition;
+    [Header("Spawn Values")]
+    [SerializeField] int minSpawnNum;
+    [SerializeField] int AmountToChangeSpawns;
+    public List<GameObject> spawnpoints = new List<GameObject>();
 
-    [SerializeField]
-    private int WaveNumbers;
 
-    public int roundEnemies;
+    [SerializeField] int numberOfEnemies = 5;
+    [SerializeField] float minDistanceBetweenEnemies = 6f;
+    [SerializeField] Vector3 enemyPosition;
+    
 
     private NavMeshSurface navMeshSurface;
 
-  
-
-    public List<GameObject> enemies = new List<GameObject>();
-    public List<GameObject> spawnpoints = new List<GameObject>();
-
-    public GameObject levelDoor;
-    public TextMeshProUGUI text;
-    public GameObject winFloor;
-
-    public int NumOfWaves;
-    public int CurrentWave;
 
     //Timer
+    [Header("Timer")]
+    
+    [SerializeField] float CurrentTime;
+    [SerializeField] bool TimerOn = false; 
+    [SerializeField] bool TimerCompleted = false;
 
-    public float CurrentTime;
-    public bool TimerOn = false;
+    [SerializeField] float SurvivalTimeLimit = 100f;
 
-    [SerializeField] float SurvivalTimeLimit = 180f;
+    [SerializeField] TextMeshProUGUI TimerTxt;
+    string MinuiteSecondFormat;
 
-    //!!!
-    public TextMeshProUGUI TimerTxt;
-    public string MinuiteSecondFormat;
 
-    //
+    public TextMeshProUGUI text;
 
-    //HighScore
-    public TextMeshProUGUI HighscoreText;
+    #region Highscore
+    [SerializeField] TextMeshProUGUI HighscoreText;
 
     bool NewHighscore = false;
 
     int AllScores;
     int ScoresBeat = 0;
 
-    public string HighscoreString;
-    public float HighscoreInt;
+    private string HighscoreString;
+    private float HighscoreInt;
+    #endregion
 
     void Start()
     {
@@ -111,6 +112,7 @@ public class EnemyManager : MonoBehaviour
         if(EnemyState == EnemyState.Survival)
         {
             TimerOn = true;
+            TimerCompleted = false;
             StartSurvival();
         }
 
@@ -143,9 +145,7 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    public int DifficultyLevel = 1;
-    public int DifficultyDuration = 30;//30 seconds
-    public int CurrentDuration = 30;
+    
 
     private void StartSurvival()
     {
@@ -154,8 +154,6 @@ public class EnemyManager : MonoBehaviour
 
     private void DifficultyIncreassed()
     {
-        //Adjusting to only increase the max range as increassing both made it impossible to quickly
-        //minEnemyVal += (minEnemyVal + (minEnemyVal / (25 * DifficultyLevel)));
         maxEnemyVal += (maxEnemyVal + (maxEnemyVal / (30 * DifficultyLevel)));
     }
 
@@ -181,7 +179,30 @@ public class EnemyManager : MonoBehaviour
             {
                 RunTimer();
             }
+            else if (TimerCompleted)
+            {
+                foreach (GameObject enemy in enemies)
+                {
+                    // Get the Enemy component and trigger the death animation
+                    Enemy E = enemy.GetComponent<Enemy>();
+                    if (E != null)
+                    {
+                        KillEnemy(E);
+                    }
+                }
+
+                // Clear the enemies list
+                enemies.Clear();
+
+                // Set timerCompleted to true to stop enemies from attacking
+                TimerCompleted = true;
+            }
         }
+    }
+
+    private void KillEnemy(Enemy enemy)
+    {
+        enemy.KillEnemy(enemy);
     }
 
     private void SpawnAndPlaceEnemies()
@@ -245,7 +266,7 @@ public class EnemyManager : MonoBehaviour
 
                 CheckForCompletedWaves();
             }
-            else if(EnemyState == EnemyState.Survival)
+            else if(EnemyState == EnemyState.Survival && TimerOn == true)
             {
                 SpawnAndPlaceEnemies();
             }
@@ -256,19 +277,17 @@ public class EnemyManager : MonoBehaviour
 
     private void CheckForClearedRoom()
     {
-        if (enemies.Count == 0 && levelDoor != null)
+        if (enemies.Count == 0)
         {
             text.text = "The room is cleared!";
-            Destroy(levelDoor);
         }
     }
 
     private void CheckForCompletedWaves()
     {
-        if (CurrentWave >= NumOfWaves && levelDoor != null)
+        if (CurrentWave >= NumOfWaves)
         {
             text.text = "The waves are cleared!";
-            Destroy(levelDoor);
         }
     }
 
@@ -282,8 +301,11 @@ public class EnemyManager : MonoBehaviour
         if(CurrentTime <= 0)
         {
             TimerOn = false;
+            TimerCompleted = true;
             CurrentTime = 0;
             Debug.Log("Time's up!");
+
+            TimerTxt.text = "You have survived";
         }
         ConvertToMinutes(CurrentTime);
     }
@@ -296,18 +318,17 @@ public class EnemyManager : MonoBehaviour
 
         totalSeconds = minutes * 60 + seconds; // Convert minutes back to seconds and add to remaining seconds
 
-        //if (totalSeconds >= CurrentDuration)
-        //{
-        //    DifficultyLevel++;
-        //    DifficultyIncreassed();
-
-        //    CurrentDuration += CurrentDuration;
-        //}
+        if (SurvivalTimeLimit - totalSeconds >= (DifficultyDuration * DifficultyLevel))
+        {
+            DifficultyLevel++;
+            DifficultyIncreassed();
+        }
 
         //TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
-        TimerTxt.text = $"{minutes:D2}:{seconds:D2}";
+        if(!TimerCompleted)
+            TimerTxt.text = $"{minutes:D2}:{seconds:D2}";
 
-        MinuiteSecondFormat = $"{minutes:D2}:{seconds:D2}";
+        MinuiteSecondFormat = $"Dificult {DifficultyLevel} | {minutes:D2}:{seconds:D2}";
     }
 
     public void StopTimer()

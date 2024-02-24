@@ -8,7 +8,6 @@ using UnityEngine.AI;
 using UnityEngine.VFX;
 using System;
 
-//Needed!
 public class Enemy : MonoBehaviour
 {
     public NavMeshAgent Agent;
@@ -63,15 +62,16 @@ public class Enemy : MonoBehaviour
 
     private Material[] skinnedMaterials;
 
-    private void Awake()
-    {
-        Agent = GetComponent<NavMeshAgent>();
+    //private void Awake()
+    //{
+    //    Agent = GetComponent<NavMeshAgent>();
        
-    }
+    //}
 
     void Start()
     {
-        
+        Agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(DelayedSetup());
 
         // Initialize target to the player
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -79,6 +79,26 @@ public class Enemy : MonoBehaviour
         //Dissolve Shader: Whenever the skinned mesh changes, this if function sets that new material in the array
         if (skinnedMesh != null)
             skinnedMaterials = skinnedMesh.materials;
+    }
+
+    private IEnumerator DelayedSetup()
+    {
+        yield return new WaitForSeconds(0.1f); // Adjust delay time as needed
+        UpdatePath(); // Call method to set destination after a delay
+    }
+
+    private void UpdatePath()
+    {
+        if (Agent != null && Agent.isActiveAndEnabled)
+        {
+            animator.SetBool(IsWalking, true);
+
+            if(target != null)
+            {
+                Agent.SetDestination(target.position);
+            }
+
+        }
     }
 
     void Update()
@@ -94,16 +114,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void UpdatePath()
-    {
-        if (Time.time >= PathUpdateDeadline)
-        {
-            animator.SetBool(IsWalking, true); 
-            //Debug.Log("Updating Path");
-            PathUpdateDeadline = Time.time + EnemyPathingDelay;
-            Agent.SetDestination(target.position);
-        }
-    }
+    //private void UpdatePath()
+    //{
+    //    if (Time.time >= PathUpdateDeadline)
+    //    {
+    //        animator.SetBool(IsWalking, true); 
+    //        //Debug.Log("Updating Path");
+    //        PathUpdateDeadline = Time.time + EnemyPathingDelay;
+    //        Agent.SetDestination(target.position);
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -179,6 +199,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void KillEnemy(Enemy enemy) 
+    {
+        enemy.deaddrop = true;
+        enemy.Die();
+        enemy.StartCoroutine(Dissolve());
+    }
+
     private void NotifyEnemyDestroyed()
     {
         OnEnemyDestroyed?.Invoke(this);
@@ -200,7 +227,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    IEnumerator Dissolve()
+    public IEnumerator Dissolve()
     {
         if (VFXGraph != null)
             VFXGraph.Play();

@@ -53,6 +53,15 @@ MonoBehaviour:
   - {fileID: 102900000, guid: eaff61b47caec49428a88d34ada3c242, type: 3}
   VendorScenes:
   - {fileID: 102900000, guid: 7d6bf173a80d8784eb29b48b0b8623a7, type: 3}
+  Rooms:
+  - {fileID: 11400000, guid: 05aef49b6af47b946a291b1122e48c28, type: 2}
+  - {fileID: 11400000, guid: 0179bc86b49027c47bf6009f7b1877d1, type: 2}
+  - {fileID: 11400000, guid: b26ecc3536d75cd49a52929fbae9c760, type: 2}
+  - {fileID: 11400000, guid: 30bb4680db2ca6c4db4d4369e0598345, type: 2}
+  - {fileID: 11400000, guid: 7d3b0cc9e64f2014888d6f2748c1ddb0, type: 2}
+  ChosenRoom: {fileID: 0}
+  StartRoomScene: {fileID: 0}
   sceneToLoad: {fileID: 0}
   SeenChest: 0
   SeenVendor: 0
+  StartRoom: 0

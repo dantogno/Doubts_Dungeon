@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3359869200892642451
+--- !u!1 &3911773336261173876
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4464070368764277803}
-  - component: {fileID: 7906177454541077625}
+  - component: {fileID: 8720148605148194236}
+  - component: {fileID: 253744184267852411}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4464070368764277803
+--- !u!4 &8720148605148194236
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3359869200892642451}
+  m_GameObject: {fileID: 3911773336261173876}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,45 +32,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7906177454541077625
+--- !u!114 &253744184267852411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3359869200892642451}
+  m_GameObject: {fileID: 3911773336261173876}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b18a280e560df7e4e91fcdc5ad3e4156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyState: 0
-  tallEnemyPrefab: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
-  minEnemyVal: 1
-  maxEnemyVal: 3
-  minSpawnNum: 0
-  AmountToChangeSpawns: 0
+  tallEnemyPrefab: {fileID: 8650121548184644653, guid: c57d83670972c044d8a2b53b16972fcb, type: 3}
   shortEnemyPrefab: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
-  numberOfEnemies: 2
-  minDistanceBetweenEnemies: 6
-  WaveNumbers: 0
-  roundEnemies: 0
   enemies: []
-  spawnpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  levelDoor: {fileID: 0}
-  text: {fileID: 0}
-  winFloor: {fileID: 0}
+  minEnemyVal: 1
+  maxEnemyVal: 2
+  EnemyState: 1
+  WaveNumbers: 2
+  roundEnemies: 0
   NumOfWaves: 0
   CurrentWave: 0
   DifficultyLevel: 1
   DifficultyDuration: 30
-  CurrentDuration: 30
+  minSpawnNum: 1
+  AmountToChangeSpawns: 2
+  spawnpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  numberOfEnemies: 3
+  minDistanceBetweenEnemies: 2
+  enemyPosition: {x: 0, y: 0, z: 0}
   CurrentTime: 0
   TimerOn: 0
+  SurvivalTimeLimit: 100
   TimerTxt: {fileID: 0}
-  MinuiteSecondFormat: 
+  text: {fileID: 0}
   HighscoreText: {fileID: 0}
-  HighscoreString: 
-  HighscoreInt: 0
