@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    PlayerHealth PH;
+    Player P;
     // Start is called before the first frame update
     void Start()
     {
-        PH = GetComponent<PlayerHealth>();
+        P = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -21,17 +21,17 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
-            if (PH.canTakeDamage)
+            if (P.canTakeDamage)
             {
-                PH.PlayerHasBeenHit();
+                P.PlayerHasBeenHit();
             }
 
         }
         else if (collision.gameObject.CompareTag("Trap"))
         {
-            if (PH.canTakeDamage)
+            if (P.canTakeDamage)
             {
-                PH.PlayerHasBeenHit();
+                P.PlayerHasBeenHit();
             }
         }
     }

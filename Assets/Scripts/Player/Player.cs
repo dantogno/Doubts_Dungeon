@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ public class Player: MonoBehaviour
     public bool canTakeDamage = true;
 
     public float damageCooldownDuration = 1f;
+
+    [SerializeField]
+    public CameraEffect CE;
+
+
+    public void Update()
+    {
+        CheckForHealthPickup();
+    }
 
     public int GetHealth()
     {
@@ -59,6 +69,48 @@ public class Player: MonoBehaviour
             usable = true;
         }
 
-        if(usable) { GainHealth(1); }
+        if (usable) { GainHealth(1); }
+    }
+
+    public void PlayerHasBeenHit()
+    {
+        canTakeDamage = false;
+        StartCoroutine(DamageCooldown());
+        // Reduce player's health when colliding with an enemy
+        ManageDamage(1);
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(damageCooldownDuration);
+        canTakeDamage = true; // Allow taking damage again after cooldown
+    }
+
+    void ManageDamage(int damage)
+    {
+        if (GetHealth() > 0)
+        {
+            TakeDamage(damage);
+
+            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
+            canTakeDamage = true;
+            CE.ShakeCamera();
+            // Check for player death
+            if (GetHealth() == 0)
+            {
+                CE.StopCameraShake();
+                //OnGameOver();
+            }
+
+        }
+    }
+
+    internal void CheckForHealthPickup()
+    {
+        if (Input.GetButtonDown("UseHealth"))
+        {
+            Debug.Log("Player hit: UseHealth | E key");
+            UseHealth();
+        }
     }
 }

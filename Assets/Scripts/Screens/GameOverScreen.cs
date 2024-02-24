@@ -28,7 +28,8 @@ public class GameOverScreen : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene("HubRoom",LoadSceneMode.Single);
-        gameObject.SetActive(false);
+        GameOverObject.SetActive(false);
+
     }
 
 

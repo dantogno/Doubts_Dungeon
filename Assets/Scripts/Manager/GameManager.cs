@@ -9,7 +9,7 @@ public enum InputType { Controller, Keyboard }
 public class GameManager : MonoBehaviour
 {
     public static event Action OnPlayerDeath;
-    public PlayerHealth PH;
+    public Player P;
 
 
     // Start is called before the first frame update
@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
     {
         GameObject PlayablePlayer = GameObject.Find("PlayablePlayer");
         Transform MentyPlayer = PlayablePlayer.transform.Find("MentyPlayer");//Breaking
-        PH = MentyPlayer.GetComponent<PlayerHealth>();
+        P = MentyPlayer.GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PH.health == 0)
+        if(P.health == 0)
         {
             OnGameOver();
         }

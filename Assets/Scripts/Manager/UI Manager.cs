@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public PlayerHealth player;
+    public Player player;
     public Image[] TotalHearts;
     public TextMeshProUGUI healthPickups;
     public int health;

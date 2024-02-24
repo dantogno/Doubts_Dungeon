@@ -9977,6 +9977,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1482642063}
     - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
+      propertyPath: tallEnemyPrefab
+      value: 
+      objectReference: {fileID: 6064474760167812509, guid: ec1c50e41593b624ca65e063a7428861, type: 3}
+    - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
       propertyPath: spawnpoints.Array.data[0]
       value: 
       objectReference: {fileID: 195177469}

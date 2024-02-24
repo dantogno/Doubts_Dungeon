@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2345647481519195395, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3717427241403973288, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
       propertyPath: m_Name
-      value: Menty Phantom Player Comp Variant
+      value: MentyPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
       propertyPath: m_LocalScale.x

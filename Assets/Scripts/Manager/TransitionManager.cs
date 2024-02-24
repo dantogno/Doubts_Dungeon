@@ -17,8 +17,8 @@ public class TransitionManager : MonoBehaviour
     public List<SceneAsset> ChestScenes = new List<SceneAsset>();
     public List<SceneAsset> VendorScenes = new List<SceneAsset>();
 
-    [SerializeField]
-    public List<Room> Rooms;
+    [SerializeField] List<Room> Rooms;
+    [SerializeField] List<Room> EditableRooms;
 
     public Room ChosenRoom;
 
@@ -38,29 +38,21 @@ public class TransitionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Randomize<Room>(Rooms);//Randomize list on creation
+        EditableRooms = new List<Room>(Rooms);
+        Randomize<Room>(EditableRooms);//Randomize list on creation
         WhichRoom();
     }
-
-    //private void OnLevelWasLoaded(int level)
-    //{
-    //    WhichRoom();
-    //}
 
     // Update is called once per frame
     void Update()
     {
-        if (Rooms.Count <= 1)
-        {
-            StartRoom = true;
-        }
     }
 
     [SerializeField] int RandomRoomNum;
     public void WhichRoom()
     {
 
-        if(Rooms.Count == 0 )
+        if(EditableRooms.Count == 0 )
         {
             StartRoom = true;
             LoadScene();
@@ -68,15 +60,15 @@ public class TransitionManager : MonoBehaviour
         }
 
         //get a random number within rooms range
-        RandomRoomNum = UnityEngine.Random.Range(0, Rooms.Count);
-        ChosenRoom = Rooms[RandomRoomNum];//Set choosen room
+        RandomRoomNum = UnityEngine.Random.Range(0, EditableRooms.Count);
+        ChosenRoom = EditableRooms[RandomRoomNum];//Set choosen room
         
         //(This is to ensure that each playthrough has 3 battle rooms, 1 chest room, and 1 vendor room)
 
         chosenRoomType = ChosenRoom.roomType;//Set choosen room type
         ChooseScene();
 
-        Rooms.RemoveAt(RandomRoomNum);//Remove that one from the list
+        EditableRooms.RemoveAt(RandomRoomNum);//Remove that one from the list
 
     }
 
@@ -119,6 +111,8 @@ public class TransitionManager : MonoBehaviour
         {
             if(StartRoom == true)
             {
+                EditableRooms = new List<Room>(Rooms);
+                Randomize<Room>(EditableRooms);//Randomize list on creation
                 SceneManager.LoadScene("HubRoom");
             }
             else 
