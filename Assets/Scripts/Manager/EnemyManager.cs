@@ -61,6 +61,8 @@ public class EnemyManager : MonoBehaviour
     public float CurrentTime;
     public bool TimerOn = false;
 
+    [SerializeField] float SurvivalTimeLimit = 180f;
+
     //!!!
     public TextMeshProUGUI TimerTxt;
     public string MinuiteSecondFormat;
@@ -90,6 +92,8 @@ public class EnemyManager : MonoBehaviour
         Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
         Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
         HighscoreText = highscoreTransform.GetComponent<TextMeshProUGUI>();
+
+        CurrentTime = SurvivalTimeLimit;
 
 
         RandomizeSpawnPoints();
@@ -274,7 +278,13 @@ public class EnemyManager : MonoBehaviour
 
     private void RunTimer()
     {
-        CurrentTime += Time.deltaTime;
+        CurrentTime -= Time.deltaTime;
+        if(CurrentTime <= 0)
+        {
+            TimerOn = false;
+            CurrentTime = 0;
+            Debug.Log("Time's up!");
+        }
         ConvertToMinutes(CurrentTime);
     }
 
@@ -286,15 +296,16 @@ public class EnemyManager : MonoBehaviour
 
         totalSeconds = minutes * 60 + seconds; // Convert minutes back to seconds and add to remaining seconds
 
-        if (totalSeconds >= CurrentDuration)
-        {
-            DifficultyLevel++;
-            DifficultyIncreassed();
+        //if (totalSeconds >= CurrentDuration)
+        //{
+        //    DifficultyLevel++;
+        //    DifficultyIncreassed();
 
-            CurrentDuration += CurrentDuration;
-        }
+        //    CurrentDuration += CurrentDuration;
+        //}
 
-        TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
+        //TimerTxt.text = $"Difficulty: {DifficultyLevel} |{minutes:D2}:{seconds:D2}";
+        TimerTxt.text = $"{minutes:D2}:{seconds:D2}";
 
         MinuiteSecondFormat = $"{minutes:D2}:{seconds:D2}";
     }
@@ -303,7 +314,7 @@ public class EnemyManager : MonoBehaviour
     {
         TimerOn = false;
         Debug.Log($"Time Reached: {MinuiteSecondFormat}");
-        CheckForHighscore();
+        //CheckForHighscore();
         CurrentTime = 0;
     }
 

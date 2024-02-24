@@ -82,10 +82,12 @@ public class PlayerMovementNew : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        //GameObject CameraPivot = GameObject.Find("Camera Pivot");
-        //GameObject VirtualCamera = CameraPivot.Find("");
+        GameObject CameraPivot = GameObject.Find("Camera Pivot");
+        Transform VirtualCamera = CameraPivot.transform.Find("Virtual Camera");
+        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
 
-        //   .GetComponent<CinemachineVirtualCamera>();//Breaking
+        CMVcam.Follow = transform;
+
 
         //Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
         //Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
