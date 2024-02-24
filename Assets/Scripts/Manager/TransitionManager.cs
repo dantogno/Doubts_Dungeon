@@ -31,13 +31,17 @@ public class TransitionManager : MonoBehaviour
     public bool SeenVendor = false;
     public bool StartRoom = false;
 
-    
+    //Don't like
+    PlayerSaveManager PS;
 
     RoomType chosenRoomType;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject PlayerSaveManager = GameObject.Find("PlayerSaveManager");
+        PS = PlayerSaveManager.GetComponent<PlayerSaveManager>();
+
         EditableRooms = new List<Room>(Rooms);
         Randomize<Room>(EditableRooms);//Randomize list on creation
         WhichRoom();
@@ -114,6 +118,8 @@ public class TransitionManager : MonoBehaviour
                 EditableRooms = new List<Room>(Rooms);
                 Randomize<Room>(EditableRooms);//Randomize list on creation
                 SceneManager.LoadScene("HubRoom");
+
+                PS.ClearSaveValues();
             }
             else 
             SceneManager.LoadScene(sceneToLoad.name);

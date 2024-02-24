@@ -36,6 +36,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public int NumOfWaves;
     [SerializeField] public int CurrentWave;
 
+    bool WavesCompleted;
+
     [SerializeField] int DifficultyLevel = 1;
     [SerializeField] int DifficultyDuration = 30;//30 seconds
 
@@ -49,6 +51,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] int numberOfEnemies = 5;
     [SerializeField] float minDistanceBetweenEnemies = 6f;
     [SerializeField] Vector3 enemyPosition;
+
     
 
     private NavMeshSurface navMeshSurface;
@@ -102,6 +105,7 @@ public class EnemyManager : MonoBehaviour
         Instance = this;
         if(EnemyState == EnemyState.Waves)
         {
+            WavesCompleted = false;
             NumOfWaves = WaveNumbers;
             CurrentWave = 0;
 
@@ -142,6 +146,10 @@ public class EnemyManager : MonoBehaviour
         {
             SpawnAndPlaceEnemies();
         }
+        else
+        {
+            return;
+        }
         
     }
 
@@ -169,6 +177,7 @@ public class EnemyManager : MonoBehaviour
                     enemyComponent.OnEnemyDestroyed += EnemyDestroyedHandler;
             }
         }
+
     }
 
     private void FixedUpdate()
@@ -181,13 +190,14 @@ public class EnemyManager : MonoBehaviour
             }
             else if (TimerCompleted)
             {
-                foreach (GameObject enemy in enemies)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    // Get the Enemy component and trigger the death animation
+                    GameObject enemy = enemies[i];
                     Enemy E = enemy.GetComponent<Enemy>();
                     if (E != null)
                     {
-                        KillEnemy(E);
+                        KillEnemy(E);  // Assuming this removes the enemy from the list
+                        i--;  // Decrement index to account for removed enemy
                     }
                 }
 
@@ -260,13 +270,14 @@ public class EnemyManager : MonoBehaviour
         {
             roundEnemies = 0;
 
-            if(EnemyState == EnemyState.Waves)
+            if (EnemyState == EnemyState.Waves && !WavesCompleted)
             {
                 SpawnWave();
 
                 CheckForCompletedWaves();
             }
-            else if(EnemyState == EnemyState.Survival && TimerOn == true)
+            else if (EnemyState == EnemyState.Waves && WavesCompleted) { text.text = "The waves are cleared!"; }
+            else if (EnemyState == EnemyState.Survival && TimerOn == true)
             {
                 SpawnAndPlaceEnemies();
             }
@@ -283,11 +294,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    
     private void CheckForCompletedWaves()
     {
         if (CurrentWave >= NumOfWaves)
         {
-            text.text = "The waves are cleared!";
+            WavesCompleted = true;
+            text.text = "Last Wave";
         }
     }
 

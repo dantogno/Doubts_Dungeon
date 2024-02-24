@@ -203,10 +203,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4809842077003789276, guid: 3989f481af7c74345b0483ff827265b1, type: 3}
+      propertyPath: near clip plane
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 6894644183221564662, guid: 3989f481af7c74345b0483ff827265b1, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 6889159951527693631}
+    - target: {fileID: 6894644183221564662, guid: 3989f481af7c74345b0483ff827265b1, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -34,6 +34,11 @@ public class Player: MonoBehaviour
         CheckForHealthPickup();
     }
 
+    public void Start()
+    {
+        health = 3;
+    }
+
     public int GetHealth()
     {
         return health;

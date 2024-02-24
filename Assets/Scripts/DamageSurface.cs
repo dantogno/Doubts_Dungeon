@@ -34,7 +34,7 @@ public class DamageSurface : MonoBehaviour
     }
     void DamagePlayer(Collision player)
     {
-        player.gameObject.GetComponent<PlayerHealth>().TakeDamage(Damage);
+        player.gameObject.GetComponent<Player>().TakeDamage(Damage);
         CanTakeDamage = false;
         StartCoroutine(DamageInterval());
     }

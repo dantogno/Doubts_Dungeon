@@ -22,7 +22,6 @@ public class GameOverScreen : MonoBehaviour
     public void SetUp()
     {
        GameOverObject.SetActive(true);
-
     }
 
     public void RestartButton()
@@ -31,6 +30,5 @@ public class GameOverScreen : MonoBehaviour
         GameOverObject.SetActive(false);
 
     }
-
 
 }

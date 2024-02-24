@@ -36,7 +36,7 @@ public class Currancy : MonoBehaviour
         {
             OrbEffect.Stop();
             collider.enabled = false;
-            //other.gameObject.GetComponent<Player>().Currancy += CurrancyAmount;
+            other.gameObject.GetComponent<Player>().Currancy += CurrancyAmount;
         }
     }
 }

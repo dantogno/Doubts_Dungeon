@@ -59,4 +59,16 @@ public class PlayerSaveManager : MonoBehaviour
         }
 
     }
+
+    public void ClearSaveValues()
+    {
+        //Heath
+        SavedPlayer.health = 3;
+        //Health Pickups
+        SavedPlayer.healthPickups = 0;
+        //Currenty
+        SavedPlayer.Currancy = 0;
+
+        SetValues();
+    }
 }

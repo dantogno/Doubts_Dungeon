@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec247e1f09636846bf070d31c515d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PH: {fileID: 0}
+  P: {fileID: 0}
   TrapCooldownTime: 3
   TrapAni: {fileID: 147802093}
 --- !u!95 &147802093
@@ -12281,7 +12281,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9254902, g: 0.70980394, b: 0.50980395, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -15551,7 +15551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec247e1f09636846bf070d31c515d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PH: {fileID: 0}
+  P: {fileID: 0}
   TrapCooldownTime: 3
   TrapAni: {fileID: 925694934}
 --- !u!95 &925694934
@@ -18667,7 +18667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec247e1f09636846bf070d31c515d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PH: {fileID: 0}
+  P: {fileID: 0}
   TrapCooldownTime: 3
   TrapAni: {fileID: 1141039614}
 --- !u!95 &1141039614
@@ -26274,7 +26274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec247e1f09636846bf070d31c515d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PH: {fileID: 0}
+  P: {fileID: 0}
   TrapCooldownTime: 3
   TrapAni: {fileID: 1675225566}
 --- !u!1001 &1685867539
@@ -28287,7 +28287,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1823706061}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public Player player;
     public Image[] TotalHearts;
     public TextMeshProUGUI healthPickups;
+    public TextMeshProUGUI currencyDisplay;
     public int health;
     public int maxhealth;
 
@@ -41,10 +42,16 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateHealthPickups();
+        UpdateCurancyDisplay();
     }
 
     private void UpdateHealthPickups()
     {
         healthPickups.text = $"Stabalizers: {player.healthPickups}";
+    }
+
+    private void UpdateCurancyDisplay()
+    {
+        currencyDisplay.text = $"Bad Energy: {player.Currancy}";
     }
 }
