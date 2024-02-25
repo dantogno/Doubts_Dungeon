@@ -13,9 +13,9 @@ public enum RoomType { Battle, Chest, Vendor }
 //Change whe then next room is figured
 public class TransitionManager : MonoBehaviour
 {
-    public List<SceneAsset> BattleScenes = new List<SceneAsset>();
-    public List<SceneAsset> ChestScenes = new List<SceneAsset>();
-    public List<SceneAsset> VendorScenes = new List<SceneAsset>();
+    public List<string> BattleScenes = new List<string>();
+    public List<string> ChestScenes = new List<string>();
+    public List<string> VendorScenes = new List<string>();
 
     [SerializeField] List<Room> Rooms;
     [SerializeField] List<Room> EditableRooms;
@@ -25,7 +25,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField]
     private Room StartRoomScene;
 
-    public SceneAsset sceneToLoad; // The scene to transition to
+    public string sceneToLoad; // The scene to transition to
 
     public bool SeenChest = false;
     public bool SeenVendor = false;
@@ -98,7 +98,7 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    public SceneAsset PickFromList(List<SceneAsset> SA)
+    public string PickFromList(List<string> SA)
     {
         if (SA.Count > 1) //If count is greater then one
         {
@@ -122,7 +122,7 @@ public class TransitionManager : MonoBehaviour
                 PS.ClearSaveValues();
             }
             else 
-            SceneManager.LoadScene(sceneToLoad.name);
+            SceneManager.LoadScene(sceneToLoad);
         }
         else
         {
