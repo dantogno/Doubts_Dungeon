@@ -36,7 +36,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public int NumOfWaves;
     [SerializeField] public int CurrentWave;
 
-    bool WavesCompleted;
+    public PortalState EndPortal;
+
+    public bool WavesCompleted;
 
     [SerializeField] int DifficultyLevel = 1;
     [SerializeField] int DifficultyDuration = 30;//30 seconds
@@ -60,9 +62,9 @@ public class EnemyManager : MonoBehaviour
     //Timer
     [Header("Timer")]
     
-    [SerializeField] float CurrentTime;
+    [SerializeField] public float CurrentTime;
     [SerializeField] bool TimerOn = false; 
-    [SerializeField] bool TimerCompleted = false;
+    [SerializeField] public bool TimerCompleted = false;
 
     [SerializeField] float SurvivalTimeLimit = 100f;
 
@@ -167,8 +169,9 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+    
         //CheckForClearedRoom();
-        if(enemies != null || enemies.Count == 0) 
+        if (enemies != null || enemies.Count == 0) 
         {
             for(int i =0; i < enemies.Count; i++)
             {
@@ -182,7 +185,7 @@ public class EnemyManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (EnemyState == EnemyState.Survival) 
+        if (EnemyState == EnemyState.Survival)
         {
             if (TimerOn)
             {
@@ -206,6 +209,9 @@ public class EnemyManager : MonoBehaviour
 
                 // Set timerCompleted to true to stop enemies from attacking
                 TimerCompleted = true;
+
+                EndPortal.PortalRef.SetActive(true);
+                EndPortal.PortalRefCollider.enabled = true;
             }
         }
     }
@@ -276,7 +282,12 @@ public class EnemyManager : MonoBehaviour
 
                 CheckForCompletedWaves();
             }
-            else if (EnemyState == EnemyState.Waves && WavesCompleted) { text.text = "The waves are cleared!"; }
+            else if (EnemyState == EnemyState.Waves && WavesCompleted) 
+            { 
+                text.text = "The waves are cleared!";
+                EndPortal.PortalRef.SetActive(true);
+                EndPortal.PortalRefCollider.enabled = true;
+            }
             else if (EnemyState == EnemyState.Survival && TimerOn == true)
             {
                 SpawnAndPlaceEnemies();
@@ -299,6 +310,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (CurrentWave >= NumOfWaves)
         {
+            
             WavesCompleted = true;
             text.text = "Last Wave";
         }

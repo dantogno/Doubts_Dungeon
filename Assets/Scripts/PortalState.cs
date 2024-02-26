@@ -5,9 +5,9 @@ using UnityEngine;
 public class PortalState : MonoBehaviour
 {
     [SerializeField]
-    private GameObject PortalRef;
+    public GameObject PortalRef;
     [SerializeField]
-    private Collider PortalRefCollider;
+    public Collider PortalRefCollider;
     [SerializeField]
     private bool Closed;
     [SerializeField]
@@ -18,6 +18,10 @@ public class PortalState : MonoBehaviour
     private bool isCombatRoom;
     [SerializeField]
     private EnemyManager EnemyManagerRef;
+
+    [SerializeField] private bool isWaveEnemyRoom;
+
+    [SerializeField] private bool isSurvivalEnemyRoom;
 
     [SerializeField]
     private TransitionManager TransitionManagerRef;
@@ -31,7 +35,7 @@ public class PortalState : MonoBehaviour
         {
             if (EnemyManagerRef == null)
             {
-                EnemyManagerRef.GetComponent<EnemyManager>();
+                EnemyManagerRef = FindObjectOfType<EnemyManager>();
             }
 
             if (IsEntryPortal == true)
@@ -63,47 +67,8 @@ public class PortalState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isCombatRoom == true)
-        {
-            if (EnemyManagerRef.CurrentWave < EnemyManagerRef.NumOfWaves)
-            {
-                Closed = true;
-                Active = false;
-            }
-            else if (EnemyManagerRef.CurrentWave >= EnemyManagerRef.NumOfWaves)
-            {
-                Closed = false;
-                Active = true;
-            }
-        }
-        else if(isCombatRoom == false)
-        {
-            Closed = false;
-            Active = true;
-        }
-
-        CheckForRoomChange();
-    }
-
-    public void CheckForRoomChange()
-    {
-        if (Closed == true && Active == false)
-        {
-            return;
-        }
-        else if (Closed == false && Active == true)
-        {
-            ActivatePortal();
-        }
-    }
-
-    public void ActivatePortal()
-    {
-        if (Closed == false && Active == true)
-        {
-            PortalRef.SetActive(true);
-            PortalRefCollider.enabled = true;
-        }
+        
+       
     }
 
     private void OnTriggerEnter(Collider other)
