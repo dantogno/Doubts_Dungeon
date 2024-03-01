@@ -20,9 +20,6 @@ public class PlayerMovementNew : MonoBehaviour
     // INPUT ACTION STUFF
     Vector2 currentMoveInput;
     Vector3 moveVector;
-
-
-
     
 
     [Header("Animation Settings")]
@@ -312,7 +309,7 @@ public class PlayerMovementNew : MonoBehaviour
     }
     #endregion
 
-    public void DisablePlayer() // for when the player dies so they don't keep moving around
+    public void DisablePlayer()
     {
         enabled = false;
     }

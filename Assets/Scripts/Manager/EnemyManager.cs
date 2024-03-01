@@ -155,8 +155,6 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    
-
     private void StartSurvival()
     {
         SpawnAndPlaceEnemies();
@@ -169,7 +167,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-    
         //CheckForClearedRoom();
         if (enemies != null || enemies.Count == 0) 
         {

@@ -14,6 +14,7 @@ public class Player: MonoBehaviour
     //Currancy
     [SerializeField]
     public int Currancy;
+    int oldCurrancyValue;
 
     //Health
     public int health;
@@ -25,18 +26,34 @@ public class Player: MonoBehaviour
 
     public float damageCooldownDuration = 1f;
 
+    // B U F F S
+    public int hits = 0;
+    public bool trackHits = false;
+
+    public bool currencyIncrease = false;
+    public bool currencyPickedUp = false;
+
+
     [SerializeField]
     public CameraEffect CE;
+
+    // S P E E D
+
+    // A T T A C K
+    
 
 
     public void Update()
     {
         CheckForHealthPickup();
+        CheckForCurrencyPickup();
+        if(currencyPickedUp) { IncreaseCurrancyCollected(); }
     }
 
     public void Start()
     {
         health = 3;
+        oldCurrancyValue = Currancy;
     }
 
     public int GetHealth()
@@ -52,6 +69,7 @@ public class Player: MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        if (trackHits) { hits++; }
     }
 
     public void GainHealth(int increase)
@@ -118,4 +136,30 @@ public class Player: MonoBehaviour
             UseHealth();
         }
     }
+
+    int currencyOrbWorth = 3;
+    bool increased = false;
+    internal void CheckForCurrencyPickup()
+    {
+        if(Currancy >= oldCurrancyValue + currencyOrbWorth)
+        {
+            oldCurrancyValue = Currancy;
+            if (currencyIncrease)
+            {
+                increased = false;
+                currencyPickedUp = true;
+            }
+        }
+    }
+
+    internal void IncreaseCurrancyCollected()
+    {
+        if (!increased)
+        {
+            Currancy++; // add additional if buff is active
+            increased = true;
+        }
+        
+    }
+    
 }
