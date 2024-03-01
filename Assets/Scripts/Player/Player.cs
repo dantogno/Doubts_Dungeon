@@ -14,7 +14,6 @@ public class Player: MonoBehaviour
     //Currancy
     [SerializeField]
     public int Currancy;
-    int oldCurrancyValue;
 
     //Health
     public int health;
@@ -26,6 +25,8 @@ public class Player: MonoBehaviour
 
     public float damageCooldownDuration = 1f;
 
+    //ref to enemy manager
+    EnemyManager enemyManager;
     // B U F F S
     public int hits = 0;
     public bool trackHits = false;
@@ -38,24 +39,39 @@ public class Player: MonoBehaviour
     public CameraEffect CE;
 
     // S P E E D
+    public float Speed = 8f;
 
     // A T T A C K
-    
+    public int Damage;
 
 
     public void Update()
     {
         CheckForHealthPickup();
-        CheckForCurrencyPickup();
-        if(currencyPickedUp) { IncreaseCurrancyCollected(); }
     }
 
     public void Start()
     {
         health = 3;
-        oldCurrancyValue = Currancy;
+        //FindEnemyManager();
+    }
+    private void OnLevelWasLoaded(int level)
+    {
+        //FindEnemyManager();
     }
 
+    void FindEnemyManager()
+    {
+        GameObject tempEm = GameObject.Find("EnemyManager");
+        enemyManager = tempEm.GetComponent<EnemyManager>();
+    }
+
+    //public void UpdateEnemyManager(int damage)
+    //{
+    //    Damage = damage;
+    //    if (enemyManager != null)
+    //        enemyManager.ChangeDamageForEnemies(Damage);
+    //}
     public int GetHealth()
     {
         return health;
@@ -137,29 +153,20 @@ public class Player: MonoBehaviour
         }
     }
 
-    int currencyOrbWorth = 3;
+
     bool increased = false;
-    internal void CheckForCurrencyPickup()
+    private void OnTriggerEnter(Collider other)
     {
-        if(Currancy >= oldCurrancyValue + currencyOrbWorth)
+        if (other.gameObject.CompareTag("Currency"))
         {
-            oldCurrancyValue = Currancy;
             if (currencyIncrease)
             {
                 increased = false;
-                currencyPickedUp = true;
+                Currancy++; // add additional if buff is active
+                increased = true;
             }
         }
     }
 
-    internal void IncreaseCurrancyCollected()
-    {
-        if (!increased)
-        {
-            Currancy++; // add additional if buff is active
-            increased = true;
-        }
-        
-    }
     
 }

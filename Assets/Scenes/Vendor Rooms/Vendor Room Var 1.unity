@@ -10354,10 +10354,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4007457a1694df945967b515d1659e75, type: 2}
   - {fileID: 11400000, guid: 137b6d7b1f3e88c4e9cd74975983c9dd, type: 2}
   - {fileID: 11400000, guid: 7a311290224ba53408f79b7d19fd20bb, type: 2}
-  - {fileID: 11400000, guid: f6a97daaa2b62ad488ab74d6ff3e3559, type: 2}
   - {fileID: 11400000, guid: df9385aefbd421d45a2790241c07199e, type: 2}
   - {fileID: 11400000, guid: da6f5640cf28a8241815c3664d53845f, type: 2}
-  VendorTotalItems: 5
+  VendorTotalItems: 3
 --- !u!4 &1534423505
 Transform:
   m_ObjectHideFlags: 0
@@ -14335,6 +14334,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1578668768}
   - {fileID: 1056908153}
   - {fileID: 2054344216}
   - {fileID: 1530644054}
@@ -14343,4 +14343,3 @@ SceneRoots:
   - {fileID: 1885557578}
   - {fileID: 1472893717}
   - {fileID: 1493498335}
-  - {fileID: 1578668768}

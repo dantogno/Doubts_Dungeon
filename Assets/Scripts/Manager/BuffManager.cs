@@ -39,14 +39,8 @@ public class BuffManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (DurationBuffOn)
-        {
-            currentTime += Time.deltaTime;
-        }
-        else
-        {
-            currentTime = 0;
-        }
+        if (DurationBuffOn) { currentTime += Time.deltaTime; }
+        else { currentTime = 0; }
 
         if (adrenalinOn) { Adrenalin(); }
         if (endorphinsOn) {  Endorphins(); }
@@ -113,6 +107,28 @@ public class BuffManager : MonoBehaviour
 
     }
 
+    void Endorphins()//5
+    {
+        Debug.Log("Endorphins Active");
+
+        endorphinsOn = true;
+        //Shield | Stays for a set number of hits
+        endorphinsActive = true;
+        player.trackHits = true;
+        player.canTakeDamage = false;
+
+        if (player.hits >= endorphinsHitLimit)
+        {
+            endorphinsOn = false;
+            endorphinsActive = false;
+            player.trackHits = false;
+            player.canTakeDamage = true;
+            player.hits = 0;
+            Debug.Log("Endorphins In-Active");
+        }
+
+    }
+
     //under construction
     void Histamine()//3
     {
@@ -125,28 +141,10 @@ public class BuffManager : MonoBehaviour
     {
         Debug.Log("Acetylcholine Active");
         //Increased Damage | Permanent
+        //player.UpdateEnemyManager(2);
 
     }
-
-    void Endorphins()//5
-    {
-        Debug.Log("Endorphins Active");
-
-        endorphinsOn = true;
-        //Shield | Stays for a set number of hits
-        endorphinsActive = true;
-        player.trackHits = true;
-
-        if(player.hits >= endorphinsHitLimit)
-        {
-            endorphinsOn = false;
-            endorphinsActive = false;
-            player.trackHits = false;
-            player.hits = 0;
-            Debug.Log("Endorphins In-Active");
-        }
-
-    }
+    
 
     //under construction
     void Noradrenaline()//6

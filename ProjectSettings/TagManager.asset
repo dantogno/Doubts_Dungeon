@@ -9,6 +9,7 @@ TagManager:
   - Bridge
   - Trap Trigger
   - Trap
+  - Currency
   layers:
   - Default
   - TransparentFX
