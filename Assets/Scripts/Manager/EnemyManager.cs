@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance;
 
-
     [Header("Enemies")]
     [SerializeField] GameObject tallEnemyPrefab;
     [SerializeField] GameObject shortEnemyPrefab;
@@ -54,7 +53,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] float minDistanceBetweenEnemies = 6f;
     [SerializeField] Vector3 enemyPosition;
 
-    
+    [SerializeField] int DamageTaken;
 
     private NavMeshSurface navMeshSurface;
 
@@ -212,7 +211,21 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
-
+    public void ChangeDamageForEnemies(int newDamage)
+    {
+        DamageTaken = newDamage;
+    }
+    public void UpdateEnemyDamage()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            Enemy tempEnemyScriptRef = enemy.GetComponent<Enemy>();
+            if (tempEnemyScriptRef != null)
+            {
+                tempEnemyScriptRef.DamageTaken = this.DamageTaken;
+            }
+        }
+    }
     private void KillEnemy(Enemy enemy)
     {
         enemy.KillEnemy(enemy);

@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovementNew : MonoBehaviour
 {
     // P R O P E R T I E S
-    
+
     [Header("Movement Settings")]
+    [SerializeField] Player player;
     public float Speed = 8f; //Needed for DamageSurface
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
@@ -70,6 +71,9 @@ public class PlayerMovementNew : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<Player>();
+        Speed = player.Speed;
+
         plane = new Plane(Vector3.down, transform.position.y);
         GameObject spawnLocation = GameObject.Find("SpawnLocation");
         SpawnPosition = spawnLocation.transform.position;
@@ -178,6 +182,9 @@ public class PlayerMovementNew : MonoBehaviour
     
     void Move()
     {
+        //update speed
+        Speed = player.Speed;
+
         // moves the player 
         Vector3 move = GetMoveVector();
         playerAnimator.SetFloat("speed", move.magnitude);

@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
     public int health = 5;
     public int maxhealth;
+    public int DamageTaken;
 
     [SerializeField]
     private Transform YOffset;
@@ -79,6 +80,8 @@ public class Enemy : MonoBehaviour
         //Dissolve Shader: Whenever the skinned mesh changes, this if function sets that new material in the array
         if (skinnedMesh != null)
             skinnedMaterials = skinnedMesh.materials;
+
+        DamageTaken = 1;
     }
 
     private IEnumerator DelayedSetup()
@@ -159,7 +162,7 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
             }
 
-            TakeDamage(1);
+            TakeDamage(DamageTaken);
         }
     }
 

@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour
 
     Plane plane;
 
-    PlayerMovement movementScript;
+    PlayerMovementNew movementScript;
     ShootBehavior SB;
 
     private void Start()
@@ -32,7 +32,7 @@ public class ProjectileScript : MonoBehaviour
             if (Time.time >= nextFireTime)
             {
                 FireWithMouse();
-                //if (movementScript.inputType == InputType.Controller)
+                //if (movementScript.PlayerInputMode == InputType.Controller)
                 //{
                 //    FireWithGamepad();
                 //}
@@ -48,7 +48,7 @@ public class ProjectileScript : MonoBehaviour
             // Check if the "Fire1" button was clicked (not held)
             if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
             {
-                if(movementScript.usingController)
+                if(movementScript.PlayerInputMode == InputType.Controller)
                 {
                     FireWithGamepad();
                 }
