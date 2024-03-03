@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class VendorManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class VendorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PopulateItems();
+        PopulateVendor();
     }
 
     // Update is called once per frame
@@ -28,10 +29,6 @@ public class VendorManager : MonoBehaviour
         
     }
     
-    void PopulateItems()
-    {
-        //Items can be put in by code or put in through the edior
-    }
 
     void PopulateVendor()//Randomly pull times from out set item list
     {
@@ -39,8 +36,19 @@ public class VendorManager : MonoBehaviour
 
         for (int i = 1; i <= VendorTotalItems; i++)
         {
-            VendorItems.Add(AllItems[randomIndex]);
+            AddItemToVendor(randomIndex);
         }
+    }
+
+    void AddItemToVendor(int randomIndex)
+    {
+        if (!VendorItems.Contains(AllItems[randomIndex]))
+            VendorItems.Add(AllItems[randomIndex]);
+        else
+        {
+            randomIndex = Random.Range(0, AllItems.Count);
+            AddItemToVendor(randomIndex);
+        } 
     }
 
     public void BuyItem(Item item)
@@ -51,14 +59,20 @@ public class VendorManager : MonoBehaviour
             IM.AddItem(item);
 
             IM.player.Currancy -= item.Cost;
+            Debug.Log($"{item.Name} purchased");
         }
+        else
+            Debug.Log("Not enough currancy");
     }
 
     //Could be used for chests
     public Item ReturnItem()
     {
         int randomIndex = Random.Range(0, AllItems.Count);
+
+        Debug.Log($"returned: {AllItems[randomIndex].Name}");
         return AllItems[randomIndex];
+
     }
 
 }
