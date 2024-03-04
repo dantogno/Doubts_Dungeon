@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ public class VendorMenu : MonoBehaviour
     [SerializeField] 
     TextMeshProUGUI[] CheckMarks;
 
-    [SerializeField] bool IsAnyChecked;
+    public bool IsAnyChecked;
 
 
     public class ItemInfo
@@ -39,7 +40,7 @@ public class VendorMenu : MonoBehaviour
     }
 
     [SerializeField] List<ItemInfo> itemInfo = new List<ItemInfo>();
-    [SerializeField] string selectedItemName;
+    public string selectedItemName;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +98,9 @@ public class VendorMenu : MonoBehaviour
     {
         excangeTransform.gameObject.SetActive(true);
 
+        //Debug.Log(selectedItemName);
+        //VendorManager.BuyItemByName(selectedItemName);
+
         //Trying to have the signature only work when one of the items has been selected
         //if (IsAnyChecked)
         //    excangeTransform.gameObject.SetActive(true);
@@ -110,7 +114,10 @@ public class VendorMenu : MonoBehaviour
         selectTransform.gameObject.SetActive(IsAnyChecked);
 
         if (IsAnyChecked)
+        {
             selectedItemName = GetSelectedItemName(selectTransform);
+            Debug.Log(selectedItemName);
+        } 
         else
             selectedItemName = "";
     }
