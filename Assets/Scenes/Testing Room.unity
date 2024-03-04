@@ -228,6 +228,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141268375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8185477682278550097, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+  m_PrefabInstance: {fileID: 1904886518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &339218713 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8688899698072849250, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
@@ -905,6 +916,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972666b93d26a7843af781650ebace2d, type: 3}
+--- !u!114 &1020685708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7285159172764393844, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+  m_PrefabInstance: {fileID: 1904886518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1104390003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1535,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 852101987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1725345363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 140005158051278931, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+  m_PrefabInstance: {fileID: 1904886518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737923333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,7 +1649,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -1660,6 +1693,14 @@ PrefabInstance:
     - target: {fileID: 979543254658439751, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985039306493231098, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 57.505
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985039306493231098, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -291
       objectReference: {fileID: 0}
     - target: {fileID: 2163994209017435101, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1807,7 +1848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5565056345452669711, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 38.666626
+      value: 39.499012
       objectReference: {fileID: 0}
     - target: {fileID: 6079268689235625396, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_IsActive
@@ -1817,6 +1858,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 105
       objectReference: {fileID: 0}
+    - target: {fileID: 7789930818157400514, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: CheckMarks.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789930818157400514, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: CheckMarks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1020685708}
+    - target: {fileID: 7789930818157400514, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: CheckMarks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1725345363}
+    - target: {fileID: 7789930818157400514, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: CheckMarks.Array.data[2]
+      value: 
+      objectReference: {fileID: 141268375}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 254615023167348808, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}

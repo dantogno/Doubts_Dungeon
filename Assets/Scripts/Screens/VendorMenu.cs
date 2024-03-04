@@ -18,6 +18,8 @@ public class VendorMenu : MonoBehaviour
     [SerializeField] 
     TextMeshProUGUI[] CheckMarks;
 
+    [SerializeField] bool IsAnyChecked;
+
 
     public class ItemInfo
     {
@@ -94,18 +96,23 @@ public class VendorMenu : MonoBehaviour
     public void ExcangeSignature(Transform excangeTransform)
     {
         excangeTransform.gameObject.SetActive(true);
+
+        //Trying to have the signature only work when one of the items has been selected
+        //if (IsAnyChecked)
+        //    excangeTransform.gameObject.SetActive(true);
+        //else
+        //    excangeTransform.gameObject.SetActive(false);
     }
 
-    
     public void SelectItem(Transform selectTransform)
     {
-        bool IsAnyChecked = !IsAnyCheckActive();
+        IsAnyChecked = !IsAnyCheckActive();
         selectTransform.gameObject.SetActive(IsAnyChecked);
 
-        if(IsAnyChecked)
+        if (IsAnyChecked)
             selectedItemName = GetSelectedItemName(selectTransform);
         else
-            selectedItemName = null;
+            selectedItemName = "";
     }
 
     private string GetSelectedItemName(Transform selectTransform)

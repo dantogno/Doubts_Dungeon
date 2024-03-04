@@ -51,6 +51,18 @@ public class VendorManager : MonoBehaviour
         } 
     }
 
+    public void BuyItemByName(string name)
+    {
+        foreach (Item item in AllItems)
+        {
+            if(item.Name == name)
+            {
+                Item ItemToBuy = item;
+                BuyItem(ItemToBuy);
+            }
+        }
+    }
+
     public void BuyItem(Item item)
     {
         if(item.Cost <= IM.player.Currancy)
