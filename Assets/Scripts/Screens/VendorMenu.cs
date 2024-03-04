@@ -19,24 +19,25 @@ public class VendorMenu : MonoBehaviour
     TextMeshProUGUI[] CheckMarks;
 
 
-    private class ItemInfo
+    public class ItemInfo
     {
         public TextMeshProUGUI checkMark;
-        public TextMeshProUGUI titleText;
+        public string titleText;
 
-        public ItemInfo(TextMeshProUGUI checkMark, TextMeshProUGUI titleText)
+        public ItemInfo(TextMeshProUGUI checkMark, string titleText)
         {
             this.checkMark = checkMark;
             this.titleText = titleText;
         }
 
-        public ItemInfo(TextMeshProUGUI titleText)
+        public ItemInfo(string titleText)
         {
             this.titleText = titleText;
         }
     }
 
-    private List<ItemInfo> itemInfo = new List<ItemInfo>();
+    [SerializeField] List<ItemInfo> itemInfo = new List<ItemInfo>();
+    [SerializeField] string selectedItemName;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +64,8 @@ public class VendorMenu : MonoBehaviour
             descriptionText.text = VendorManager.VendorItems[i].Description;
             costText.text = VendorManager.VendorItems[i].Cost.ToString();
 
-            itemInfo.Add(new ItemInfo(CheckMarks[i],titleText));
+            ItemInfo PulledItem = new ItemInfo(CheckMarks[i], VendorManager.VendorItems[i].Name);
+            itemInfo.Add(PulledItem);
         }
     }
 
@@ -89,10 +91,38 @@ public class VendorMenu : MonoBehaviour
         }
     }
 
+    public void ExcangeSignature(Transform excangeTransform)
+    {
+        excangeTransform.gameObject.SetActive(true);
+    }
+
     
     public void SelectItem(Transform selectTransform)
     {
-        selectTransform.gameObject.SetActive(!IsAnyCheckActive());
+        bool IsAnyChecked = !IsAnyCheckActive();
+        selectTransform.gameObject.SetActive(IsAnyChecked);
+
+        if(IsAnyChecked)
+            selectedItemName = GetSelectedItemName(selectTransform);
+        else
+            selectedItemName = null;
+    }
+
+    private string GetSelectedItemName(Transform selectTransform)
+    {
+        // Iterate through the itemInfo list
+        foreach (ItemInfo info in itemInfo)
+        {
+            // Compare the checkMark reference with selectTransform
+            if (info.checkMark.transform == selectTransform)
+            {
+                // Return the associated titleText (item name)
+                return info.titleText;
+            }
+        }
+
+        // If no matching item found, return an empty string or handle the case as needed
+        return string.Empty;
     }
 
     public bool IsAnyCheckActive()

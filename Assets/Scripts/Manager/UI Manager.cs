@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHealthPickups()
     {
-        healthPickups.text = $"Stabalizers: {player.healthPickups}";
+        healthPickups.text = $"Stabilizers: {player.healthPickups}";
     }
 
     private void UpdateCurancyDisplay()

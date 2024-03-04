@@ -228,6 +228,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &339218713 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8688899698072849250, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+  m_PrefabInstance: {fileID: 1904886518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &342328227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1659,6 +1664,38 @@ PrefabInstance:
     - target: {fileID: 2163994209017435101, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2876888461513086918, guid: 623747d8c16922b41b32231015333675, type: 3}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExcangeSignature
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VendorMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 339218713}
+    - target: {fileID: 2640852813570750115, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2851385637667140132, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_LocalPosition.x

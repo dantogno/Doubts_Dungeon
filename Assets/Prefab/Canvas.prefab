@@ -1576,7 +1576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &489954874297347339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5813,11 +5813,11 @@ MonoBehaviour:
   - {fileID: 5368520752896379264}
   - {fileID: 2938072078576837985}
   - {fileID: 6338358503060643119}
-  ItemSelected: 0
   CheckMarks:
   - {fileID: 3381556485447706480}
   - {fileID: 5334166232676824663}
   - {fileID: 4210600167831915605}
+  selectedItemName: 
 --- !u!1 &6764748886413580682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,7 +6178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stabalizers: 0'
+  m_text: 'Stabilizers: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cec78d3f24ba4514887b32897f308af9, type: 2}
   m_sharedMaterial: {fileID: 2937146788897693900, guid: cec78d3f24ba4514887b32897f308af9, type: 2}
