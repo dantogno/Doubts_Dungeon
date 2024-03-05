@@ -16,10 +16,11 @@ public class VendorMenu : MonoBehaviour
     [SerializeField]
     GameObject[] Items;
 
-    [SerializeField] 
-    TextMeshProUGUI[] CheckMarks;
+    //[SerializeField] TextMeshProUGUI[] CheckMarks;
+    public TextMeshProUGUI[] checkMarks;
 
-    public bool IsAnyChecked;
+    //public bool IsAnyChecked;
+    public bool isAnyChecked;
 
 
     public class ItemInfo
@@ -39,8 +40,11 @@ public class VendorMenu : MonoBehaviour
         }
     }
 
-    [SerializeField] List<ItemInfo> itemInfo = new List<ItemInfo>();
-    public string selectedItemName;
+    //[SerializeField] List<ItemInfo> itemInfo = new List<ItemInfo>();
+    //public string selectedItemName;
+
+    public List<ItemInfo> itemInformation = new List<ItemInfo>();
+    public string SelectedItemName;
 
     // Start is called before the first frame update
     void Start()
@@ -67,8 +71,8 @@ public class VendorMenu : MonoBehaviour
             descriptionText.text = VendorManager.VendorItems[i].Description;
             costText.text = VendorManager.VendorItems[i].Cost.ToString();
 
-            ItemInfo PulledItem = new ItemInfo(CheckMarks[i], VendorManager.VendorItems[i].Name);
-            itemInfo.Add(PulledItem);
+            ItemInfo PulledItem = new ItemInfo(checkMarks[i], VendorManager.VendorItems[i].Name);
+            itemInformation.Add(PulledItem);
         }
     }
 
@@ -98,8 +102,8 @@ public class VendorMenu : MonoBehaviour
     {
         excangeTransform.gameObject.SetActive(true);
 
-        //Debug.Log(selectedItemName);
-        //VendorManager.BuyItemByName(selectedItemName);
+        Debug.Log(SelectedItemName);
+        VendorManager.BuyItemByName(SelectedItemName);
 
         //Trying to have the signature only work when one of the items has been selected
         //if (IsAnyChecked)
@@ -110,22 +114,22 @@ public class VendorMenu : MonoBehaviour
 
     public void SelectItem(Transform selectTransform)
     {
-        IsAnyChecked = !IsAnyCheckActive();
-        selectTransform.gameObject.SetActive(IsAnyChecked);
+        isAnyChecked = !IsAnyCheckActive();
+        selectTransform.gameObject.SetActive(isAnyChecked);
 
-        if (IsAnyChecked)
+        if (isAnyChecked)
         {
-            selectedItemName = GetSelectedItemName(selectTransform);
-            Debug.Log(selectedItemName);
+            SelectedItemName = GetSelectedItemName(selectTransform);
+            Debug.Log(SelectedItemName);
         } 
         else
-            selectedItemName = "";
+            SelectedItemName = "";
     }
 
     private string GetSelectedItemName(Transform selectTransform)
     {
         // Iterate through the itemInfo list
-        foreach (ItemInfo info in itemInfo)
+        foreach (ItemInfo info in itemInformation)
         {
             // Compare the checkMark reference with selectTransform
             if (info.checkMark.transform == selectTransform)
@@ -141,7 +145,7 @@ public class VendorMenu : MonoBehaviour
 
     public bool IsAnyCheckActive()
     {
-        foreach(TextMeshProUGUI checkMark in CheckMarks)
+        foreach(TextMeshProUGUI checkMark in checkMarks)
         {
             if(checkMark.gameObject.activeSelf) 
                 return true;
@@ -151,9 +155,9 @@ public class VendorMenu : MonoBehaviour
 
     public int GetActiveCheckIndex()
     {
-        for (int i = 0; i < CheckMarks.Length; i++)
+        for (int i = 0; i < checkMarks.Length; i++)
         {
-            if (CheckMarks[i].gameObject.activeSelf)
+            if (checkMarks[i].gameObject.activeSelf)
                 return i;
         }
         return -1;

@@ -5813,11 +5813,12 @@ MonoBehaviour:
   - {fileID: 5368520752896379264}
   - {fileID: 2938072078576837985}
   - {fileID: 6338358503060643119}
-  CheckMarks:
+  checkMarks:
   - {fileID: 3381556485447706480}
   - {fileID: 5334166232676824663}
   - {fileID: 4210600167831915605}
-  selectedItemName: 
+  isAnyChecked: 0
+  SelectedItemName: 
 --- !u!1 &6764748886413580682
 GameObject:
   m_ObjectHideFlags: 0
