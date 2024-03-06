@@ -105,8 +105,8 @@ public class VendorMenu : MonoBehaviour
         Debug.Log(SelectedItemName);
         VendorManager.BuyItemByName(SelectedItemName);
 
-        //Trying to have the signature only work when one of the items has been selected
-        //if (IsAnyChecked)
+        ////Trying to have the signature only work when one of the items has been selected
+        //if (IsAnyCheckActive())
         //    excangeTransform.gameObject.SetActive(true);
         //else
         //    excangeTransform.gameObject.SetActive(false);
