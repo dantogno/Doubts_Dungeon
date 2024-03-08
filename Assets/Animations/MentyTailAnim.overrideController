@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MentyTailAnim
+  m_Controller: {fileID: 9100000, guid: 92ee096ee90ae2046b1d5b32c33b1d25, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: a185d2b2fb236ef40af304fa207c8b86, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 15a3c1887fcee6149a5dc73cb2df55de, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 765c0a2439c00b1478966c9867dc418e, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 15a3c1887fcee6149a5dc73cb2df55de, type: 3}
