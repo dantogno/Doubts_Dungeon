@@ -7,20 +7,28 @@ public class VendorManager : MonoBehaviour
 {
     //Vendor only has one of each item it pulls there are not stacking items for the vendor
 
-    public List<Item> VendorItems = new List<Item>();
+    public List<Item> VendorItems;
 
-    public List<Item> AllItems = new List<Item>();
+    public List<Item> AllItems;
 
     //The number of items avalable forsame at a time
     public int VendorTotalItems = 5;
 
-    InventoryManager IM = new InventoryManager();
+    InventoryManager IM;
+
+    //Vendor Menu got values
+    public string SelectedItemName;
+    public bool isAnyChecked;
 
 
     // Start is called before the first frame update
     void Start()
     {
         PopulateVendor();
+
+        VendorItems = new List<Item>();
+        AllItems = new List<Item>();
+        IM = new InventoryManager();
     }
 
     // Update is called once per frame
