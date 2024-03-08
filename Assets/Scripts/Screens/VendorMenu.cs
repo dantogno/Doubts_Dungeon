@@ -19,8 +19,7 @@ public class VendorMenu : MonoBehaviour
     //[SerializeField] TextMeshProUGUI[] CheckMarks;
     public TextMeshProUGUI[] checkMarks;
 
-    //public bool IsAnyChecked;
-    public bool isAnyChecked;
+    //[HideInInspector] public bool isAnyChecked;
 
 
     public class ItemInfo
@@ -40,14 +39,17 @@ public class VendorMenu : MonoBehaviour
         }
     }
 
-    //[SerializeField] List<ItemInfo> itemInfo = new List<ItemInfo>();
-    //public string selectedItemName;
-
-    public List<ItemInfo> itemInformation = new List<ItemInfo>();
-    public string SelectedItemName;
+    private List<ItemInfo> itemInformation = new List<ItemInfo>();
+    //public string SelectedItemName;
 
     // Start is called before the first frame update
     void Start()
+    {
+        SetVendorManager();
+    }
+
+
+    void SetVendorManager()
     {
         GameObject VM = GameObject.Find("VendorManager");
         VendorManager = VM.GetComponent<VendorManager>();
@@ -102,8 +104,12 @@ public class VendorMenu : MonoBehaviour
     {
         excangeTransform.gameObject.SetActive(true);
 
-        Debug.Log(SelectedItemName);
-        VendorManager.BuyItemByName(SelectedItemName);
+        if(VendorManager == null)
+        {
+            SetVendorManager();
+        }
+        Debug.Log(VendorManager.SelectedItemName);
+        VendorManager.BuyItemByName(VendorManager.SelectedItemName);
 
         ////Trying to have the signature only work when one of the items has been selected
         //if (IsAnyCheckActive())
@@ -114,16 +120,19 @@ public class VendorMenu : MonoBehaviour
 
     public void SelectItem(Transform selectTransform)
     {
-        isAnyChecked = !IsAnyCheckActive();
-        selectTransform.gameObject.SetActive(isAnyChecked);
+        VendorManager.isAnyChecked = !IsAnyCheckActive();
+        selectTransform.gameObject.SetActive(VendorManager.isAnyChecked);
 
-        if (isAnyChecked)
+        if (VendorManager.isAnyChecked)
         {
-            SelectedItemName = GetSelectedItemName(selectTransform);
-            Debug.Log(SelectedItemName);
-        } 
+            VendorManager.SelectedItemName = GetSelectedItemName(selectTransform);
+            Debug.Log(VendorManager.SelectedItemName);
+        }
         else
-            SelectedItemName = "";
+        {
+            VendorManager.SelectedItemName = "";
+        }
+            
     }
 
     private string GetSelectedItemName(Transform selectTransform)
