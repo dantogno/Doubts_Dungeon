@@ -26,8 +26,6 @@ public class VendorManager : MonoBehaviour
     {
         PopulateVendor();
 
-        VendorItems = new List<Item>();
-        AllItems = new List<Item>();
         IM = new InventoryManager();
     }
 

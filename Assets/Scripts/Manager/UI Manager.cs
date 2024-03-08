@@ -47,11 +47,11 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHealthPickups()
     {
-        healthPickups.text = $"Stabilizers: {player.healthPickups}";
+        healthPickups.text = $": {player.healthPickups}";
     }
 
     private void UpdateCurancyDisplay()
     {
-        currencyDisplay.text = $"Bad Energy: {player.Currancy}";
+        currencyDisplay.text = $": {player.Currancy}";
     }
 }
