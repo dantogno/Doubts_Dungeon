@@ -97,6 +97,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3971519507429508728}
     m_Modifications:
+    - target: {fileID: 4606705655178908942, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7149380401852705625, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
       propertyPath: m_Name
       value: BloodCellType1 1
@@ -175,6 +179,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3971519507429508728}
     m_Modifications:
+    - target: {fileID: 4606705655178908942, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7149380401852705625, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
       propertyPath: m_Name
       value: BloodCellType1 1 (2)
@@ -253,6 +261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3971519507429508728}
     m_Modifications:
+    - target: {fileID: 4606705655178908942, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7149380401852705625, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
       propertyPath: m_Name
       value: BloodCellType1 1 (1)
@@ -331,6 +343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3971519507429508728}
     m_Modifications:
+    - target: {fileID: 4606705655178908942, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7149380401852705625, guid: a76f35d87a41c7f4d8230bc74a6ec820, type: 3}
       propertyPath: m_Name
       value: BloodCellType1 1 (3)
