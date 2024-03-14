@@ -111,7 +111,7 @@ public class PlayerMovementNew : MonoBehaviour
     {
         Move();
         CheckForDodge();
-        HandleLookDirection();
+        //HandleLookDirection();
     }
 
 
@@ -176,6 +176,14 @@ public class PlayerMovementNew : MonoBehaviour
         }
     }
 
+    void UpdateLookRotation(float vertInput, float horizInput)
+    {
+        Vector3 input = new Vector3(vertInput , 0 , -horizInput );
+        transform.LookAt(transform.position + input);
+        //rb.rotation = Quaternion.identity;
+        rb.angularVelocity = Vector3.zero;
+    }
+
     #endregion
 
     // M O V E M E N T 
@@ -186,7 +194,10 @@ public class PlayerMovementNew : MonoBehaviour
         Speed = player.Speed;
 
         // moves the player 
-        Vector3 move = GetMoveVector();
+        float vertInput = Input.GetAxis("Vertical");
+        float horizInput = Input.GetAxis("Horizontal");
+        Vector3 move = GetMoveVector(vertInput, horizInput);
+        UpdateLookRotation(vertInput, horizInput);
         playerAnimator.SetFloat("speed", move.magnitude);
 
         //Speed *= SpeedMultiplier;
@@ -198,7 +209,7 @@ public class PlayerMovementNew : MonoBehaviour
         //console.Log("Player Position", transform.position, 2);
     }
 
-    Vector3 GetMoveVector()
+    Vector3 GetMoveVector(float vertInput, float horizInput)
     {
         //calculates the move vector for the player 
 
@@ -207,8 +218,8 @@ public class PlayerMovementNew : MonoBehaviour
         switch (PlayerInputMode)
         {
             case InputType.Keyboard:
-                move = (Input.GetAxis("Vertical") * getCameraForward()
-                    + Input.GetAxis("Horizontal") * getCameraRight()).normalized;
+                move = (vertInput * getCameraForward()
+                    + horizInput * getCameraRight()).normalized;
                 break;
 
             case InputType.Controller:
