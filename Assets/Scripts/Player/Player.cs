@@ -16,17 +16,27 @@ public class Player: MonoBehaviour
     public int Currancy;
 
     //Health
-    public int health;
-    public int maxHealth;
+    //public int health;
+    //public int maxHealth;
 
     public int healthPickups;
 
     public bool canTakeDamage = true;
 
-    public float damageCooldownDuration = 1f;
+    public float damageCooldownDuration = .2f;
+
+    //S T R E S S
+    [SerializeField] public float stress;
+    [SerializeField] public int maxStress;
+
+    [SerializeField] int reduceStressAmount;
+    float timeSinceLastHit = 0f;
+    [SerializeField] float stressReductionRate = .2f;
+    [SerializeField] float stressReductionDelay = 5f;
 
     //ref to enemy manager
     EnemyManager enemyManager;
+
     // B U F F S
     public int hits = 0;
     public bool trackHits = false;
@@ -48,11 +58,16 @@ public class Player: MonoBehaviour
     public void Update()
     {
         CheckForHealthPickup();
+
+        timeSinceLastHit += Time.deltaTime;
+        ReduceStressOverTime(stressReductionRate);
     }
 
     public void Start()
     {
-        health = 3;
+        //health = 3;
+        stress = 0;
+        reduceStressAmount = 1;
         //FindEnemyManager();
     }
     private void OnLevelWasLoaded(int level)
@@ -66,49 +81,118 @@ public class Player: MonoBehaviour
         enemyManager = tempEm.GetComponent<EnemyManager>();
     }
 
-    //public void UpdateEnemyManager(int damage)
-    //{
-    //    Damage = damage;
-    //    if (enemyManager != null)
-    //        enemyManager.ChangeDamageForEnemies(Damage);
-    //}
-    public int GetHealth()
-    {
-        return health;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (trackHits) { hits++; }
-    }
-
-    public void GainHealth(int increase)
-    {
-        health += increase;
-    }
-
     public void PickupHealth()
     {
         healthPickups++;
+    }
+
+    #region Health
+    //public int GetHealth()
+    //{
+    //    return health;
+    //}
+
+    //public int GetMaxHealth()
+    //{
+    //    return maxHealth;
+    //}
+
+    //public void TakeDamage(int damage)
+    //{
+    //    health -= damage;
+    //    if (trackHits) { hits++; }
+    //}
+
+    //public void GainHealth(int increase)
+    //{
+    //    health += increase;
+    //}
+
+
+    //bool usable;
+    //public void UseHealth()
+    //{
+    //    usable = false;
+    //    if (health < maxHealth)
+    //    {
+    //        healthPickups--;
+    //        usable = true;
+    //    }
+
+    //    if (usable) { GainHealth(1); }
+    //}
+
+    //public void PlayerHasBeenHit()
+    //{
+    //    canTakeDamage = false;
+    //    StartCoroutine(DamageCooldown());
+    //    // Reduce player's health when colliding with an enemy
+    //    ManageDamage(1);
+    //}
+
+    //private IEnumerator DamageCooldown()
+    //{
+    //    yield return new WaitForSeconds(damageCooldownDuration);
+    //    canTakeDamage = true; // Allow taking damage again after cooldown
+    //}
+
+    //void ManageDamage(int damage)
+    //{
+    //    if (GetHealth() > 0)
+    //    {
+    //        TakeDamage(damage);
+
+    //        MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
+    //        canTakeDamage = true;
+    //        CE.ShakeCamera();
+    //        // Check for player death
+    //        if (GetHealth() == 0)
+    //        {
+    //            CE.StopCameraShake();
+    //            //OnGameOver();
+    //        }
+
+    //    }
+    //}
+    #endregion
+
+    public float GetStress()
+    {
+        return stress;
+    }
+
+    public int GetMaxStress()
+    {
+        return maxStress;
+    }
+
+    #region S T A M I N A
+
+    public void IncreaseStress(int damage)//Take Damage
+    {
+        stress += damage;
+        if (trackHits) { hits++; }
+    }
+
+    public void DecreaseStress(float decrease)//lower stress | Gain Health
+    {
+        if(stress > 0)
+        {
+            stress -= decrease;
+        }
     }
 
     bool usable;
     public void UseHealth()
     {
         usable = false;
-        if (health < maxHealth)
+        if (stress < maxStress)
         {
             healthPickups--;
             usable = true;
         }
 
-        if (usable) { GainHealth(1); }
+        if (usable) { DecreaseStress(reduceStressAmount); }
     }
 
     public void PlayerHasBeenHit()
@@ -127,15 +211,15 @@ public class Player: MonoBehaviour
 
     void ManageDamage(int damage)
     {
-        if (GetHealth() > 0)
+        if (GetStress() < GetMaxStress())
         {
-            TakeDamage(damage);
+            IncreaseStress(damage);
 
-            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetHealth() / (float)GetMaxHealth());
+            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetStress() / (float)GetMaxStress());
             canTakeDamage = true;
             CE.ShakeCamera();
             // Check for player death
-            if (GetHealth() == 0)
+            if (GetStress() == 0)
             {
                 CE.StopCameraShake();
                 //OnGameOver();
@@ -143,6 +227,17 @@ public class Player: MonoBehaviour
 
         }
     }
+
+    public void ReduceStressOverTime(float stressReductionRate)
+    {
+        // If the player hasn't been hit for a set amount of time, gradually reduce stress
+        if (timeSinceLastHit >= stressReductionDelay)
+        {
+            DecreaseStress(stressReductionRate * Time.deltaTime);
+        }
+    }
+
+    #endregion
 
     internal void CheckForHealthPickup()
     {

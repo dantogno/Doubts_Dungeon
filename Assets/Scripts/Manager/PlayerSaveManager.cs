@@ -37,7 +37,9 @@ public class PlayerSaveManager : MonoBehaviour
     public void SaveValues()
     {
         //Heath
-        SavedPlayer.health = CurrentPlayer.health;
+        //SavedPlayer.health = CurrentPlayer.health;
+        //Stress
+        SavedPlayer.stress = CurrentPlayer.stress;
         //Health Pickups
         SavedPlayer.healthPickups = CurrentPlayer.healthPickups;
         //Currenty
@@ -50,7 +52,9 @@ public class PlayerSaveManager : MonoBehaviour
         if(SavedPlayer != null) 
         {
             //Heath
-            CurrentPlayer.health = SavedPlayer.health;
+            //CurrentPlayer.health = SavedPlayer.health;
+            //Stress
+            CurrentPlayer.stress = SavedPlayer.stress;
             //Health Pickups
             CurrentPlayer.healthPickups = SavedPlayer.healthPickups;
             //Currenty
@@ -63,7 +67,10 @@ public class PlayerSaveManager : MonoBehaviour
     public void ClearSaveValues()
     {
         //Heath
-        SavedPlayer.health = 3;
+        //SavedPlayer.health = 3;
+
+        //Stress
+        SavedPlayer.stress = 0;
         //Health Pickups
         SavedPlayer.healthPickups = 0;
         //Currenty

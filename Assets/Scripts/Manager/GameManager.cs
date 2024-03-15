@@ -23,7 +23,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(P.health == 0)
+        //if(P.health == 0)
+        //{
+        //    OnGameOver();
+        //}
+        if (P.stress >= P.maxStress)
         {
             OnGameOver();
         }
@@ -32,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void OnGameOver()
     {
         //set something on enemymanager
-        EnemyManager.Instance.StopTimer();
+        //EnemyManager.Instance.StopTimer();
         OnPlayerDeath?.Invoke();
     }
 
