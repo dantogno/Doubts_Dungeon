@@ -13,12 +13,12 @@ public class PlayerMovementNew : MonoBehaviour
     public float Speed = 8f; //Needed for DamageSurface
     [HideInInspector]
     public float DefaultSpeed;
-    [SerializeField] float interpolationFactor = 1f;
+    //[SerializeField] float interpolationFactor = 1f;
 
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
-    [SerializeField] float decelerationFactor = 10.0f; // Adjust the value as needed
+    //[SerializeField] float decelerationFactor = 10.0f; // Adjust the value as needed
     public StaminaScript Stamina;
 
 
@@ -213,14 +213,14 @@ public class PlayerMovementNew : MonoBehaviour
 
 
         // Calculate new position
-        Vector3 targetPosition = transform.position + move;
+        //Vector3 targetPosition = transform.position + move;
 
         // Interpolate between current position and new position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, interpolationFactor);
-        //Vector3 movePosition = transform.position + move;
+        //transform.position = Vector3.Lerp(transform.position, targetPosition, interpolationFactor);
 
-        //transform.position = movePosition;
-        //console.Log("Player Position", transform.position, 2);
+        Vector3 movePosition = transform.position + move;
+
+        transform.position = movePosition;
     }
 
     Vector3 GetMoveVector(float vertInput, float horizInput)
