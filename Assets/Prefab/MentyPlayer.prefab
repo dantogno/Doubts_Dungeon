@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 1737509851265475257}
+    - target: {fileID: 7428456020193019127, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
+      propertyPath: interpolationFactor
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8398498628850697350, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0036363564

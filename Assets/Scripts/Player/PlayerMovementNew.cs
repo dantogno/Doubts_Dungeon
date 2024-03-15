@@ -11,6 +11,10 @@ public class PlayerMovementNew : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] Player player;
     public float Speed = 8f; //Needed for DamageSurface
+    [HideInInspector]
+    public float DefaultSpeed;
+    [SerializeField] float interpolationFactor = 1f;
+
     [SerializeField] float rotationSpeed = 360.0f;
     [SerializeField] float dodgeDistance = 2.5f;
     [SerializeField] float dodgeDuration = 0.05f;
@@ -48,6 +52,8 @@ public class PlayerMovementNew : MonoBehaviour
 
     private void Awake()
     {
+        DefaultSpeed = Speed;
+
         playerAnimator = GetComponent<Animator>();
         SB = GetComponent<ShootBehavior>();
         rb = GetComponent<Rigidbody>();
@@ -104,12 +110,13 @@ public class PlayerMovementNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
         CheckCameraReference();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        //Move();
         CheckForDodge();
         //HandleLookDirection();
     }
@@ -194,18 +201,25 @@ public class PlayerMovementNew : MonoBehaviour
         Speed = player.Speed;
 
         // moves the player 
-        float vertInput = Input.GetAxis("Vertical");
-        float horizInput = Input.GetAxis("Horizontal");
+        float vertInput = Input.GetAxisRaw("Vertical");
+        float horizInput = Input.GetAxisRaw("Horizontal");
+
         Vector3 move = GetMoveVector(vertInput, horizInput);
         UpdateLookRotation(vertInput, horizInput);
         playerAnimator.SetFloat("speed", move.magnitude);
 
-        //Speed *= SpeedMultiplier;
+        // Adjust movement speed
         move *= Speed * Time.deltaTime;
-        //console.Log("Move Vector with Speed and Time Adjustment", move, 1);
-        //rb.AddForce(move, ForceMode.Force);
-        Vector3 movePosition = transform.position + move;
-        transform.position = movePosition;
+
+
+        // Calculate new position
+        Vector3 targetPosition = transform.position + move;
+
+        // Interpolate between current position and new position
+        transform.position = Vector3.Lerp(transform.position, targetPosition, interpolationFactor);
+        //Vector3 movePosition = transform.position + move;
+
+        //transform.position = movePosition;
         //console.Log("Player Position", transform.position, 2);
     }
 
