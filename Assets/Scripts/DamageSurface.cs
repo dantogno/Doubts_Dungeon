@@ -46,6 +46,7 @@ public class DamageSurface : MonoBehaviour
         CanTakeDamage = true;
     }
 
+
     private void OnCollisionExit(Collision collision)
     {
         collision.gameObject.GetComponent<PlayerMovementNew>().Speed = 8;
