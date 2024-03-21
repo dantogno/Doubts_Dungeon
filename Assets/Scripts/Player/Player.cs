@@ -86,7 +86,7 @@ public class Player: MonoBehaviour
         healthPickups++;
     }
 
-    #region Health
+    #region Health Unused 
     //public int GetHealth()
     //{
     //    return health;
@@ -215,7 +215,8 @@ public class Player: MonoBehaviour
         {
             IncreaseStress(damage);
 
-            MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetStress() / (float)GetMaxStress());
+            // VV[!!] CAUSED A NULL REF ERROR [!!]VV
+            //MusicManager.instance.SetLowPassCutoffBasedOnHealth((float)GetStress() / (float)GetMaxStress());
             canTakeDamage = true;
             CE.ShakeCamera();
             // Check for player death

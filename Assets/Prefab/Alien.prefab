@@ -770,12 +770,14 @@ MonoBehaviour:
   EnemyPathingDelay: 0.2
   knockbackDistance: 2
   knockbackDuration: 0.5
+  spawnpos: {fileID: 4377706203673139829}
   enemydmg: {fileID: 5443724817369215536}
+  despawntime: 1.2
   animator: {fileID: 8339417567653367211}
   maxRange: 15
-  spawnpos: {fileID: 4377706203673139829}
   health: 5
   maxhealth: 10
+  DamageTaken: 0
   YOffset: {fileID: 4377706203673139829}
   CanBeKnockedBack: 1
   skinnedMesh: {fileID: 8667439185434526453}

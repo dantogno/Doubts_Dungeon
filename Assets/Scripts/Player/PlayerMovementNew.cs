@@ -2,7 +2,6 @@ using Cinemachine;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovementNew : MonoBehaviour
 {
@@ -43,8 +42,6 @@ public class PlayerMovementNew : MonoBehaviour
     CinemachineVirtualCamera CMVcam;
     [SerializeField]
     //OnScreenConsole console;
-    ControlInput playerInput;
-
     Vector3 SpawnPosition;
 
 
@@ -58,20 +55,8 @@ public class PlayerMovementNew : MonoBehaviour
         SB = GetComponent<ShootBehavior>();
         rb = GetComponent<Rigidbody>();
 
-        playerInput = new ControlInput();
 
 
-        //setting input callbacks
-        playerInput.Player.Movement.started += OnMoveInput;
-        playerInput.Player.Movement.performed += OnMoveInput;
-        playerInput.Player.Movement.canceled += OnMoveInput;
-
-        playerInput.Player.Dodge.started += OnDodgeInput;
-        playerInput.Player.Dodge.canceled += OnDodgeInput;
-
-        playerInput.Player.Look.started += OnLookInput;
-        playerInput.Player.Look.performed += OnLookInput;
-        playerInput.Player.Look.canceled += OnLookInput;
     }
 
     // Start is called before the first frame update
@@ -122,24 +107,6 @@ public class PlayerMovementNew : MonoBehaviour
     }
 
 
-    #region 'Input Action Callbacks'
-    void OnMoveInput(InputAction.CallbackContext context)
-    {
-        currentMoveInput = context.ReadValue<Vector2>();
-        moveVector = new Vector3(currentMoveInput.x, 0, currentMoveInput.y);
-    }
-
-    void OnDodgeInput(InputAction.CallbackContext context)
-    {
-
-    }
-
-    void OnLookInput(InputAction.CallbackContext context)
-    {
-
-    }
-
-    #endregion
 
     #region 'Mouse Look'
     // L O O K  D I R E C T I O N

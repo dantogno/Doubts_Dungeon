@@ -10,11 +10,21 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
+    // M O V E M E N T
     public NavMeshAgent Agent;
     public float EnemyPathingDelay = 0.2f;
     public float knockbackDistance = 2f;
     public float knockbackDuration = .5f;
 
+
+    private float PathUpdateDeadline = 1f;
+    private Transform target;
+
+    [SerializeField]
+    private Transform spawnpos;
+
+
+    // V I S U A L S 
     [SerializeField]
     private DamageFlash enemydmg;
 
@@ -28,12 +38,7 @@ public class Enemy : MonoBehaviour
 
     public float maxRange = 15f;
 
-    private float PathUpdateDeadline = 1f;
-    private Transform target;
-
-    [SerializeField]
-    private Transform spawnpos;
-
+    // H E A L T H
     public int health = 5;
     public int maxhealth;
     public int DamageTaken;
@@ -62,6 +67,9 @@ public class Enemy : MonoBehaviour
     public float refreshRate = 0.025f;
 
     private Material[] skinnedMaterials;
+
+    //player ref
+    PlayerMelee playerMelee;
 
     //private void Awake()
     //{
@@ -145,6 +153,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
         }
 
+        //taking damage from projectile
         if (collision.gameObject.CompareTag("Weapon"))
         {
             if (CanBeKnockedBack == true)
@@ -164,7 +173,41 @@ public class Enemy : MonoBehaviour
 
             TakeDamage(DamageTaken);
         }
+
+        
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //for taking damage from melee
+        if (other.gameObject.CompareTag("Melee"))
+        {
+            playerMelee = other.gameObject.GetComponent<PlayerMelee>();
+
+            if (Input.GetKeyDown(KeyCode.RightShift))
+            {
+                //hit behavior
+                if (CanBeKnockedBack == true)
+                {
+                    animator.SetTrigger(HitTrigger);
+
+                    // Calculate direction from the enemy to the player
+                    Vector3 direction = transform.position - other.transform.position;
+                    direction.Normalize();
+
+                    // Calculate the knockback position
+                    Vector3 knockbackPosition = transform.position + direction * knockbackDistance;
+
+                    // Move the enemy to the knockback position over the knockback duration
+                    StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
+                }
+                UnityEngine.Debug.Log($"{this.gameObject.name} MELEE HIT!");
+                TakeDamage(DamageTaken);
+            }
+        }
+
+        playerMelee = null;
+    }
+
 
     private IEnumerator Knockback(Vector3 targetPosition, float duration)
     {
