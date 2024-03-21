@@ -3,7 +3,12 @@ guid: 9b4120133f9224b4899fab6ae3588d73
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BakedWall4_MeshMat
+    second: {fileID: 2100000, guid: 8f5281455607db447a59c01a3e5462d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
