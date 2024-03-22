@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class VendorMenu : MonoBehaviour
 {
+    public bool VendorRoom;
+
     [SerializeField]
     private GameObject VendorScreen;
 
@@ -45,7 +47,11 @@ public class VendorMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetVendorManager();
+        if (VendorRoom)
+        {
+            SetVendorManager();
+        }
+            
     }
 
 
