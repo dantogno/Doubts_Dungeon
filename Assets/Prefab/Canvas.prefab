@@ -1946,8 +1946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.206}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17.26709, y: -28.617981}
-  m_SizeDelta: {x: 233.333, y: 37.461}
+  m_AnchoredPosition: {x: -17.26709, y: -29.045}
+  m_SizeDelta: {x: 306.097, y: 43.796}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1297278570874703782
 CanvasRenderer:
@@ -2004,10 +2004,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 45.15
+  m_fontSizeBase: 35
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -5576,7 +5576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93333334, g: 0.89411765, b: 0.8509804, a: 0.6901961}
+  m_Color: {r: 0.93333334, g: 0.89411765, b: 0.8509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6125,9 +6125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679bb0da961e2514f886e45085503756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ControlScreen: {fileID: 6858588771399896907}
+  HubRoom: 0
   player: {fileID: 0}
   healthPickups: {fileID: 6741398266552941637}
   currencyDisplay: {fileID: 6610010184977935718}
+  textDisplay: {fileID: 1916225233363799506}
   stressSlider: {fileID: 5017978362153667724}
 --- !u!114 &4351434065860807841
 MonoBehaviour:
@@ -6155,6 +6158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103c0f9e6f5f0ac48a3fc8e1d992f404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VendorRoom: 0
   VendorScreen: {fileID: 2281707318150218672}
   VendorManager: {fileID: 0}
   Items:
