@@ -54,4 +54,8 @@ public class PlayerMelee : MonoBehaviour
             Attacked = true;
         }
     }
+    public void Performed()
+    {
+        Attacked = false;   
+    }
 }

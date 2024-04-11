@@ -54,6 +54,8 @@ MonoBehaviour:
   roundEnemies: 0
   NumOfWaves: 0
   CurrentWave: 0
+  EndPortal: {fileID: 0}
+  WavesCompleted: 0
   DifficultyLevel: 1
   DifficultyDuration: 30
   minSpawnNum: 1
@@ -66,8 +68,10 @@ MonoBehaviour:
   numberOfEnemies: 3
   minDistanceBetweenEnemies: 2
   enemyPosition: {x: 0, y: 0, z: 0}
+  DamageTaken: 0
   CurrentTime: 0
   TimerOn: 0
+  TimerCompleted: 0
   SurvivalTimeLimit: 100
   TimerTxt: {fileID: 0}
   text: {fileID: 0}

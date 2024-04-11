@@ -181,9 +181,9 @@ public class Enemy : MonoBehaviour
         //for taking damage from melee
         if (other.gameObject.CompareTag("Melee"))
         {
-            playerMelee = other.gameObject.GetComponent<PlayerMelee>();
+            playerMelee = other.gameObject.GetComponentInParent<PlayerMelee>();
 
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            if (playerMelee != null &&  playerMelee.Attacked)
             {
                 //hit behavior
                 if (CanBeKnockedBack == true)
@@ -202,7 +202,11 @@ public class Enemy : MonoBehaviour
                 }
                 UnityEngine.Debug.Log($"{this.gameObject.name} MELEE HIT!");
                 TakeDamage(DamageTaken);
+
+                playerMelee.Performed();
             }
+
+            
         }
 
         playerMelee = null;
