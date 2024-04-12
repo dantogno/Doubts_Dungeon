@@ -917,6 +917,7 @@ MonoBehaviour:
   enemyref: {fileID: 0}
   flashTime: 0.15
   flashMaterial: {fileID: -876546973899608171, guid: 96f9166d189794841ab943b2ecdcb61c, type: 3}
+  hitMarker: {fileID: 1872147318604286, guid: e6b67599a3469214aa8b06918367f1cb, type: 3}
 --- !u!4 &6873204438202300199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f598dce2fd5744490725ee58c6b263, type: 3}

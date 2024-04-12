@@ -18,6 +18,7 @@ public class DamageFlash : MonoBehaviour
     [SerializeField]
     Material flashMaterial;
     Material originalMat;
+    public GameObject hitMarker;
 
 
     void FlashEnemy()
@@ -56,10 +57,12 @@ public class DamageFlash : MonoBehaviour
             case RenderType.MeshRenderer:
                 meshrenderer.material = flashMaterial;
                 Invoke("flashStop", flashTime);
+                Instantiate(hitMarker, this.transform);
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = flashMaterial;
                 Invoke("flashStop", flashTime);
+                Instantiate(hitMarker, this.transform);
                 break;
         }
         
@@ -71,9 +74,11 @@ public class DamageFlash : MonoBehaviour
         {
             case RenderType.MeshRenderer:
                 meshrenderer.material = originalMat;
+                Destroy(hitMarker);
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = originalMat;
+                Destroy(hitMarker);
                 break;
         }
         
