@@ -8,6 +8,7 @@ public class PlayerMelee : MonoBehaviour
     private int damage;
     private float coolDownDuration;
     public bool Attacked;
+    public GameObject slashFX;
 
     [Header("References")]
     Player playerRef;
@@ -51,11 +52,13 @@ public class PlayerMelee : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             UnityEngine.Debug.Log("MELEE ATTACK PERFORMED!!");
+            Instantiate(slashFX, this.transform);
             Attacked = true;
         }
     }
     public void Performed()
     {
         Attacked = false;   
+        Destroy(slashFX);
     }
 }
