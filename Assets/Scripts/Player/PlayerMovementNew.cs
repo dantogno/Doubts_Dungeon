@@ -21,6 +21,8 @@ public class PlayerMovementNew : MonoBehaviour
     public StaminaScript Stamina;
 
 
+    public bool NewMovmentTest = false;
+
     // INPUT ACTION STUFF
     Vector2 currentMoveInput;
     Vector3 moveVector;
@@ -54,8 +56,6 @@ public class PlayerMovementNew : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         SB = GetComponent<ShootBehavior>();
         rb = GetComponent<Rigidbody>();
-
-
 
     }
 
@@ -178,16 +178,20 @@ public class PlayerMovementNew : MonoBehaviour
         // Adjust movement speed
         move *= Speed * Time.deltaTime;
 
-
-        // Calculate new position
-        //Vector3 targetPosition = transform.position + move;
-
-        // Interpolate between current position and new position
-        //transform.position = Vector3.Lerp(transform.position, targetPosition, interpolationFactor);
-
         Vector3 movePosition = transform.position + move;
 
         transform.position = movePosition;
+
+
+        if (NewMovmentTest)
+        {
+            //Animating
+            float velocityZ = Vector3.Dot(move.normalized, transform.forward);
+            float velocityX = Vector3.Dot(move.normalized, transform.right);
+
+            playerAnimator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
+            playerAnimator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
+        }
     }
 
     Vector3 GetMoveVector(float vertInput, float horizInput)
@@ -315,9 +319,9 @@ public class PlayerMovementNew : MonoBehaviour
 
     void CheckCameraReference()
     {
-        if (CMVcam == null)
-        {
-            CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();//break
-        }
+        //if (CMVcam == null)
+        //{
+        //    CMVcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();//break
+        //}
     }
 }
