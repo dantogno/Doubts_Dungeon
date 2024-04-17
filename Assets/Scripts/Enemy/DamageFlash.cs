@@ -74,11 +74,11 @@ public class DamageFlash : MonoBehaviour
         {
             case RenderType.MeshRenderer:
                 meshrenderer.material = originalMat;
-                Destroy(hitMarker);
+                hitMarker.SetActive(false);
                 break;
             case RenderType.SkinnedMeshRenderer:
                 skinnedMeshRenderer.material = originalMat;
-                Destroy(hitMarker);
+                hitMarker.SetActive(false);
                 break;
         }
         

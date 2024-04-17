@@ -8,7 +8,7 @@ public class ProjectileScript : MonoBehaviour
 {
     public Transform firingPoint; // The 3D firing point transform
     public GameObject projectilePrefab; // The projectile prefab to instantiate
-    public float projectileSpeed = 10f; // Speed of the projectile
+    public float projectileSpeed = 20f; // Speed of the projectile
 
     public float steadyFireRate = 0.5f;
     public float individualFireRate = 0.1f;
