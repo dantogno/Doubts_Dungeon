@@ -9961,6 +9961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419090483356251550, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: MeleeRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2104968101235767128, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.8363056
@@ -10077,6 +10081,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10.655436
       objectReference: {fileID: 0}
+    - target: {fileID: 4545770252335377274, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.045044
+      objectReference: {fileID: 0}
     - target: {fileID: 4855414929075568830, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10084,6 +10092,10 @@ PrefabInstance:
     - target: {fileID: 5194475265924225027, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_Name
       value: PlayablePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565056345452669711, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 53.333252
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attacked: 0
+  slashFX: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  MeleeRange: 1
   HitBox: {fileID: 240056680293966557}
 --- !u!4 &5691649246488852675 stripped
 Transform:

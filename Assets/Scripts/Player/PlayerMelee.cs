@@ -9,6 +9,7 @@ public class PlayerMelee : MonoBehaviour
     private float coolDownDuration;
     public bool Attacked;
     public GameObject slashFX;
+    public float MeleeRange;
 
     [Header("References")]
     Player playerRef;
@@ -49,16 +50,46 @@ public class PlayerMelee : MonoBehaviour
 
     void ListenForAttack()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        //Input.GetKeyDown(KeyCode.RightShift)
+        if (Input.GetButtonDown("Fire2"))
         {
             UnityEngine.Debug.Log("MELEE ATTACK PERFORMED!!");
-            Instantiate(slashFX, this.transform);
             Attacked = true;
+            SpawnSlashFX();
+            
         }
     }
+
+    
     public void Performed()
     {
         Attacked = false;   
-        Destroy(slashFX);
+        DestroyImmediate(slashFX);
+    }
+    void SpawnSlashFX()
+    {
+        
+
+        RaycastHit hit;
+        Ray dodgeRay = new Ray(transform.position, transform.forward);
+        // if we hit something, play spawn the slashFX at the hit thing's position (play the VFX on that target)
+        if (Physics.Raycast(dodgeRay, out hit, MeleeRange))
+        {
+            float distance = hit.distance;
+            Debug.Log("HIT THING!!");
+
+            if (hit.collider != null)
+            {
+                Debug.Log("PLAYED VFX ON THING!!");
+                Instantiate(slashFX, hit.transform.position, Quaternion.identity, this.transform);
+            }
+            
+        }
+        // if we don't hit something, play the slashFX at the player's range
+        else
+        {
+            Debug.Log("didn't hit thing. No VFX on target");
+            Instantiate(slashFX, this.transform);
+        }
     }
 }
