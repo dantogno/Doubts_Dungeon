@@ -15,6 +15,9 @@ public class PlayerMelee : MonoBehaviour
     Player playerRef;
     [SerializeField] GameObject HitBox;
 
+    [Header("Animation Settings")]
+    [SerializeField] Animator MeleeAnim;
+
     // U N I T Y   M E T H O D S
     private void OnLevelWasLoaded(int level)
     {
@@ -36,7 +39,7 @@ public class PlayerMelee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MeleeAnim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -55,6 +58,8 @@ public class PlayerMelee : MonoBehaviour
         {
             UnityEngine.Debug.Log("MELEE ATTACK PERFORMED!!");
             Attacked = true;
+            //MeleeAnim.SetBool("Attack", true);
+            MeleeAnim.Play("MeleeAttack");
             SpawnSlashFX();
             
         }
@@ -63,7 +68,8 @@ public class PlayerMelee : MonoBehaviour
     
     public void Performed()
     {
-        Attacked = false;   
+        Attacked = false;
+        //MeleeAnim.SetBool("Attack", false);
         DestroyImmediate(slashFX);
     }
     void SpawnSlashFX()

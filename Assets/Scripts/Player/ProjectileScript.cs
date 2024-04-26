@@ -19,10 +19,14 @@ public class ProjectileScript : MonoBehaviour
     PlayerMovementNew movementScript;
     ShootBehavior SB;
 
+    [Header("Animation Settings")]
+    [SerializeField] Animator ShootingAnim;
+
     private void Start()
     {
         plane = new Plane(Vector3.down, firingPoint.position.y);
         SB = GetComponent<ShootBehavior>();
+        ShootingAnim = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -63,7 +67,8 @@ public class ProjectileScript : MonoBehaviour
 
     void FireWithMouse()
     {
-        
+        ShootingAnim.Play("Shooting");
+
         // Cast a ray from the mouse position into the game world
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -102,6 +107,8 @@ public class ProjectileScript : MonoBehaviour
 
     void FireWithGamepad()
     {
+        ShootingAnim.Play("Shooting");
+
         Vector3 direction = SB.GetJoystickAimDirection();
         if(direction == Vector3.zero)
         {

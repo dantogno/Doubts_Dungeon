@@ -47,6 +47,14 @@ PrefabInstance:
       propertyPath: slashFX
       value: 
       objectReference: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+    - target: {fileID: 204462891341414498, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+      propertyPath: MeleeAnim
+      value: 
+      objectReference: {fileID: 683169099795797829}
+    - target: {fileID: 1240395887154288678, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5252103681961012277}
     - target: {fileID: 4043606608127802599, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
       propertyPath: staminaBar
       value: 
@@ -95,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5984431599566593013, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+      propertyPath: ShootingAnim
+      value: 
+      objectReference: {fileID: 683169099795797829}
     - target: {fileID: 6450494786158664137, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
       propertyPath: maxStress
       value: 5
@@ -108,6 +120,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+--- !u!95 &683169099795797829 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1737509851265475257, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+  m_PrefabInstance: {fileID: 1254246638905570812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5252103681961012277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6450494786158664137, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
