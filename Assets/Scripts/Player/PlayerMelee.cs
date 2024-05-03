@@ -18,6 +18,11 @@ public class PlayerMelee : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] Animator MeleeAnim;
 
+    [SerializeField]
+    public AudioSource meleeSource;
+    public AudioClip swingSound;
+    public float volume = 1f;
+
     // U N I T Y   M E T H O D S
     private void OnLevelWasLoaded(int level)
     {
@@ -74,7 +79,7 @@ public class PlayerMelee : MonoBehaviour
     }
     void SpawnSlashFX()
     {
-        
+        meleeSource.PlayOneShot(swingSound, volume);
 
         RaycastHit hit;
         Ray dodgeRay = new Ray(transform.position, transform.forward);
