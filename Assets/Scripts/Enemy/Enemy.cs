@@ -252,8 +252,8 @@ public class Enemy : MonoBehaviour
     public void KillEnemy(Enemy enemy) 
     {
         enemy.deaddrop = true;
-        enemy.StartCoroutine(Dissolve());
         enemy.Die();
+        enemy.StartCoroutine(Dissolve());
     }
 
     private void NotifyEnemyDestroyed()
@@ -272,7 +272,7 @@ public class Enemy : MonoBehaviour
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //DestroyImmediate(gameObject, true);
         
     }
@@ -296,5 +296,7 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(refreshRate);
             }
         }
+
+        gameObject.SetActive(false);
     }
 }
