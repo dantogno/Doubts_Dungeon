@@ -48,7 +48,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.046458244, g: 0.046458244, b: 0.046458244, a: 0}
     - _NormalsSpeed: {r: 0, g: 0.2, b: 0, a: 0}
-    - _VoronoiColor: {r: 2.2396777, g: 2.6416442, b: 0.25918013, a: 0.76862746}
+    - _VoronoiColor: {r: 0.45716143, g: 0.6320754, b: 0.62428176, a: 0.76862746}
     - _VoronoiOffsetLiquid: {r: 1, g: 1, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0, g: 0.15, b: 0, a: 0}
   m_BuildTextureStacks: []

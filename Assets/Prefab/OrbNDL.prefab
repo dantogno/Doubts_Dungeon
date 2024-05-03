@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2560766445012645421}
   - component: {fileID: 1994804748976627510}
   m_Layer: 0
-  m_Name: OrbNew
+  m_Name: OrbNDL
   m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 488577480251404512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.3700305, z: 0, w: 0.92901963}
-  m_LocalPosition: {x: 16.020971, y: 0.92759573, z: -21.064638}
+  m_LocalPosition: {x: 17.22353, y: 0.92090905, z: -14.747031}
   m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
   m_ConstrainProportionsScale: 0
   m_Children: []
