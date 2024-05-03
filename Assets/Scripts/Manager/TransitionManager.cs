@@ -117,7 +117,7 @@ public class TransitionManager : MonoBehaviour
             {
                 EditableRooms = new List<Room>(Rooms);
                 Randomize<Room>(EditableRooms);//Randomize list on creation
-                SceneManager.LoadScene("HubRoom");
+                SceneManager.LoadScene("EndScene");
 
                 PS.ClearSaveValues();
             }
