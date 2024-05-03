@@ -23,6 +23,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform spawnpos;
 
+    [SerializeField]
+    public AudioSource enemySource;
+    public AudioClip deathSound;
+    public float volume = 1f;
+
 
     // V I S U A L S 
     [SerializeField]
@@ -254,6 +259,7 @@ public class Enemy : MonoBehaviour
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
+        enemySource.PlayOneShot(deathSound, volume);
         //gameObject.SetActive(false);
         //DestroyImmediate(gameObject, true);
     }

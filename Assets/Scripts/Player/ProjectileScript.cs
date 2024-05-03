@@ -22,6 +22,11 @@ public class ProjectileScript : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] Animator ShootingAnim;
 
+    [SerializeField]
+    public AudioSource projectileSource;
+    public AudioClip firingSound;
+    public float volume = 1f;
+
     private void Start()
     {
         plane = new Plane(Vector3.down, firingPoint.position.y);
@@ -67,6 +72,7 @@ public class ProjectileScript : MonoBehaviour
 
     void FireWithMouse()
     {
+        projectileSource.PlayOneShot(firingSound, volume);
         ShootingAnim.Play("Shooting");
 
         // Cast a ray from the mouse position into the game world
@@ -107,6 +113,7 @@ public class ProjectileScript : MonoBehaviour
 
     void FireWithGamepad()
     {
+        projectileSource.PlayOneShot(firingSound, volume);
         ShootingAnim.Play("Shooting");
 
         Vector3 direction = SB.GetJoystickAimDirection();

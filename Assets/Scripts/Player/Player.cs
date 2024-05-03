@@ -54,6 +54,12 @@ public class Player: MonoBehaviour
     // A T T A C K
     public int Damage;
 
+    // A U D I O
+    [SerializeField]
+    public AudioSource mentySource;
+    public AudioClip pillBottleSound;
+    public float volume = 1f;
+
 
     public void Update()
     {
@@ -245,6 +251,7 @@ public class Player: MonoBehaviour
         if (Input.GetButtonDown("UseHealth"))
         {
             Debug.Log("Player hit: UseHealth | E key");
+            mentySource.PlayOneShot(pillBottleSound, volume);
             UseHealth();
         }
     }
