@@ -252,8 +252,8 @@ public class Enemy : MonoBehaviour
     public void KillEnemy(Enemy enemy) 
     {
         enemy.deaddrop = true;
-        enemy.Die();
         enemy.StartCoroutine(Dissolve());
+        enemy.Die();
     }
 
     private void NotifyEnemyDestroyed()
@@ -268,14 +268,12 @@ public class Enemy : MonoBehaviour
             orbref.transform.position = new Vector3(gameObject.transform.position.x, YOffset.position.y, gameObject.transform.position.z);
             orbref.SpawnObject();
         }
-        
        
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
-        transform.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         //DestroyImmediate(gameObject, true);
-        //Destroy(gameObject,despawntime);
         
     }
 
