@@ -1900,6 +1900,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 105
       objectReference: {fileID: 0}
+    - target: {fileID: 6889159951527693631, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 8469797468878338149, guid: 9c2b54092960133428c6db4a6de8288d, type: 3}
       propertyPath: m_BoundingVolume
       value: 

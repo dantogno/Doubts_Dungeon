@@ -34,6 +34,7 @@ public class Currancy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            OrbEffect.playRate = 3;
             OrbEffect.Stop();
             collider.enabled = false;
             other.gameObject.GetComponent<Player>().Currancy += CurrancyAmount;

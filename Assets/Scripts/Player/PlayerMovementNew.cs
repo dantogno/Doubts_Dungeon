@@ -95,13 +95,13 @@ public class PlayerMovementNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
         CheckCameraReference();
     }
 
     private void FixedUpdate()
     {
-        //Move();
+        Move();
         CheckForDodge();
         HandleLookDirection();
     }
@@ -180,7 +180,8 @@ public class PlayerMovementNew : MonoBehaviour
 
         Vector3 movePosition = transform.position + move;
 
-        transform.position = movePosition;
+        //transform.position = movePosition;
+        rb.MovePosition(movePosition);
 
 
         if (NewMovmentTest)
