@@ -1,0 +1,1165 @@
+fileFormatVersion: 2
+guid: 2150d57a92622574cac47a5ae3e0233d
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MentyPCModels_Material
+    second: {fileID: 2100000, guid: 4d9d533a26392e043b1e835455c3cd40, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: MentyRig_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPointer1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPointer2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPointer3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_LeftPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPointer1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPointer2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPointer3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_RightPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: MentyRig_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: MentyRig(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Menty
+      parentName: MentyRig(Clone)
+      position: {x: -0.000352046, y: 0, z: -0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cloak
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: -2.646978e-23, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Heart
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftArm
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ribcage
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightArm
+      parentName: Menty
+      position: {x: 0.000352046, y: 0, z: 0.07635554}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Reference
+      parentName: MentyRig(Clone)
+      position: {x: -0.00035156248, y: -0.70166427, z: -0.072620235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_ChestEndEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0, y: 1.0769928, z: 0.1689172}
+      rotation: {x: 0.000000048643095, y: 3.027683e-24, z: 2.421439e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_ChestOriginEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 2.9802322e-10, y: 0.8232376, z: 0.16996336}
+      rotation: {x: 0.000000048643095, y: 1.3739406e-23, z: -2.978261e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_HeadEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 2.9802322e-10, y: 1.2369052, z: 0.16677076}
+      rotation: {x: 0.000002456085, y: 1.5039184e-22, z: -1.5039184e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Hips
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 2.9802322e-10, y: 0.7148571, z: 0.16783512}
+      rotation: {x: 0.000000044657167, y: 2.7344629e-24, z: -2.7344629e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftUpLeg
+      parentName: MentyRig_Ctrl_Hips
+      position: {x: -0.06316929, y: -0.029764341, z: -0.0007339001}
+      rotation: {x: -0.0014985602, y: 0.00000017567028, z: 2.6325286e-10, w: 0.99999887}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftLeg
+      parentName: MentyRig_Ctrl_LeftUpLeg
+      position: {x: -8.881784e-18, y: -0.12717345, z: 0}
+      rotation: {x: 0.0027875975, y: -0.000000086016136, z: -0.000000040877236, w: 0.9999961}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftFoot
+      parentName: MentyRig_Ctrl_LeftLeg
+      position: {x: -8.881784e-18, y: -0.1430894, z: 1.7763568e-17}
+      rotation: {x: 0.588974, y: -0.00000014592456, z: 0.00000043041697, w: 0.808152}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftToeBase
+      parentName: MentyRig_Ctrl_LeftFoot
+      position: {x: -0.00000009536745, y: -0.043204907, z: 0.15115765}
+      rotation: {x: 1.0852512e-23, y: -0.00000008861748, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightUpLeg
+      parentName: MentyRig_Ctrl_Hips
+      position: {x: 0.06316929, y: -0.029764341, z: -0.0007339001}
+      rotation: {x: -0.0013523528, y: 1.9704387e-10, z: -0.00000014568715, w: 0.9999991}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightLeg
+      parentName: MentyRig_Ctrl_RightUpLeg
+      position: {x: 0.000000004768373, y: -0.12717345, z: 0.0000012493136}
+      rotation: {x: 0.0025116925, y: 0.000008993022, z: 0.00000042217127, w: 0.99999684}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightFoot
+      parentName: MentyRig_Ctrl_RightLeg
+      position: {x: 8.881784e-18, y: -0.1430894, z: -1.7763568e-17}
+      rotation: {x: 0.57305986, y: 0.000005055622, z: -0.000039448143, w: 0.8195135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightToeBase
+      parentName: MentyRig_Ctrl_RightFoot
+      position: {x: 0.00001266003, y: -0.043204907, z: 0.15115763}
+      rotation: {x: 2.2365468e-32, y: 0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Spine
+      parentName: MentyRig_Ctrl_Hips
+      position: {x: 6.938894e-20, y: 0.10838064, z: 0.00212822}
+      rotation: {x: -1.7347235e-18, y: 1.4932422e-18, z: 1.1101226e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Spine1
+      parentName: MentyRig_Ctrl_Spine
+      position: {x: -0, y: 0.106803864, z: -0.0014366343}
+      rotation: {x: -7.60519e-33, y: -3.955708e-18, z: -7.049302e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Spine2
+      parentName: MentyRig_Ctrl_Spine1
+      position: {x: -0, y: 0.08429146, z: 0.0030052}
+      rotation: {x: -5.2041704e-18, y: -6.162976e-33, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftShoulder
+      parentName: MentyRig_Ctrl_Spine2
+      position: {x: -0.05985793, y: 0.06266002, z: -0.0026147466}
+      rotation: {x: -2.6020852e-18, y: -3.469447e-18, z: 1.13299135e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftArm
+      parentName: MentyRig_Ctrl_LeftShoulder
+      position: {x: -0.08313909, y: 0.018171543, z: -0.004573785}
+      rotation: {x: 0.000047087742, y: -0.0001432739, z: -0.00008867652, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftForeArm
+      parentName: MentyRig_Ctrl_LeftArm
+      position: {x: -0.20781118, y: 0.000000038146982, z: 1.7763568e-17}
+      rotation: {x: -0.000047102578, y: 0.00015127365, z: 0.00008912115, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftHand
+      parentName: MentyRig_Ctrl_LeftForeArm
+      position: {x: -0.26397723, y: 0.00044307715, z: 0.0006413175}
+      rotation: {x: 0.000000014478613, y: -0.000008125432, z: -0.00000055134984, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Neck
+      parentName: MentyRig_Ctrl_Spine2
+      position: {x: -0, y: 0.13300724, z: -0.0026998906}
+      rotation: {x: 0.0000024074418, y: 1.4402095e-22, z: -1.4737427e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_Head
+      parentName: MentyRig_Ctrl_Neck
+      position: {x: -0, y: 0.08956896, z: -0.0020617486}
+      rotation: {x: 3.061617e-17, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightShoulder
+      parentName: MentyRig_Ctrl_Spine2
+      position: {x: 0.05985793, y: 0.06266002, z: -0.0026147466}
+      rotation: {x: 8.6736174e-19, y: 3.469447e-18, z: -2.0599843e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightArm
+      parentName: MentyRig_Ctrl_RightShoulder
+      position: {x: 0.08313909, y: 0.018171543, z: -0.0045737945}
+      rotation: {x: 0.000047430465, y: 0.0001411589, z: 0.00008735072, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightForeArm
+      parentName: MentyRig_Ctrl_RightArm
+      position: {x: 0.20781118, y: 2.1316282e-16, z: 5.3290704e-17}
+      rotation: {x: -0.000047821217, y: -0.00014860861, z: -0.000088157736, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightHand
+      parentName: MentyRig_Ctrl_RightForeArm
+      position: {x: 0.26467827, y: 0.0004587174, z: 0.00059691444}
+      rotation: {x: 0.00000039020318, y: 0.0000075337443, z: 0.0000007895691, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_HipsEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0, y: 0.68509275, z: 0.16710123}
+      rotation: {x: 0.000000044657167, y: 2.7344629e-24, z: -2.7344629e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftAnkleEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.06316924, y: 0.41483128, z: 0.16711159}
+      rotation: {x: 0.5900152, y: -0.00000009836272, z: 0.0000003441342, w: 0.80739224}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftElbowEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.35080758, y: 1.0951962, z: 0.16429181}
+      rotation: {x: 0.000000034429764, y: 0.0000081254275, z: 0.0000005513128, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftFootEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.06316927, y: 0.2576922, z: 0.17186451}
+      rotation: {x: 0.5900152, y: -0.00000016991177, z: 0.0000002918485, w: 0.80739224}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftHipEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.063169174, y: 0.68509275, z: 0.16710123}
+      rotation: {x: -0.0014985602, y: 0.00000017567028, z: 2.632527e-10, w: 0.99999887}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftKneeEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.06316923, y: 0.55792004, z: 0.16748108}
+      rotation: {x: 0.0012890648, y: 0.000000089592696, z: -0.000000041237982, w: 0.99999917}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftShoulderEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.14299676, y: 1.0951642, z: 0.16434342}
+      rotation: {x: 0.00004713639, y: -0.0001432739, z: -0.00008867651, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_LeftWristEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: -0.6147845, y: 1.095639, z: 0.16493694}
+      rotation: {x: 0.00000004890838, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightAnkleEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.06316924, y: 0.41483107, z: 0.16711292}
+      rotation: {x: 0.57400954, y: 0.000012638146, z: -0.000044351364, w: 0.8188486}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightElbowEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.35080758, y: 1.0951964, z: 0.16429189}
+      rotation: {x: -0.00000034155823, y: -0.000007533764, z: -0.00000078951996, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightFootEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.06317356, y: 0.2580008, z: 0.17804664}
+      rotation: {x: 0.57400954, y: 0.000012638149, z: -0.000044351364, w: 0.8188486}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightHipEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.063169174, y: 0.68509275, z: 0.16710123}
+      rotation: {x: -0.0013523528, y: 1.970309e-10, z: -0.00000014568715, w: 0.9999991}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightKneeEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.06316919, y: 0.55791986, z: 0.16744518}
+      rotation: {x: 0.0011593052, y: 0.000009000146, z: 0.00000026431385, w: 0.99999934}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightShoulderEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.14299676, y: 1.0951642, z: 0.16434342}
+      rotation: {x: 0.000047479105, y: 0.0001411589, z: 0.00008735074, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Ctrl_RightWristEffector
+      parentName: MentyRig_Ctrl_Reference
+      position: {x: 0.61548555, y: 1.0956546, z: 0.16489242}
+      rotation: {x: 0.000000048644907, y: 6.123234e-17, z: 2.9786417e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Guides
+      parentName: MentyRig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_1
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.535246, z: 0.09416045}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.013193995, z: 0.095225304}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftArm_1
+      parentName: MentyRig_Guides
+      position: {x: -0.14334854, y: 0.39350143, z: 0.09173355}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftFoot
+      parentName: MentyRig_Guides
+      position: {x: -0.04951956, y: -0.2516361, z: -0.010893422}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftForeArm
+      parentName: MentyRig_Guides
+      position: {x: -0.35023925, y: 0.3739746, z: 0.09236986}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand
+      parentName: MentyRig_Guides
+      position: {x: -0.61390334, y: 0.3836045, z: 0.09469717}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftLeg
+      parentName: MentyRig_Guides
+      position: {x: -0.060247634, y: -0.14305426, z: 0.08167795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftShoulder
+      parentName: MentyRig_Guides
+      position: {x: -0.06020948, y: 0.37532988, z: 0.096307345}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftToeBase
+      parentName: MentyRig_Guides
+      position: {x: -0.03086878, y: -0.294841, z: -0.16089597}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftUpLeg
+      parentName: MentyRig_Guides
+      position: {x: -0.06352084, y: -0.01657034, z: 0.09449139}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.4456771, z: 0.0962222}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Reference
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: -0.70166427, z: -0.072620235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightArm_1
+      parentName: MentyRig_Guides
+      position: {x: 0.14264542, y: 0.39350143, z: 0.09173355}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightFoot
+      parentName: MentyRig_Guides
+      position: {x: 0.04881643, y: -0.2516361, z: -0.010893422}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightForeArm
+      parentName: MentyRig_Guides
+      position: {x: 0.34953612, y: 0.3739746, z: 0.09236986}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand
+      parentName: MentyRig_Guides
+      position: {x: 0.6132002, y: 0.3836045, z: 0.09469717}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightLeg
+      parentName: MentyRig_Guides
+      position: {x: 0.05954451, y: -0.14305426, z: 0.08167795}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightShoulder
+      parentName: MentyRig_Guides
+      position: {x: 0.059506353, y: 0.37532988, z: 0.096307345}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightToeBase
+      parentName: MentyRig_Guides
+      position: {x: 0.030165656, y: -0.294841, z: -0.16089597}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightUpLeg
+      parentName: MentyRig_Guides
+      position: {x: 0.062817715, y: -0.01657034, z: 0.09449139}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.12157461, z: 0.097353525}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.22837844, z: 0.09591689}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine2
+      parentName: MentyRig_Guides
+      position: {x: -0.00035156248, y: 0.31266987, z: 0.09892209}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Reference
+      parentName: MentyRig(Clone)
+      position: {x: -0.00035156248, y: -0.70166427, z: -0.072620235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Hips
+      parentName: MentyRig_Reference
+      position: {x: 3.4924597e-10, y: 1.1714923, z: 0.07335413}
+      rotation: {x: -0.50488424, y: 0.49506757, z: 0.50488424, w: -0.49506757}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftUpLeg
+      parentName: MentyRig_Hips
+      position: {x: 0.029772984, y: -0.0001494026, z: 0.06316923}
+      rotation: {x: 3.8060968e-10, y: 0.0000000058054335, z: 0.9999365, w: -0.011270691}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftLeg
+      parentName: MentyRig_LeftUpLeg
+      position: {x: -0.12717324, y: 0.000001301819, z: 0.0000000047683715}
+      rotation: {x: -0.000000043694424, y: 0.00000003144361, z: -0.0027031007, w: 0.99999636}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftFoot
+      parentName: MentyRig_LeftLeg
+      position: {x: -0.14308935, y: 0.0000005748136, z: -0.0000000047683715}
+      rotation: {x: -0.0000002705711, y: 0.0000000798619, z: 0.016367113, w: 0.99986607}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftToeBase
+      parentName: MentyRig_LeftFoot
+      position: {x: -0.15721083, y: -0.000000072153384, z: -0.0000000014921073}
+      rotation: {x: -0.0000000042115764, y: -0.0000000023093953, z: 0.0000000010628607, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightUpLeg
+      parentName: MentyRig_Hips
+      position: {x: 0.029772984, y: -0.0001494026, z: -0.06316923}
+      rotation: {x: 0.0000000034053214, y: 0.000000030460683, z: 0.011141306, w: 0.99993795}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightLeg
+      parentName: MentyRig_RightUpLeg
+      position: {x: 0.12717338, y: -0.0000013178775, z: 0.000000050611693}
+      rotation: {x: -0.000008972545, y: -0.00000010013912, z: -0.0024542036, w: 0.999997}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightFoot
+      parentName: MentyRig_RightLeg
+      position: {x: 0.14308922, y: -0.00000054838324, z: -0.000000050924417}
+      rotation: {x: -0.000029126253, y: 0.000012006609, z: 0.03592433, w: 0.99935454}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightToeBase
+      parentName: MentyRig_RightFoot
+      position: {x: 0.15721089, y: -0.0000000037767385, z: 0.0000000044238937}
+      rotation: {x: 0.000025391575, y: -0.0000001341075, z: 3.4043087e-12, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Spine
+      parentName: MentyRig_Hips
+      position: {x: -0.10840148, y: 0.000000007496209, z: -6.938894e-20}
+      rotation: {x: 2.7042705e-21, y: 2.1664077e-19, z: 0.016541444, w: 0.9998632}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Spine1
+      parentName: MentyRig_Spine
+      position: {x: -0.10681346, y: 0.0000000118938965, z: 6.938894e-20}
+      rotation: {x: 1.1993032e-21, y: -1.0846792e-19, z: -0.024541449, w: 0.9996988}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Spine2
+      parentName: MentyRig_Spine1
+      position: {x: -0.08434494, y: 0.000000007627007, z: -6.938894e-20}
+      rotation: {x: 7.940345e-22, y: -1.0853655e-19, z: 0.02796311, w: 0.99960893}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftShoulder
+      parentName: MentyRig_Spine2
+      position: {x: -0.062700145, y: -0.0013425432, z: 0.059857886}
+      rotation: {x: -0.5343238, y: 0.43391606, z: 0.45231047, w: 0.5671245}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftArm
+      parentName: MentyRig_LeftShoulder
+      position: {x: -0.08522437, y: 0.000000024150296, z: -0.0000000062032113}
+      rotation: {x: 0.7048611, y: 0.094596036, z: 0.057071198, w: 0.70068926}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftForeArm
+      parentName: MentyRig_LeftArm
+      position: {x: -0.20781094, y: 0.0000074479117, z: 0.000004572305}
+      rotation: {x: -0.00005308679, y: 0.00010040213, z: -0.00017013587, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftHand
+      parentName: MentyRig_LeftForeArm
+      position: {x: -0.26397687, y: 0.0006407694, z: -0.00044316312}
+      rotation: {x: -0.5084979, y: 0.4620405, z: -0.097264625, w: 0.72006124}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftThumb1
+      parentName: MentyRig_LeftHand
+      position: {x: -0.033723615, y: 0.0044192136, z: 0.0063365386}
+      rotation: {x: -0.13427338, y: -0.11766636, z: -0.30505267, w: 0.93545085}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftThumb2
+      parentName: MentyRig_LeftThumb1
+      position: {x: -0.029357163, y: -0.001748822, z: -0.0011534842}
+      rotation: {x: -0.07770563, y: -0.059165128, z: 0.06292543, w: 0.9932279}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftThumb3
+      parentName: MentyRig_LeftThumb2
+      position: {x: -0.027080595, y: 0.0034508097, z: 0.0021239084}
+      rotation: {x: 0.0036010118, y: 0.010971896, z: -0.31181702, w: 0.95007205}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPointer1
+      parentName: MentyRig_LeftHand
+      position: {x: -0.064204134, y: 0.039464477, z: -0.05394008}
+      rotation: {x: -0.13504483, y: -0.44166985, z: -0.22195324, w: 0.8587359}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPointer2
+      parentName: MentyRig_LeftPointer1
+      position: {x: -0.041074496, y: -0.0000000013393174, z: -4.6147092e-10}
+      rotation: {x: -0.0051241647, y: -0.019506894, z: 0.035914063, w: 0.9991514}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPointer3
+      parentName: MentyRig_LeftPointer2
+      position: {x: -0.03773772, y: 0.000000013057778, z: -0.0000000079561175}
+      rotation: {x: -0.009965496, y: -0.016762968, z: 0.29117882, w: 0.9564699}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftMiddle1
+      parentName: MentyRig_LeftHand
+      position: {x: -0.033475008, y: 0.026134431, z: -0.08021785}
+      rotation: {x: -0.14874202, y: -0.47535044, z: -0.21356128, w: 0.8404222}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftMiddle2
+      parentName: MentyRig_LeftMiddle1
+      position: {x: -0.043065533, y: -0.0020066127, z: -0.0002996133}
+      rotation: {x: 0.002003177, y: 0.0044503487, z: 0.027329298, w: 0.9996146}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftMiddle3
+      parentName: MentyRig_LeftMiddle2
+      position: {x: -0.03396528, y: 0.0029899376, z: -0.0000000037011585}
+      rotation: {x: 0.012501438, y: 0.020485876, z: 0.28007528, w: 0.95967805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftRing1
+      parentName: MentyRig_LeftHand
+      position: {x: -0.051915973, y: 0.034543697, z: -0.07015994}
+      rotation: {x: -0.15127984, y: -0.4615235, z: -0.19973597, w: 0.8510089}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftRing2
+      parentName: MentyRig_LeftRing1
+      position: {x: -0.044796534, y: -0.000000007591188, z: -0.00000000769436}
+      rotation: {x: -7.31341e-17, y: -1.5593597e-16, z: -0.02023407, w: 0.99979526}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftRing3
+      parentName: MentyRig_LeftRing2
+      position: {x: -0.040605377, y: -0.000000003776264, z: -0.000000005929207}
+      rotation: {x: -3.072056e-18, y: 3.494341e-18, z: 0.30457777, w: 0.95248747}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPinky1
+      parentName: MentyRig_LeftHand
+      position: {x: -0.018671015, y: 0.016369177, z: -0.08737401}
+      rotation: {x: -0.18066289, y: -0.513134, z: -0.19458257, w: 0.816206}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPinky2
+      parentName: MentyRig_LeftPinky1
+      position: {x: -0.030436775, y: 0.000000025575222, z: -0.0000000037701238}
+      rotation: {x: 0.015710136, y: 0.032895368, z: 0.022715861, w: 0.99907714}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_LeftPinky3
+      parentName: MentyRig_LeftPinky2
+      position: {x: -0.029652331, y: 0.000000008975848, z: -0.0000000016045395}
+      rotation: {x: 0.037956342, y: 0.0599261, z: 0.26343355, w: 0.962066}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightShoulder
+      parentName: MentyRig_Spine2
+      position: {x: -0.062700145, y: -0.0013425432, z: -0.059857886}
+      rotation: {x: -0.433916, y: -0.5343238, z: 0.56712455, w: -0.4523104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightArm
+      parentName: MentyRig_RightShoulder
+      position: {x: 0.08522437, y: -0.000000024150296, z: 0.000000015726211}
+      rotation: {x: 0.704861, y: 0.09459903, z: 0.057070587, w: 0.700689}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightForeArm
+      parentName: MentyRig_RightArm
+      position: {x: 0.20781094, y: -0.0000071968793, z: -0.0000042898337}
+      rotation: {x: -0.000053817766, y: 0.00009842497, z: -0.00016703804, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightHand
+      parentName: MentyRig_RightForeArm
+      position: {x: 0.2646779, y: -0.00059636764, z: 0.00045872308}
+      rotation: {x: 0.035226107, y: -0.023106895, z: 0.051082525, w: 0.9978055}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightThumb1
+      parentName: MentyRig_RightHand
+      position: {x: 0.011740413, y: -0.029145338, z: -0.014480213}
+      rotation: {x: -0.46024874, y: 0.21411134, z: -0.37123427, w: 0.7775041}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightThumb2
+      parentName: MentyRig_RightThumb1
+      position: {x: 0.02935748, y: 0.0020115022, z: -0.0005856506}
+      rotation: {x: 0.018578557, y: 0.017898811, z: 0.08450842, w: 0.99608874}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightThumb3
+      parentName: MentyRig_RightThumb2
+      position: {x: 0.02708071, y: -0.003540304, z: 0.0019723075}
+      rotation: {x: -0.09562613, y: -0.15807907, z: -0.13723859, w: 0.9731558}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPointer1
+      parentName: MentyRig_RightHand
+      position: {x: 0.08692112, y: -0.032008465, z: -0.0030662229}
+      rotation: {x: -0.70166963, y: 0.10648698, z: 0.012876452, w: 0.70438236}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPointer2
+      parentName: MentyRig_RightPointer1
+      position: {x: 0.04107408, y: 0.000000022044107, z: 0.0000003148268}
+      rotation: {x: -0.0051241205, y: -0.019509207, z: 0.03591847, w: 0.9991511}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPointer3
+      parentName: MentyRig_RightPointer2
+      position: {x: 0.037738033, y: -0.0000003250776, z: 0.00000015358854}
+      rotation: {x: -0.009965496, y: -0.016762968, z: 0.29117882, w: 0.9564699}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightMiddle1
+      parentName: MentyRig_RightHand
+      position: {x: 0.093077146, y: -0.012116468, z: -0.0008940843}
+      rotation: {x: -0.70676655, y: 0.08537906, z: 0.029566277, w: 0.70165324}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightMiddle2
+      parentName: MentyRig_RightMiddle1
+      position: {x: 0.044795893, y: -0.00000033818188, z: 0.0000000043809694}
+      rotation: {x: 1.7887578e-16, y: 1.1635219e-16, z: -0.02023407, w: 0.99979526}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightMiddle3
+      parentName: MentyRig_RightMiddle2
+      position: {x: 0.040605646, y: -0.00000020944431, z: 0.000000003402768}
+      rotation: {x: 2.0480085e-16, y: 1.795222e-16, z: 0.30457777, w: 0.95248747}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightRing1
+      parentName: MentyRig_RightHand
+      position: {x: 0.09017721, y: 0.010155575, z: 0.0018419791}
+      rotation: {x: -0.71276844, y: 0.059168357, z: 0.01431968, w: 0.6987527}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightRing2
+      parentName: MentyRig_RightRing1
+      position: {x: 0.043065887, y: 0.0020064465, z: 0.00029962295}
+      rotation: {x: 0.0020035799, y: 0.00445152, z: 0.027318524, w: 0.99961495}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightRing3
+      parentName: MentyRig_RightRing2
+      position: {x: 0.033965126, y: -0.0029893415, z: 0.000000030883488}
+      rotation: {x: 0.012501438, y: 0.020485876, z: 0.28007528, w: 0.95967805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPinky1
+      parentName: MentyRig_RightHand
+      position: {x: 0.08611941, y: 0.02884159, z: 0.0015310661}
+      rotation: {x: -0.71905655, y: 0.03377308, z: 0.033504553, w: 0.69332135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPinky2
+      parentName: MentyRig_RightPinky1
+      position: {x: 0.030436646, y: 0.00000043408835, z: 0.00000006211437}
+      rotation: {x: 0.015710054, y: 0.032899816, z: 0.022726499, w: 0.9990767}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_RightPinky3
+      parentName: MentyRig_RightPinky2
+      position: {x: 0.029652284, y: -0.0000004321505, z: 0.000000021321227}
+      rotation: {x: 0.037956342, y: 0.0599261, z: 0.26343355, w: 0.962066}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Neck
+      parentName: MentyRig_Spine2
+      position: {x: -0.13303296, y: -0.00000001961747, z: 6.938894e-20}
+      rotation: {x: -1.1761326e-21, y: -5.3876487e-20, z: 0.0013564078, w: 0.9999991}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MentyRig_Head
+      parentName: MentyRig_Neck
+      position: {x: -0.08959075, y: -0.00000003205938, z: 1.3877787e-19}
+      rotation: {x: -8.9966376e-24, y: 2.193481e-22, z: 6.8582384e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
