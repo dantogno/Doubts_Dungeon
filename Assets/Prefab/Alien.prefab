@@ -782,7 +782,7 @@ MonoBehaviour:
   CanBeKnockedBack: 1
   skinnedMesh: {fileID: 8667439185434526453}
   VFXGraph: {fileID: 4767953504235688236}
-  orbref: {fileID: 2560766445012645421, guid: 972666b93d26a7843af781650ebace2d, type: 3}
+  orbref: {fileID: 2560766445012645421, guid: 722a14370cb901343a109c62ec9dd4c1, type: 3}
   dissolveRate: 0.0125
   refreshRate: 0.025
 --- !u!195 &8411478547279041796

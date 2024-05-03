@@ -244,8 +244,8 @@ public class Enemy : MonoBehaviour
         if (health == 0)
         {
             deaddrop = true;
+            StartCoroutine(Dissolve()); 
             Die();
-            StartCoroutine(Dissolve());
         }
     }
 
@@ -273,7 +273,8 @@ public class Enemy : MonoBehaviour
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
-        Destroy(gameObject,despawntime);
+        DestroyImmediate(gameObject, true);
+        //Destroy(gameObject,despawntime);
         
     }
 

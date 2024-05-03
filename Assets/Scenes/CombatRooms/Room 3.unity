@@ -2033,7 +2033,7 @@ PrefabInstance:
       objectReference: {fileID: 1146492683}
     - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
       propertyPath: EnemyState
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
       propertyPath: WaveNumbers

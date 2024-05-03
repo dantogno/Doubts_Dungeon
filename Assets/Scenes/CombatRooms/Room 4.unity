@@ -3937,6 +3937,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 35580238}
     - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
+      propertyPath: EnemyState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 253744184267852411, guid: aa10bb070a471854eb9a6a002d3f33aa, type: 3}
       propertyPath: HighscoreText
       value: 
       objectReference: {fileID: 1823706062}
