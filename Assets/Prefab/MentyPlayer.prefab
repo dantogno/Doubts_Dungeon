@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &240056680293966557
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8419538843375065742}
-  - component: {fileID: 1070233097196443416}
-  m_Layer: 3
-  m_Name: HitBox
-  m_TagString: Melee
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8419538843375065742
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240056680293966557}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5691649246488852675}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1070233097196443416
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240056680293966557}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.8, y: 1.084012, z: 1.6}
-  m_Center: {x: -0.13739441, y: 0.8748616, z: 0.4227713}
 --- !u!1001 &8512339961617865937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,30 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 534948882609185346, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3071587365098113783, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3400484052317952243, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3433197349586289944, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: maxStress
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3433197349586289944, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: trackHits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482018274321866227, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3717427241403973288, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
       propertyPath: m_Name
       value: MentyPlayer
@@ -129,77 +52,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4799035557139364413, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4888849394411255782, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4976437660768436945, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014340639688554902, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737880806555597556, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943514222392245864, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 7d2844374ff798d458bcabef44ad23a7, type: 3}
-    - target: {fileID: 8649750894766358806, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8736494636791940670, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820439866521983242, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8419538843375065742}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3717427241403973288, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 204462891341414498}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
---- !u!1 &5023515215802016377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3717427241403973288, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-  m_PrefabInstance: {fileID: 8512339961617865937}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &204462891341414498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5023515215802016377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41619d62995649045b4572eb4299e51a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Attacked: 0
-  slashFX: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
-  MeleeRange: 1
-  HitBox: {fileID: 240056680293966557}
-  MeleeAnim: {fileID: 0}
---- !u!4 &5691649246488852675 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4097471702094455826, guid: 3b1fa8f3cc202ca4980469a13d81fe5a, type: 3}
-  m_PrefabInstance: {fileID: 8512339961617865937}
-  m_PrefabAsset: {fileID: 0}

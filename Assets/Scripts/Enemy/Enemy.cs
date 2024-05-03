@@ -71,12 +71,6 @@ public class Enemy : MonoBehaviour
     //player ref
     PlayerMelee playerMelee;
 
-    //private void Awake()
-    //{
-    //    Agent = GetComponent<NavMeshAgent>();
-       
-    //}
-
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -114,7 +108,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
         if (target != null)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
@@ -124,17 +117,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    //private void UpdatePath()
-    //{
-    //    if (Time.time >= PathUpdateDeadline)
-    //    {
-    //        animator.SetBool(IsWalking, true); 
-    //        //Debug.Log("Updating Path");
-    //        PathUpdateDeadline = Time.time + EnemyPathingDelay;
-    //        Agent.SetDestination(target.position);
-    //    }
-    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -274,7 +256,6 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger(IsDead);
         //gameObject.SetActive(false);
         //DestroyImmediate(gameObject, true);
-        
     }
 
     public IEnumerator Dissolve()

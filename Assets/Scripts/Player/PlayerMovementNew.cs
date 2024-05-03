@@ -103,7 +103,7 @@ public class PlayerMovementNew : MonoBehaviour
     {
         //Move();
         CheckForDodge();
-        //HandleLookDirection();
+        HandleLookDirection();
     }
 
 
