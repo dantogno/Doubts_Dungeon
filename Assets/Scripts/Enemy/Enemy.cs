@@ -273,7 +273,8 @@ public class Enemy : MonoBehaviour
         NotifyEnemyDestroyed();
         Agent.speed = 0;
         animator.SetTrigger(IsDead);
-        DestroyImmediate(gameObject, true);
+        transform.gameObject.SetActive(false);
+        //DestroyImmediate(gameObject, true);
         //Destroy(gameObject,despawntime);
         
     }

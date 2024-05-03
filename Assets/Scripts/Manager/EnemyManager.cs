@@ -320,7 +320,6 @@ public class EnemyManager : MonoBehaviour
     {
         if (CurrentWave >= NumOfWaves)
         {
-            
             WavesCompleted = true;
             text.text = "Last Wave";
         }
