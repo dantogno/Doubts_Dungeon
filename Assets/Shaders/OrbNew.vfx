@@ -84,10 +84,10 @@ MonoBehaviour:
   - title: New Group Node
     position:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 100
-      height: 100
+      x: 4223
+      y: 1944
+      width: 474
+      height: 633
     contents:
     - model: {fileID: 8926484042661614839}
       id: 0
@@ -107,10 +107,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 1275
+    x: 1276
     y: 925
-    width: 6191
-    height: 3264
+    width: 6189
+    height: 3254
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -978,7 +978,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614613}
   - {fileID: 8926484042661614647}
   dataType: 0
-  capacity: 100000
+  capacity: 100
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -2579,9 +2579,9 @@ MonoBehaviour:
   - {fileID: 8926484042661614699}
   - {fileID: 8926484042661614722}
   dataType: 1
-  capacity: 9000000
-  stripCapacity: 100000
-  particlePerStripCount: 90
+  capacity: 2000
+  stripCapacity: 100
+  particlePerStripCount: 20
   needsComputeBounds: 0
   boundsMode: 0
   m_Space: 0
@@ -7224,7 +7224,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614862}
   - {fileID: 8926484042661614849}
   - {fileID: 8926484042661614882}
-  m_UIPosition: {x: 4252, y: 2003}
+  m_UIPosition: {x: 4248, y: 2003}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -9113,7 +9113,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614921}
   - {fileID: 8926484042661614923}
   dataType: 0
-  capacity: 100000
+  capacity: 250
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
