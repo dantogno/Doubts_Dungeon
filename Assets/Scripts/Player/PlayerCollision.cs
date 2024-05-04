@@ -11,6 +11,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip hitSound;
     public float volume = 1f;
 
+    public GameObject hitMarker;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 P.PlayerHasBeenHit();
                 damagedSource.PlayOneShot(hitSound, volume);
+                Instantiate(hitMarker, this.transform);
             }
 
         }
@@ -41,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 P.PlayerHasBeenHit();
                 damagedSource.PlayOneShot(hitSound, volume);
+                Instantiate(hitMarker, this.transform);
             }
         }
     }
