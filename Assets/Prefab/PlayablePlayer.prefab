@@ -171,6 +171,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2851385637667140132}
     m_Modifications:
+    - target: {fileID: 395483624300923071, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f48eeff265c62484ba3f6197a9aa991a, type: 3}
+    - target: {fileID: 395483624300923071, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
+      propertyPath: damagedSource
+      value: 
+      objectReference: {fileID: 2396950009465384118}
     - target: {fileID: 2342017913241607657, guid: a8ebad23b054c2d4e99a3b0c6cb7d71b, type: 3}
       propertyPath: swingSound
       value: 

@@ -5,6 +5,13 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     Player P;
+
+    [SerializeField]
+    public AudioSource damagedSource;
+    public AudioClip hitSound;
+    public float volume = 1f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +31,7 @@ public class PlayerCollision : MonoBehaviour
             if (P.canTakeDamage)
             {
                 P.PlayerHasBeenHit();
+                damagedSource.PlayOneShot(hitSound, volume);
             }
 
         }
@@ -32,6 +40,7 @@ public class PlayerCollision : MonoBehaviour
             if (P.canTakeDamage)
             {
                 P.PlayerHasBeenHit();
+                damagedSource.PlayOneShot(hitSound, volume);
             }
         }
     }
