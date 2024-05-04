@@ -188,7 +188,7 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(Knockback(knockbackPosition, knockbackDuration));
                 }
                 UnityEngine.Debug.Log($"{this.gameObject.name} MELEE HIT!");
-                TakeDamage(DamageTaken);
+                TakeDamage(DamageTaken * 2);
 
                 playerMelee.Performed();
             }
