@@ -2334,6 +2334,9 @@ MonoBehaviour:
   steadyFireRate: 0.3
   individualFireRate: 0.3
   ShootingAnim: {fileID: 7943514222392245864}
+  projectileSource: {fileID: 0}
+  firingSound: {fileID: 0}
+  volume: 1
 --- !u!114 &4901007805842921335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,6 +2481,9 @@ MonoBehaviour:
   CE: {fileID: 1112379573712705663}
   Speed: 8
   Damage: 0
+  mentySource: {fileID: 0}
+  pillBottleSound: {fileID: 0}
+  volume: 1
 --- !u!114 &6242390381452214584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,10 +2497,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attacked: 0
-  slashFX: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  slashFX: {fileID: 198741542255655676, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
   MeleeRange: 1
+  coolDownDuration: 1
   HitBox: {fileID: 3533658869533999276}
   MeleeAnim: {fileID: 7943514222392245864}
+  meleeSource: {fileID: 0}
+  swingSound: {fileID: 0}
+  volume: 1
 --- !u!1 &3763171228913140253
 GameObject:
   m_ObjectHideFlags: 0
