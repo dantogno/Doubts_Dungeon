@@ -259,8 +259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthamount: 1
   bottleSource: {fileID: 1449682612780908162}
-  pickupSound: {fileID: 8300000, guid: ac43474ccceecec4cb1200c5fbf3eb54, type: 3}
-  volume: 2
+  pickupSound: {fileID: 8300000, guid: 783e3d2e8c20633488edd8ea8a8edf79, type: 3}
+  volume: 1
 --- !u!136 &972097318476698991
 CapsuleCollider:
   m_ObjectHideFlags: 0
