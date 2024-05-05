@@ -1085,7 +1085,7 @@ MonoBehaviour:
   enemySource: {fileID: 478837421017725478}
   hitSound: {fileID: 8300000, guid: 9f54022781eb1024e84f4bc7f49165cc, type: 3}
   deathSound: {fileID: 8300000, guid: fd7d95526c0582346aaf40f2ef57fb79, type: 3}
-  volume: 1
+  volume: 0.8
   enemydmg: {fileID: 5443724817369215536}
   despawntime: 1.2
   animator: {fileID: 8339417567653367211}
