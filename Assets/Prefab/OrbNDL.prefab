@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 488577480251404512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.3700305, z: 0, w: 0.92901963}
-  m_LocalPosition: {x: 16.517818, y: 0.9345454, z: -6.7702293}
+  m_LocalPosition: {x: 17.488777, y: 2.1734633, z: 50.166344}
   m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -141,6 +141,9 @@ MonoBehaviour:
   OrbEffect: {fileID: 3858429333018458024}
   collider: {fileID: 1994804748976627510}
   CurrancyAmount: 3
+  orbSource: {fileID: 8339058107348599944}
+  pickupSound: {fileID: 8300000, guid: 57cdeff3644c81147abc3055a22007a2, type: 3}
+  volume: 1
 --- !u!135 &1994804748976627510
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +207,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: af14001f5aa24d44e8a41ee22dcde59a, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 57cdeff3644c81147abc3055a22007a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 91615ae772ff90a47a2170c6f69eb689, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

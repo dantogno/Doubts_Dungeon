@@ -18,6 +18,11 @@ public class Currancy : MonoBehaviour
     [SerializeField]
     private int CurrancyAmount;
 
+    [SerializeField]
+    public AudioSource orbSource;
+    public AudioClip pickupSound;
+    public float volume = 1f;
+
 
     private void Start()
     {
@@ -36,6 +41,7 @@ public class Currancy : MonoBehaviour
         {
             OrbEffect.playRate = 3;
             OrbEffect.Stop();
+            orbSource.PlayOneShot(pickupSound, volume);
             collider.enabled = false;
             other.gameObject.GetComponent<Player>().Currancy += CurrancyAmount;
         }
