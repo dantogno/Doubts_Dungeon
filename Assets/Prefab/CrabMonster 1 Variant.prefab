@@ -473,6 +473,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3938503211901911962}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fba127c0cb991247bb1acfe2ba2a6d0, type: 3}
+    - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: spawnpos
       value: 
       objectReference: {fileID: 2326643172915846247}
@@ -483,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: f5a5258bd97270d45a936ee4f0950ed0, type: 3}
+      objectReference: {fileID: 8300000, guid: b3012846e118ce9478f02bd6c2726171, type: 3}
     - target: {fileID: 2463089607794459238, guid: 4e7afdf31c20ebf419ea38bf1d358719, type: 3}
       propertyPath: alienSource
       value: 

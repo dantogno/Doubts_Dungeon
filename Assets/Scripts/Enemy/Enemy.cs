@@ -23,8 +23,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform spawnpos;
 
+    // A U D I O
+
     [SerializeField]
     public AudioSource enemySource;
+    public AudioClip hitSound;
     public AudioClip deathSound;
     public float volume = 1f;
 
@@ -224,6 +227,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         enemydmg.Flash();
+        enemySource.PlayOneShot(hitSound, volume);
         health -= damage;
 
 
