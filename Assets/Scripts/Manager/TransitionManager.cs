@@ -31,6 +31,7 @@ public class TransitionManager : MonoBehaviour
     public bool SeenVendor = false;
     public bool StartRoom = false;
 
+
     //Don't like
     PlayerSaveManager PS;
 
@@ -74,6 +75,13 @@ public class TransitionManager : MonoBehaviour
 
         EditableRooms.RemoveAt(RandomRoomNum);//Remove that one from the list
 
+    }
+
+    public void ResetValues()
+    {
+        SeenChest = false;
+        SeenVendor = false;
+        StartRoom = false;
     }
 
     public void ChooseScene()
@@ -120,6 +128,9 @@ public class TransitionManager : MonoBehaviour
                 SceneManager.LoadScene("EndScene");
 
                 PS.ClearSaveValues();
+                SeenChest = false;
+                SeenVendor = false;
+                //StartRoom = false;
             }
             else 
             SceneManager.LoadScene(sceneToLoad);
@@ -143,5 +154,6 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
+    
 }
 

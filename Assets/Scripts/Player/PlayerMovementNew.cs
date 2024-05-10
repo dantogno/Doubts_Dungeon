@@ -20,6 +20,7 @@ public class PlayerMovementNew : MonoBehaviour
     //[SerializeField] float decelerationFactor = 10.0f; // Adjust the value as needed
     public StaminaScript Stamina;
 
+    public bool DontLoad;
 
     public bool NewMovmentTest = false;
 
@@ -62,34 +63,40 @@ public class PlayerMovementNew : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<Player>();
-        Speed = player.Speed;
+        if (!DontLoad)
+        {
+            player = GetComponent<Player>();
+            Speed = player.Speed;
 
-        plane = new Plane(Vector3.down, transform.position.y);
-        GameObject spawnLocation = GameObject.Find("SpawnLocation");
-        SpawnPosition = spawnLocation.transform.position;
+            plane = new Plane(Vector3.down, transform.position.y);
+            GameObject spawnLocation = GameObject.Find("SpawnLocation");
+            SpawnPosition = spawnLocation.transform.position;
 
-        gameObject.transform.position = SpawnPosition;
+            gameObject.transform.position = SpawnPosition;
+        }
+        
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        GameObject CameraPivot = GameObject.Find("Camera Pivot");
-        Transform VirtualCamera = CameraPivot.transform.Find("Virtual Camera");
-        CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
+        if (!DontLoad)
+        {
+            GameObject CameraPivot = GameObject.Find("Camera Pivot");
+            Transform VirtualCamera = CameraPivot.transform.Find("Virtual Camera");
+            CMVcam = VirtualCamera.GetComponent<CinemachineVirtualCamera>();
 
-        CMVcam.Follow = transform;
+            CMVcam.Follow = transform;
 
 
-        //Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
-        //Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
-        //HighscoreText = highscoreTransform.GetComponent<TextMeshProUGUI>();
+            //Transform gameoverScreen = canvas.transform.Find("GameOverScreen");
+            //Transform highscoreTransform = gameoverScreen.transform.Find("ScoreText");
+            //HighscoreText = highscoreTransform.GetComponent<TextMeshProUGUI>();
 
-        GameObject spawnLocation = GameObject.Find("SpawnLocation");
-        SpawnPosition = spawnLocation.transform.position;
+            GameObject spawnLocation = GameObject.Find("SpawnLocation");
+            SpawnPosition = spawnLocation.transform.position;
 
-        gameObject.transform.position = SpawnPosition;
-        
+            gameObject.transform.position = SpawnPosition;
+        }
     }
 
     // Update is called once per frame
