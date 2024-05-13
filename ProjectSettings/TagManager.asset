@@ -12,6 +12,7 @@ TagManager:
   - Currency
   - HitBox
   - Melee
+  - Obstacle
   layers:
   - Default
   - TransparentFX
