@@ -15,7 +15,7 @@ public class BoidController : MonoBehaviour
     public LayerMask obstacleMask; // Define the layer mask for obstacles
     public Vector3 pointOfInterest = Vector3.zero; // Define the point of interest
 
-    public void SimulateMovement(List<BoidController> other, float time)
+    public void SimulateMovement(List<BoidController> other, float time, Vector3 pointOfInterest)
     {
         // Default vars
         var steering = Vector3.zero;
@@ -89,10 +89,16 @@ public class BoidController : MonoBehaviour
         if (Vector3.Distance(transform.position, pointOfInterest) < LocalAreaRadius)
             steering += (pointOfInterest - transform.position).normalized;
 
-        // Raycast for obstacle avoidance
-        RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, LocalAreaRadius, obstacleMask))
-            steering = -(hitInfo.point - transform.position).normalized;
+        // Raycasts for obstacle avoidance
+        for (int i = 0; i < 3; i++) // Cast rays in 3 directions: forward, left, and right
+        {
+            Vector3 rayDirection = Quaternion.Euler(0, 45f * (i - 1), 0) * transform.forward;
+            RaycastHit hitInfo;
+            if (Physics.Raycast(transform.position, rayDirection, out hitInfo, LocalAreaRadius, obstacleMask))
+            {
+                steering += hitInfo.normal.normalized;
+            }
+        }
 
         // Normalize final steering vector
         if (steering != Vector3.zero)
@@ -109,6 +115,5 @@ public class BoidController : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
         transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
     }
-
 
 }

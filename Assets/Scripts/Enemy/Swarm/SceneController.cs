@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
     public BoidController boidPrefab;
     public int spawnBoids = 100;
     private List<BoidController> _boids;
+    private Vector3 pointOfInterest = Vector3.zero; // Initial point of interest at the center
 
     private void Start()
     {
@@ -20,9 +21,12 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
+        // Update the point of interest to follow the mouse cursor
+        Vector3 pointOfInterest = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
+
         foreach (BoidController boid in _boids)
         {
-            boid.SimulateMovement(_boids, Time.deltaTime);
+            boid.SimulateMovement(_boids, Time.deltaTime, pointOfInterest);
         }
     }
 
